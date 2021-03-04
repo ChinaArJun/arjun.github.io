@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>8. kafka集群部署 | AJ</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <script>
+            var _hmt = _hmt || [];
+            (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?51b8c2e72d1adf96524638ce85bb7d72";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+
+            // 引入谷歌,不需要可删除这段
+            var hm1 = document.createElement("script");
+            hm1.src = "https://www.googletagmanager.com/gtag/js?id=G-B7351EYS04";
+            var s1 = document.getElementsByTagName("script")[0]; 
+            s1.parentNode.insertBefore(hm1, s1);
+            })();
+
+            // 谷歌加载,不需要可删除
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-B7351EYS04');
+        </script>
+    <meta name="description" content="阿俊博客|记录一个程序员的成长历程 阿俊博客(blog.zhequtao.com)记录一个后端程序员的成长历程,分享他的学习笔记和心得,还有些开发必备技巧哦! java golang web html dev开发">
+    <link rel="preload" href="/assets/css/0.styles.a3df589e.css" as="style"><link rel="preload" href="/assets/js/app.cb35c8f6.js" as="script"><link rel="preload" href="/assets/js/2.063846a6.js" as="script"><link rel="preload" href="/assets/js/4.1ffb4609.js" as="script"><link rel="preload" href="/assets/js/58.85ac2740.js" as="script"><link rel="prefetch" href="/assets/js/10.5629fe4d.js"><link rel="prefetch" href="/assets/js/100.8417ccea.js"><link rel="prefetch" href="/assets/js/101.37fdb377.js"><link rel="prefetch" href="/assets/js/102.848b686d.js"><link rel="prefetch" href="/assets/js/103.6a2489a0.js"><link rel="prefetch" href="/assets/js/104.99e8899f.js"><link rel="prefetch" href="/assets/js/105.8b741763.js"><link rel="prefetch" href="/assets/js/106.08163715.js"><link rel="prefetch" href="/assets/js/107.21801349.js"><link rel="prefetch" href="/assets/js/108.e3a2892b.js"><link rel="prefetch" href="/assets/js/109.dab5618c.js"><link rel="prefetch" href="/assets/js/11.cddc1623.js"><link rel="prefetch" href="/assets/js/110.f5249b39.js"><link rel="prefetch" href="/assets/js/111.9abf8bce.js"><link rel="prefetch" href="/assets/js/112.8eb86924.js"><link rel="prefetch" href="/assets/js/113.c180ed46.js"><link rel="prefetch" href="/assets/js/114.2370f5b5.js"><link rel="prefetch" href="/assets/js/115.88dc3fd8.js"><link rel="prefetch" href="/assets/js/116.63403600.js"><link rel="prefetch" href="/assets/js/117.83674aa0.js"><link rel="prefetch" href="/assets/js/118.9c58c685.js"><link rel="prefetch" href="/assets/js/119.621f9a70.js"><link rel="prefetch" href="/assets/js/12.ff3d03f5.js"><link rel="prefetch" href="/assets/js/120.a6d2b7f7.js"><link rel="prefetch" href="/assets/js/121.ae0ce9d1.js"><link rel="prefetch" href="/assets/js/122.de240e6d.js"><link rel="prefetch" href="/assets/js/123.b043e3e4.js"><link rel="prefetch" href="/assets/js/124.550af937.js"><link rel="prefetch" href="/assets/js/125.6f06b34c.js"><link rel="prefetch" href="/assets/js/126.38d64604.js"><link rel="prefetch" href="/assets/js/127.a948db56.js"><link rel="prefetch" href="/assets/js/128.4ca789e0.js"><link rel="prefetch" href="/assets/js/129.59be4505.js"><link rel="prefetch" href="/assets/js/13.e9f75cc3.js"><link rel="prefetch" href="/assets/js/130.ddae76a9.js"><link rel="prefetch" href="/assets/js/131.d969c265.js"><link rel="prefetch" href="/assets/js/132.5f43ce5c.js"><link rel="prefetch" href="/assets/js/133.b651af22.js"><link rel="prefetch" href="/assets/js/134.2499236a.js"><link rel="prefetch" href="/assets/js/135.4180596c.js"><link rel="prefetch" href="/assets/js/136.2c309233.js"><link rel="prefetch" href="/assets/js/137.72ca42dd.js"><link rel="prefetch" href="/assets/js/138.3772cd38.js"><link rel="prefetch" href="/assets/js/139.1d0a53da.js"><link rel="prefetch" href="/assets/js/14.be4b89ed.js"><link rel="prefetch" href="/assets/js/140.22368353.js"><link rel="prefetch" href="/assets/js/141.a14aef3c.js"><link rel="prefetch" href="/assets/js/142.2041ce3a.js"><link rel="prefetch" href="/assets/js/143.377262ec.js"><link rel="prefetch" href="/assets/js/144.8fcbc368.js"><link rel="prefetch" href="/assets/js/145.46da36bf.js"><link rel="prefetch" href="/assets/js/146.eceae0d9.js"><link rel="prefetch" href="/assets/js/147.e1bd6531.js"><link rel="prefetch" href="/assets/js/148.76f193ce.js"><link rel="prefetch" href="/assets/js/149.587bd581.js"><link rel="prefetch" href="/assets/js/15.e3219ac0.js"><link rel="prefetch" href="/assets/js/150.169c71e0.js"><link rel="prefetch" href="/assets/js/151.384021ea.js"><link rel="prefetch" href="/assets/js/152.0f20cf03.js"><link rel="prefetch" href="/assets/js/153.fd94af1e.js"><link rel="prefetch" href="/assets/js/154.a550f5dc.js"><link rel="prefetch" href="/assets/js/155.ba1ae86e.js"><link rel="prefetch" href="/assets/js/156.3b98ded0.js"><link rel="prefetch" href="/assets/js/157.cd378596.js"><link rel="prefetch" href="/assets/js/158.c138d0df.js"><link rel="prefetch" href="/assets/js/159.2635f7f4.js"><link rel="prefetch" href="/assets/js/16.c9c35d42.js"><link rel="prefetch" href="/assets/js/160.d51b4126.js"><link rel="prefetch" href="/assets/js/161.5dc29e7b.js"><link rel="prefetch" href="/assets/js/162.f257a92b.js"><link rel="prefetch" href="/assets/js/163.9eb75e40.js"><link rel="prefetch" href="/assets/js/164.8fb1e22b.js"><link rel="prefetch" href="/assets/js/165.49255503.js"><link rel="prefetch" href="/assets/js/166.e54539e6.js"><link rel="prefetch" href="/assets/js/167.a06acdb0.js"><link rel="prefetch" href="/assets/js/168.948ab620.js"><link rel="prefetch" href="/assets/js/169.7d756812.js"><link rel="prefetch" href="/assets/js/17.81067bc8.js"><link rel="prefetch" href="/assets/js/170.ffe63330.js"><link rel="prefetch" href="/assets/js/171.835398b9.js"><link rel="prefetch" href="/assets/js/172.3987be39.js"><link rel="prefetch" href="/assets/js/173.e3cedb8a.js"><link rel="prefetch" href="/assets/js/174.11a32588.js"><link rel="prefetch" href="/assets/js/175.da6f9782.js"><link rel="prefetch" href="/assets/js/176.50e55edc.js"><link rel="prefetch" href="/assets/js/177.a89a1d17.js"><link rel="prefetch" href="/assets/js/178.7ad3ce84.js"><link rel="prefetch" href="/assets/js/179.98a1343b.js"><link rel="prefetch" href="/assets/js/18.b67caf4c.js"><link rel="prefetch" href="/assets/js/180.4e98599b.js"><link rel="prefetch" href="/assets/js/181.dd885afd.js"><link rel="prefetch" href="/assets/js/182.789990c8.js"><link rel="prefetch" href="/assets/js/183.f11ca2fd.js"><link rel="prefetch" href="/assets/js/184.fcf128ec.js"><link rel="prefetch" href="/assets/js/185.54e1e9b6.js"><link rel="prefetch" href="/assets/js/186.db91021a.js"><link rel="prefetch" href="/assets/js/187.5309dd42.js"><link rel="prefetch" href="/assets/js/188.615821ea.js"><link rel="prefetch" href="/assets/js/189.f23f1d42.js"><link rel="prefetch" href="/assets/js/19.294a011c.js"><link rel="prefetch" href="/assets/js/190.efe894bc.js"><link rel="prefetch" href="/assets/js/191.0d14904a.js"><link rel="prefetch" href="/assets/js/192.efd25a9e.js"><link rel="prefetch" href="/assets/js/193.88151f34.js"><link rel="prefetch" href="/assets/js/194.efedce14.js"><link rel="prefetch" href="/assets/js/195.03ac15bb.js"><link rel="prefetch" href="/assets/js/196.fbc18389.js"><link rel="prefetch" href="/assets/js/197.0257ab5e.js"><link rel="prefetch" href="/assets/js/198.f1de2817.js"><link rel="prefetch" href="/assets/js/199.8f1c166b.js"><link rel="prefetch" href="/assets/js/20.1a41edb1.js"><link rel="prefetch" href="/assets/js/200.4af99727.js"><link rel="prefetch" href="/assets/js/201.9f8caef1.js"><link rel="prefetch" href="/assets/js/202.6f07d705.js"><link rel="prefetch" href="/assets/js/203.5012fe50.js"><link rel="prefetch" href="/assets/js/204.3a0dfd8e.js"><link rel="prefetch" href="/assets/js/205.0ba9b606.js"><link rel="prefetch" href="/assets/js/206.663a49ec.js"><link rel="prefetch" href="/assets/js/207.b2406149.js"><link rel="prefetch" href="/assets/js/208.b0b2dfd8.js"><link rel="prefetch" href="/assets/js/209.41a0ec9f.js"><link rel="prefetch" href="/assets/js/21.b6ea6f9a.js"><link rel="prefetch" href="/assets/js/210.6f36beb8.js"><link rel="prefetch" href="/assets/js/211.90ef6e5c.js"><link rel="prefetch" href="/assets/js/212.42339063.js"><link rel="prefetch" href="/assets/js/213.a2bfeda9.js"><link rel="prefetch" href="/assets/js/214.5c7eb42a.js"><link rel="prefetch" href="/assets/js/215.18260ae5.js"><link rel="prefetch" href="/assets/js/216.7678fd29.js"><link rel="prefetch" href="/assets/js/217.9d936f88.js"><link rel="prefetch" href="/assets/js/218.bac403c4.js"><link rel="prefetch" href="/assets/js/219.9d8cb16b.js"><link rel="prefetch" href="/assets/js/22.367cc253.js"><link rel="prefetch" href="/assets/js/220.375b7707.js"><link rel="prefetch" href="/assets/js/221.3e400da4.js"><link rel="prefetch" href="/assets/js/222.8fbd2857.js"><link rel="prefetch" href="/assets/js/223.76a10075.js"><link rel="prefetch" href="/assets/js/224.ff94cc4e.js"><link rel="prefetch" href="/assets/js/225.d4688ca6.js"><link rel="prefetch" href="/assets/js/226.b13b18af.js"><link rel="prefetch" href="/assets/js/227.288d0f96.js"><link rel="prefetch" href="/assets/js/228.60430ac0.js"><link rel="prefetch" href="/assets/js/229.da728342.js"><link rel="prefetch" href="/assets/js/23.bc3de730.js"><link rel="prefetch" href="/assets/js/230.d8417d20.js"><link rel="prefetch" href="/assets/js/231.6a9ce0b4.js"><link rel="prefetch" href="/assets/js/232.7611b413.js"><link rel="prefetch" href="/assets/js/233.94712cf9.js"><link rel="prefetch" href="/assets/js/234.93888298.js"><link rel="prefetch" href="/assets/js/235.62506981.js"><link rel="prefetch" href="/assets/js/236.5a055c7c.js"><link rel="prefetch" href="/assets/js/237.0a6c4902.js"><link rel="prefetch" href="/assets/js/238.e5f37663.js"><link rel="prefetch" href="/assets/js/239.331bba86.js"><link rel="prefetch" href="/assets/js/24.82f0901c.js"><link rel="prefetch" href="/assets/js/240.59591cfc.js"><link rel="prefetch" href="/assets/js/241.ce671f47.js"><link rel="prefetch" href="/assets/js/242.fb2542fa.js"><link rel="prefetch" href="/assets/js/243.74abc73d.js"><link rel="prefetch" href="/assets/js/244.ecd707b2.js"><link rel="prefetch" href="/assets/js/245.d728367b.js"><link rel="prefetch" href="/assets/js/246.9270e7fe.js"><link rel="prefetch" href="/assets/js/247.a421ba15.js"><link rel="prefetch" href="/assets/js/248.e759132e.js"><link rel="prefetch" href="/assets/js/249.3077fb46.js"><link rel="prefetch" href="/assets/js/25.95c551dc.js"><link rel="prefetch" href="/assets/js/250.5fe4dd03.js"><link rel="prefetch" href="/assets/js/251.4b8fe76c.js"><link rel="prefetch" href="/assets/js/252.0d1cf7ea.js"><link rel="prefetch" href="/assets/js/253.89d16ba0.js"><link rel="prefetch" href="/assets/js/254.8d1afc68.js"><link rel="prefetch" href="/assets/js/255.64e680cb.js"><link rel="prefetch" href="/assets/js/256.9defbd0e.js"><link rel="prefetch" href="/assets/js/257.1fef24fd.js"><link rel="prefetch" href="/assets/js/258.4e205286.js"><link rel="prefetch" href="/assets/js/259.f3d56efc.js"><link rel="prefetch" href="/assets/js/26.7fe56bac.js"><link rel="prefetch" href="/assets/js/260.378299e6.js"><link rel="prefetch" href="/assets/js/261.8e4fb397.js"><link rel="prefetch" href="/assets/js/262.54595d98.js"><link rel="prefetch" href="/assets/js/263.fb333dc1.js"><link rel="prefetch" href="/assets/js/264.13d13301.js"><link rel="prefetch" href="/assets/js/265.c85104bc.js"><link rel="prefetch" href="/assets/js/266.9f3d1f1c.js"><link rel="prefetch" href="/assets/js/267.fb392815.js"><link rel="prefetch" href="/assets/js/268.add7eacb.js"><link rel="prefetch" href="/assets/js/269.7e49fcc7.js"><link rel="prefetch" href="/assets/js/27.5547e5f0.js"><link rel="prefetch" href="/assets/js/270.22342070.js"><link rel="prefetch" href="/assets/js/271.59917b1a.js"><link rel="prefetch" href="/assets/js/272.4a4751d5.js"><link rel="prefetch" href="/assets/js/273.f4c2fa5c.js"><link rel="prefetch" href="/assets/js/274.1208bc94.js"><link rel="prefetch" href="/assets/js/275.f6528753.js"><link rel="prefetch" href="/assets/js/276.a68772cd.js"><link rel="prefetch" href="/assets/js/277.f154ab32.js"><link rel="prefetch" href="/assets/js/278.bb616a63.js"><link rel="prefetch" href="/assets/js/279.6a356cff.js"><link rel="prefetch" href="/assets/js/28.b08b2847.js"><link rel="prefetch" href="/assets/js/280.5afc20fc.js"><link rel="prefetch" href="/assets/js/281.3cd86225.js"><link rel="prefetch" href="/assets/js/282.3ecb92aa.js"><link rel="prefetch" href="/assets/js/283.85159ea7.js"><link rel="prefetch" href="/assets/js/284.b6545c68.js"><link rel="prefetch" href="/assets/js/285.5e83ee29.js"><link rel="prefetch" href="/assets/js/286.2aad298d.js"><link rel="prefetch" href="/assets/js/287.3ca76244.js"><link rel="prefetch" href="/assets/js/288.5b17963d.js"><link rel="prefetch" href="/assets/js/289.f47a759b.js"><link rel="prefetch" href="/assets/js/29.562dbf7d.js"><link rel="prefetch" href="/assets/js/290.36b603c7.js"><link rel="prefetch" href="/assets/js/291.a9bd8951.js"><link rel="prefetch" href="/assets/js/292.dfc54f28.js"><link rel="prefetch" href="/assets/js/293.2d061212.js"><link rel="prefetch" href="/assets/js/294.6d564a9e.js"><link rel="prefetch" href="/assets/js/295.a31dd593.js"><link rel="prefetch" href="/assets/js/296.3101e5e8.js"><link rel="prefetch" href="/assets/js/297.7efde936.js"><link rel="prefetch" href="/assets/js/298.8bb3aa68.js"><link rel="prefetch" href="/assets/js/299.8b51e6bd.js"><link rel="prefetch" href="/assets/js/3.76257eb7.js"><link rel="prefetch" href="/assets/js/30.221adea2.js"><link rel="prefetch" href="/assets/js/300.62effe45.js"><link rel="prefetch" href="/assets/js/301.98c863c5.js"><link rel="prefetch" href="/assets/js/302.e3493ab2.js"><link rel="prefetch" href="/assets/js/303.800c8028.js"><link rel="prefetch" href="/assets/js/304.b6f08986.js"><link rel="prefetch" href="/assets/js/305.09af356b.js"><link rel="prefetch" href="/assets/js/306.d0d3589d.js"><link rel="prefetch" href="/assets/js/307.ee2fd249.js"><link rel="prefetch" href="/assets/js/308.f3f76368.js"><link rel="prefetch" href="/assets/js/309.d2b5ce40.js"><link rel="prefetch" href="/assets/js/31.334fc8bb.js"><link rel="prefetch" href="/assets/js/310.b4fa2feb.js"><link rel="prefetch" href="/assets/js/311.7d747ef3.js"><link rel="prefetch" href="/assets/js/312.89bdff40.js"><link rel="prefetch" href="/assets/js/313.875b82fe.js"><link rel="prefetch" href="/assets/js/314.0bbe51c4.js"><link rel="prefetch" href="/assets/js/315.cc07dbcf.js"><link rel="prefetch" href="/assets/js/316.bc72b152.js"><link rel="prefetch" href="/assets/js/317.55462812.js"><link rel="prefetch" href="/assets/js/318.a158fda0.js"><link rel="prefetch" href="/assets/js/319.b03a5bd2.js"><link rel="prefetch" href="/assets/js/32.d6826b16.js"><link rel="prefetch" href="/assets/js/320.a5bd19b0.js"><link rel="prefetch" href="/assets/js/321.4f9faaa7.js"><link rel="prefetch" href="/assets/js/322.dbd3b4fa.js"><link rel="prefetch" href="/assets/js/323.a04e2062.js"><link rel="prefetch" href="/assets/js/324.c45b46cf.js"><link rel="prefetch" href="/assets/js/325.cd1460c4.js"><link rel="prefetch" href="/assets/js/326.bd90ef85.js"><link rel="prefetch" href="/assets/js/327.8bf38ef7.js"><link rel="prefetch" href="/assets/js/328.99e9aed3.js"><link rel="prefetch" href="/assets/js/329.de0012cb.js"><link rel="prefetch" href="/assets/js/33.b1059062.js"><link rel="prefetch" href="/assets/js/330.59f11391.js"><link rel="prefetch" href="/assets/js/331.6d16a13c.js"><link rel="prefetch" href="/assets/js/332.922ca235.js"><link rel="prefetch" href="/assets/js/333.c94c3602.js"><link rel="prefetch" href="/assets/js/334.77e02010.js"><link rel="prefetch" href="/assets/js/335.1e0c4f7b.js"><link rel="prefetch" href="/assets/js/336.5675dc4f.js"><link rel="prefetch" href="/assets/js/337.bb6e11dc.js"><link rel="prefetch" href="/assets/js/338.294981e9.js"><link rel="prefetch" href="/assets/js/339.d0376372.js"><link rel="prefetch" href="/assets/js/34.0c7d5782.js"><link rel="prefetch" href="/assets/js/340.64596428.js"><link rel="prefetch" href="/assets/js/341.ec0f9409.js"><link rel="prefetch" href="/assets/js/342.7abc47c4.js"><link rel="prefetch" href="/assets/js/343.4262d486.js"><link rel="prefetch" href="/assets/js/344.8729ad8c.js"><link rel="prefetch" href="/assets/js/345.c210d888.js"><link rel="prefetch" href="/assets/js/346.6f42f7cb.js"><link rel="prefetch" href="/assets/js/347.81b41ae5.js"><link rel="prefetch" href="/assets/js/348.07eca37c.js"><link rel="prefetch" href="/assets/js/349.8019d6f3.js"><link rel="prefetch" href="/assets/js/35.ae14e37f.js"><link rel="prefetch" href="/assets/js/350.57da2e7b.js"><link rel="prefetch" href="/assets/js/351.2e99afdf.js"><link rel="prefetch" href="/assets/js/352.67dd88b7.js"><link rel="prefetch" href="/assets/js/353.15b9f624.js"><link rel="prefetch" href="/assets/js/354.a63e8432.js"><link rel="prefetch" href="/assets/js/355.bbc16ee9.js"><link rel="prefetch" href="/assets/js/356.ff63d3bb.js"><link rel="prefetch" href="/assets/js/357.4fb2d941.js"><link rel="prefetch" href="/assets/js/358.55182977.js"><link rel="prefetch" href="/assets/js/359.265c3d26.js"><link rel="prefetch" href="/assets/js/36.b9ed4cf1.js"><link rel="prefetch" href="/assets/js/360.ced80eb3.js"><link rel="prefetch" href="/assets/js/361.afe6ba84.js"><link rel="prefetch" href="/assets/js/362.c2b62518.js"><link rel="prefetch" href="/assets/js/363.0c4a4800.js"><link rel="prefetch" href="/assets/js/364.ce60291b.js"><link rel="prefetch" href="/assets/js/365.0e3a61f9.js"><link rel="prefetch" href="/assets/js/366.d53ccb03.js"><link rel="prefetch" href="/assets/js/367.689e464d.js"><link rel="prefetch" href="/assets/js/368.418c571f.js"><link rel="prefetch" href="/assets/js/369.c2fff3c8.js"><link rel="prefetch" href="/assets/js/37.a021ac57.js"><link rel="prefetch" href="/assets/js/370.a932b958.js"><link rel="prefetch" href="/assets/js/371.7d153241.js"><link rel="prefetch" href="/assets/js/372.fb9878fa.js"><link rel="prefetch" href="/assets/js/373.85772e03.js"><link rel="prefetch" href="/assets/js/374.b4a8b1b6.js"><link rel="prefetch" href="/assets/js/375.32f70596.js"><link rel="prefetch" href="/assets/js/376.a16d79a8.js"><link rel="prefetch" href="/assets/js/377.c996b7e1.js"><link rel="prefetch" href="/assets/js/378.d37d15c7.js"><link rel="prefetch" href="/assets/js/379.b81ba7dd.js"><link rel="prefetch" href="/assets/js/38.89138658.js"><link rel="prefetch" href="/assets/js/380.524c9b31.js"><link rel="prefetch" href="/assets/js/381.7ebfd6db.js"><link rel="prefetch" href="/assets/js/382.29edda0f.js"><link rel="prefetch" href="/assets/js/383.9642a212.js"><link rel="prefetch" href="/assets/js/384.086e3b42.js"><link rel="prefetch" href="/assets/js/385.a9bb46a8.js"><link rel="prefetch" href="/assets/js/386.f2561a39.js"><link rel="prefetch" href="/assets/js/387.ba9b6aaa.js"><link rel="prefetch" href="/assets/js/388.e0ace495.js"><link rel="prefetch" href="/assets/js/389.ba8c09dd.js"><link rel="prefetch" href="/assets/js/39.04f331e3.js"><link rel="prefetch" href="/assets/js/390.de1bb48b.js"><link rel="prefetch" href="/assets/js/391.7cc6edeb.js"><link rel="prefetch" href="/assets/js/392.0493a6f7.js"><link rel="prefetch" href="/assets/js/393.ba2d3e62.js"><link rel="prefetch" href="/assets/js/394.b3aa9224.js"><link rel="prefetch" href="/assets/js/395.f4df3a60.js"><link rel="prefetch" href="/assets/js/396.09644790.js"><link rel="prefetch" href="/assets/js/397.76163964.js"><link rel="prefetch" href="/assets/js/398.377fd8fc.js"><link rel="prefetch" href="/assets/js/399.39059be5.js"><link rel="prefetch" href="/assets/js/40.a21abf05.js"><link rel="prefetch" href="/assets/js/400.559a547f.js"><link rel="prefetch" href="/assets/js/401.bc6d738c.js"><link rel="prefetch" href="/assets/js/402.c504ed7b.js"><link rel="prefetch" href="/assets/js/403.77a0af9c.js"><link rel="prefetch" href="/assets/js/404.0f408cc6.js"><link rel="prefetch" href="/assets/js/405.90b0bab6.js"><link rel="prefetch" href="/assets/js/406.01b11432.js"><link rel="prefetch" href="/assets/js/407.58991ce5.js"><link rel="prefetch" href="/assets/js/408.9806278e.js"><link rel="prefetch" href="/assets/js/409.8d9b4bb3.js"><link rel="prefetch" href="/assets/js/41.6bcfc592.js"><link rel="prefetch" href="/assets/js/410.02dee620.js"><link rel="prefetch" href="/assets/js/411.3d12d3a6.js"><link rel="prefetch" href="/assets/js/412.37a62624.js"><link rel="prefetch" href="/assets/js/413.bda7ca34.js"><link rel="prefetch" href="/assets/js/414.2abb6547.js"><link rel="prefetch" href="/assets/js/415.1d271923.js"><link rel="prefetch" href="/assets/js/416.d1b11dfe.js"><link rel="prefetch" href="/assets/js/417.fcbf07ff.js"><link rel="prefetch" href="/assets/js/418.524d40ba.js"><link rel="prefetch" href="/assets/js/419.f264e463.js"><link rel="prefetch" href="/assets/js/42.ec85a270.js"><link rel="prefetch" href="/assets/js/420.8b99e60d.js"><link rel="prefetch" href="/assets/js/421.c697d876.js"><link rel="prefetch" href="/assets/js/422.4af54ae0.js"><link rel="prefetch" href="/assets/js/423.b75f24ff.js"><link rel="prefetch" href="/assets/js/424.ea80054f.js"><link rel="prefetch" href="/assets/js/425.804b48b0.js"><link rel="prefetch" href="/assets/js/426.ffed8383.js"><link rel="prefetch" href="/assets/js/427.2040bd22.js"><link rel="prefetch" href="/assets/js/428.b878fb56.js"><link rel="prefetch" href="/assets/js/429.f81fd922.js"><link rel="prefetch" href="/assets/js/43.c174449d.js"><link rel="prefetch" href="/assets/js/430.16f328ab.js"><link rel="prefetch" href="/assets/js/431.56f11924.js"><link rel="prefetch" href="/assets/js/432.e4c77710.js"><link rel="prefetch" href="/assets/js/433.29acf14b.js"><link rel="prefetch" href="/assets/js/434.33ee22fc.js"><link rel="prefetch" href="/assets/js/435.516f7600.js"><link rel="prefetch" href="/assets/js/436.28ae526a.js"><link rel="prefetch" href="/assets/js/437.b9bac473.js"><link rel="prefetch" href="/assets/js/438.711bd934.js"><link rel="prefetch" href="/assets/js/439.fe5f28bd.js"><link rel="prefetch" href="/assets/js/44.8704338b.js"><link rel="prefetch" href="/assets/js/440.b2f48747.js"><link rel="prefetch" href="/assets/js/441.4862a724.js"><link rel="prefetch" href="/assets/js/442.751f8ae7.js"><link rel="prefetch" href="/assets/js/443.9998dbe9.js"><link rel="prefetch" href="/assets/js/444.23d3f688.js"><link rel="prefetch" href="/assets/js/445.72419f35.js"><link rel="prefetch" href="/assets/js/446.21e02b7b.js"><link rel="prefetch" href="/assets/js/447.6bd039e5.js"><link rel="prefetch" href="/assets/js/448.af29ff31.js"><link rel="prefetch" href="/assets/js/449.bbdca196.js"><link rel="prefetch" href="/assets/js/45.f8a2a3b3.js"><link rel="prefetch" href="/assets/js/450.32e470b8.js"><link rel="prefetch" href="/assets/js/451.f4c8ff6a.js"><link rel="prefetch" href="/assets/js/452.c0ec8943.js"><link rel="prefetch" href="/assets/js/453.5af475c6.js"><link rel="prefetch" href="/assets/js/454.567aa6c1.js"><link rel="prefetch" href="/assets/js/455.326072d1.js"><link rel="prefetch" href="/assets/js/456.64b88847.js"><link rel="prefetch" href="/assets/js/457.61c91559.js"><link rel="prefetch" href="/assets/js/458.4f4d43d6.js"><link rel="prefetch" href="/assets/js/459.a88891cb.js"><link rel="prefetch" href="/assets/js/46.90855a0f.js"><link rel="prefetch" href="/assets/js/460.fb9e15f6.js"><link rel="prefetch" href="/assets/js/461.998a4991.js"><link rel="prefetch" href="/assets/js/462.56ecfb03.js"><link rel="prefetch" href="/assets/js/463.582cd053.js"><link rel="prefetch" href="/assets/js/464.f12a0050.js"><link rel="prefetch" href="/assets/js/465.cc3b08a8.js"><link rel="prefetch" href="/assets/js/466.ea7e4ce2.js"><link rel="prefetch" href="/assets/js/467.58700d93.js"><link rel="prefetch" href="/assets/js/468.bb9998cd.js"><link rel="prefetch" href="/assets/js/469.232d261d.js"><link rel="prefetch" href="/assets/js/47.02516d33.js"><link rel="prefetch" href="/assets/js/470.90ab2be8.js"><link rel="prefetch" href="/assets/js/471.3652fec6.js"><link rel="prefetch" href="/assets/js/472.bc7517c9.js"><link rel="prefetch" href="/assets/js/473.27b7892f.js"><link rel="prefetch" href="/assets/js/474.0d488768.js"><link rel="prefetch" href="/assets/js/475.bc33cf17.js"><link rel="prefetch" href="/assets/js/476.76ce67eb.js"><link rel="prefetch" href="/assets/js/477.a20657f6.js"><link rel="prefetch" href="/assets/js/478.8905ef26.js"><link rel="prefetch" href="/assets/js/479.23ec3dc9.js"><link rel="prefetch" href="/assets/js/48.8d38983c.js"><link rel="prefetch" href="/assets/js/480.105bf58e.js"><link rel="prefetch" href="/assets/js/481.d62a3699.js"><link rel="prefetch" href="/assets/js/482.6cb10cdb.js"><link rel="prefetch" href="/assets/js/483.15b9ef53.js"><link rel="prefetch" href="/assets/js/484.794aff9c.js"><link rel="prefetch" href="/assets/js/485.3e6ef3cb.js"><link rel="prefetch" href="/assets/js/486.fc20eb22.js"><link rel="prefetch" href="/assets/js/487.2a4f7d47.js"><link rel="prefetch" href="/assets/js/488.24ba9af5.js"><link rel="prefetch" href="/assets/js/489.d451928e.js"><link rel="prefetch" href="/assets/js/49.bd70c59c.js"><link rel="prefetch" href="/assets/js/490.d83e4fc7.js"><link rel="prefetch" href="/assets/js/491.0210a738.js"><link rel="prefetch" href="/assets/js/492.3a69cd85.js"><link rel="prefetch" href="/assets/js/493.89d2920f.js"><link rel="prefetch" href="/assets/js/494.b7d1c15e.js"><link rel="prefetch" href="/assets/js/495.7ccfe17f.js"><link rel="prefetch" href="/assets/js/496.0d6c912a.js"><link rel="prefetch" href="/assets/js/497.087ca2c6.js"><link rel="prefetch" href="/assets/js/498.f2b3c894.js"><link rel="prefetch" href="/assets/js/499.e741f312.js"><link rel="prefetch" href="/assets/js/5.405f2620.js"><link rel="prefetch" href="/assets/js/50.9df07553.js"><link rel="prefetch" href="/assets/js/500.cb9babb9.js"><link rel="prefetch" href="/assets/js/501.63a859b6.js"><link rel="prefetch" href="/assets/js/502.f346b273.js"><link rel="prefetch" href="/assets/js/503.cdcd3de3.js"><link rel="prefetch" href="/assets/js/504.e83ec450.js"><link rel="prefetch" href="/assets/js/505.95f18293.js"><link rel="prefetch" href="/assets/js/506.02060a3c.js"><link rel="prefetch" href="/assets/js/507.859d6ae4.js"><link rel="prefetch" href="/assets/js/508.9724d886.js"><link rel="prefetch" href="/assets/js/509.e17dd53e.js"><link rel="prefetch" href="/assets/js/51.3dfc6350.js"><link rel="prefetch" href="/assets/js/510.ea0c942f.js"><link rel="prefetch" href="/assets/js/511.64a7f9a8.js"><link rel="prefetch" href="/assets/js/512.6cce418a.js"><link rel="prefetch" href="/assets/js/513.ea813fe8.js"><link rel="prefetch" href="/assets/js/514.10242470.js"><link rel="prefetch" href="/assets/js/515.5308bdf6.js"><link rel="prefetch" href="/assets/js/516.dfb113bc.js"><link rel="prefetch" href="/assets/js/517.96c71069.js"><link rel="prefetch" href="/assets/js/518.5594480e.js"><link rel="prefetch" href="/assets/js/519.91e848ae.js"><link rel="prefetch" href="/assets/js/52.dd230cd7.js"><link rel="prefetch" href="/assets/js/520.ebe69ce9.js"><link rel="prefetch" href="/assets/js/521.92b80342.js"><link rel="prefetch" href="/assets/js/522.6ce581ea.js"><link rel="prefetch" href="/assets/js/523.40b7f2f9.js"><link rel="prefetch" href="/assets/js/524.4ef256d3.js"><link rel="prefetch" href="/assets/js/525.19741e4a.js"><link rel="prefetch" href="/assets/js/526.e5de1675.js"><link rel="prefetch" href="/assets/js/527.9a79cd42.js"><link rel="prefetch" href="/assets/js/528.72732eb8.js"><link rel="prefetch" href="/assets/js/529.2ea03e45.js"><link rel="prefetch" href="/assets/js/53.a349c565.js"><link rel="prefetch" href="/assets/js/530.5d1103e7.js"><link rel="prefetch" href="/assets/js/531.82b032d6.js"><link rel="prefetch" href="/assets/js/532.12ee4beb.js"><link rel="prefetch" href="/assets/js/533.db9a90f7.js"><link rel="prefetch" href="/assets/js/534.fe139db4.js"><link rel="prefetch" href="/assets/js/535.056a6fbb.js"><link rel="prefetch" href="/assets/js/536.6bf85c15.js"><link rel="prefetch" href="/assets/js/537.6e2e1ccf.js"><link rel="prefetch" href="/assets/js/538.54eddb3b.js"><link rel="prefetch" href="/assets/js/539.6f00a207.js"><link rel="prefetch" href="/assets/js/54.e292b52f.js"><link rel="prefetch" href="/assets/js/540.9c956205.js"><link rel="prefetch" href="/assets/js/541.50f41228.js"><link rel="prefetch" href="/assets/js/542.a2b1879e.js"><link rel="prefetch" href="/assets/js/543.4e5e17c9.js"><link rel="prefetch" href="/assets/js/544.63d85227.js"><link rel="prefetch" href="/assets/js/545.c3923644.js"><link rel="prefetch" href="/assets/js/546.e64ad073.js"><link rel="prefetch" href="/assets/js/547.35a8752d.js"><link rel="prefetch" href="/assets/js/548.b62a1348.js"><link rel="prefetch" href="/assets/js/549.369e2ea0.js"><link rel="prefetch" href="/assets/js/55.21bb2983.js"><link rel="prefetch" href="/assets/js/550.b4632248.js"><link rel="prefetch" href="/assets/js/551.18f1879c.js"><link rel="prefetch" href="/assets/js/552.162e63cd.js"><link rel="prefetch" href="/assets/js/553.6998130e.js"><link rel="prefetch" href="/assets/js/554.89126c3d.js"><link rel="prefetch" href="/assets/js/555.a5f63b8a.js"><link rel="prefetch" href="/assets/js/556.35381cef.js"><link rel="prefetch" href="/assets/js/557.ceeecf52.js"><link rel="prefetch" href="/assets/js/558.253e6e4f.js"><link rel="prefetch" href="/assets/js/559.5cfbb773.js"><link rel="prefetch" href="/assets/js/56.5382d6b4.js"><link rel="prefetch" href="/assets/js/560.cca52f22.js"><link rel="prefetch" href="/assets/js/561.ea8d1141.js"><link rel="prefetch" href="/assets/js/562.c32e7b96.js"><link rel="prefetch" href="/assets/js/563.9bdd42e7.js"><link rel="prefetch" href="/assets/js/564.b3b87ec0.js"><link rel="prefetch" href="/assets/js/565.4be0d0f7.js"><link rel="prefetch" href="/assets/js/566.9f379d12.js"><link rel="prefetch" href="/assets/js/567.261e3181.js"><link rel="prefetch" href="/assets/js/568.4229e365.js"><link rel="prefetch" href="/assets/js/569.e662c167.js"><link rel="prefetch" href="/assets/js/57.8129f7e0.js"><link rel="prefetch" href="/assets/js/570.97ff6423.js"><link rel="prefetch" href="/assets/js/571.de1377cd.js"><link rel="prefetch" href="/assets/js/572.48b8400b.js"><link rel="prefetch" href="/assets/js/573.8251ebaf.js"><link rel="prefetch" href="/assets/js/574.ec3d6c1e.js"><link rel="prefetch" href="/assets/js/575.b0d429a1.js"><link rel="prefetch" href="/assets/js/576.98ce9170.js"><link rel="prefetch" href="/assets/js/577.85fc2017.js"><link rel="prefetch" href="/assets/js/578.1393ac7f.js"><link rel="prefetch" href="/assets/js/579.1340e178.js"><link rel="prefetch" href="/assets/js/580.a5979445.js"><link rel="prefetch" href="/assets/js/581.effdc269.js"><link rel="prefetch" href="/assets/js/582.13276063.js"><link rel="prefetch" href="/assets/js/583.357a2443.js"><link rel="prefetch" href="/assets/js/584.338ef731.js"><link rel="prefetch" href="/assets/js/585.87932741.js"><link rel="prefetch" href="/assets/js/586.b1d6e000.js"><link rel="prefetch" href="/assets/js/587.ed5b8377.js"><link rel="prefetch" href="/assets/js/588.16d2c418.js"><link rel="prefetch" href="/assets/js/589.c96fd7fa.js"><link rel="prefetch" href="/assets/js/59.0b225757.js"><link rel="prefetch" href="/assets/js/590.1a06b2a0.js"><link rel="prefetch" href="/assets/js/591.0efd886c.js"><link rel="prefetch" href="/assets/js/592.b22d0ef5.js"><link rel="prefetch" href="/assets/js/593.84ed6ebe.js"><link rel="prefetch" href="/assets/js/594.cd721b88.js"><link rel="prefetch" href="/assets/js/595.2400817a.js"><link rel="prefetch" href="/assets/js/596.f2c512d1.js"><link rel="prefetch" href="/assets/js/597.df10ec57.js"><link rel="prefetch" href="/assets/js/598.61ef6a7d.js"><link rel="prefetch" href="/assets/js/599.0bebb562.js"><link rel="prefetch" href="/assets/js/6.29d112b1.js"><link rel="prefetch" href="/assets/js/60.3bbab51d.js"><link rel="prefetch" href="/assets/js/600.1ea7596f.js"><link rel="prefetch" href="/assets/js/601.f2642bb3.js"><link rel="prefetch" href="/assets/js/602.400cc987.js"><link rel="prefetch" href="/assets/js/603.db77d173.js"><link rel="prefetch" href="/assets/js/604.0ffa30ae.js"><link rel="prefetch" href="/assets/js/605.32ca9607.js"><link rel="prefetch" href="/assets/js/606.8c1e5683.js"><link rel="prefetch" href="/assets/js/607.9c9463ef.js"><link rel="prefetch" href="/assets/js/608.d5efa77e.js"><link rel="prefetch" href="/assets/js/609.5bbffb7d.js"><link rel="prefetch" href="/assets/js/61.f7301486.js"><link rel="prefetch" href="/assets/js/610.5b0fc9da.js"><link rel="prefetch" href="/assets/js/611.bb8058c9.js"><link rel="prefetch" href="/assets/js/612.b0788f43.js"><link rel="prefetch" href="/assets/js/613.49511e65.js"><link rel="prefetch" href="/assets/js/614.fae3eacf.js"><link rel="prefetch" href="/assets/js/615.359e5899.js"><link rel="prefetch" href="/assets/js/616.905132f4.js"><link rel="prefetch" href="/assets/js/617.6c8c594e.js"><link rel="prefetch" href="/assets/js/618.6ac4f3ff.js"><link rel="prefetch" href="/assets/js/619.411a0c14.js"><link rel="prefetch" href="/assets/js/62.9aeede84.js"><link rel="prefetch" href="/assets/js/620.56155724.js"><link rel="prefetch" href="/assets/js/621.149d7933.js"><link rel="prefetch" href="/assets/js/622.f0c9bc08.js"><link rel="prefetch" href="/assets/js/623.e0989fbe.js"><link rel="prefetch" href="/assets/js/624.80b1f6a9.js"><link rel="prefetch" href="/assets/js/625.a0a392c4.js"><link rel="prefetch" href="/assets/js/626.56fd4e8a.js"><link rel="prefetch" href="/assets/js/627.264e7313.js"><link rel="prefetch" href="/assets/js/628.7a868b19.js"><link rel="prefetch" href="/assets/js/629.e7e15da1.js"><link rel="prefetch" href="/assets/js/63.4df55c8b.js"><link rel="prefetch" href="/assets/js/630.998c9b61.js"><link rel="prefetch" href="/assets/js/631.69aa049c.js"><link rel="prefetch" href="/assets/js/632.da3882c1.js"><link rel="prefetch" href="/assets/js/633.0d49adf0.js"><link rel="prefetch" href="/assets/js/634.f9984ede.js"><link rel="prefetch" href="/assets/js/635.f0439f65.js"><link rel="prefetch" href="/assets/js/636.54de4194.js"><link rel="prefetch" href="/assets/js/637.55d1c226.js"><link rel="prefetch" href="/assets/js/638.2a9a510f.js"><link rel="prefetch" href="/assets/js/639.8bec360e.js"><link rel="prefetch" href="/assets/js/64.7f3e5e81.js"><link rel="prefetch" href="/assets/js/640.30d7f96e.js"><link rel="prefetch" href="/assets/js/641.68100098.js"><link rel="prefetch" href="/assets/js/642.4b793817.js"><link rel="prefetch" href="/assets/js/643.d86a81ea.js"><link rel="prefetch" href="/assets/js/644.76327ea2.js"><link rel="prefetch" href="/assets/js/645.0ac6a923.js"><link rel="prefetch" href="/assets/js/646.cd92f728.js"><link rel="prefetch" href="/assets/js/647.f2c624e1.js"><link rel="prefetch" href="/assets/js/648.c8f3b955.js"><link rel="prefetch" href="/assets/js/649.6370753b.js"><link rel="prefetch" href="/assets/js/65.2beeae9b.js"><link rel="prefetch" href="/assets/js/650.afe31909.js"><link rel="prefetch" href="/assets/js/651.87971ec0.js"><link rel="prefetch" href="/assets/js/652.0adf10a6.js"><link rel="prefetch" href="/assets/js/653.1f655726.js"><link rel="prefetch" href="/assets/js/654.53e24c7c.js"><link rel="prefetch" href="/assets/js/655.c95a66ea.js"><link rel="prefetch" href="/assets/js/656.38b5a5ea.js"><link rel="prefetch" href="/assets/js/657.3167aa94.js"><link rel="prefetch" href="/assets/js/658.7c40ff62.js"><link rel="prefetch" href="/assets/js/659.5d2b9b54.js"><link rel="prefetch" href="/assets/js/66.44b214db.js"><link rel="prefetch" href="/assets/js/660.96a8da9e.js"><link rel="prefetch" href="/assets/js/661.4de3b6c1.js"><link rel="prefetch" href="/assets/js/662.7d9bf181.js"><link rel="prefetch" href="/assets/js/663.4ccaf40a.js"><link rel="prefetch" href="/assets/js/664.7ab4fa53.js"><link rel="prefetch" href="/assets/js/665.32245d26.js"><link rel="prefetch" href="/assets/js/666.e6617151.js"><link rel="prefetch" href="/assets/js/667.fb3b0547.js"><link rel="prefetch" href="/assets/js/668.3d1b2e36.js"><link rel="prefetch" href="/assets/js/669.b769905f.js"><link rel="prefetch" href="/assets/js/67.c31aaacf.js"><link rel="prefetch" href="/assets/js/670.88ed3af3.js"><link rel="prefetch" href="/assets/js/671.1aff6bfe.js"><link rel="prefetch" href="/assets/js/672.c90888f7.js"><link rel="prefetch" href="/assets/js/673.81241fdc.js"><link rel="prefetch" href="/assets/js/674.838a424d.js"><link rel="prefetch" href="/assets/js/675.603ac896.js"><link rel="prefetch" href="/assets/js/676.ff44b5dc.js"><link rel="prefetch" href="/assets/js/677.41a8087a.js"><link rel="prefetch" href="/assets/js/678.f0eb8d04.js"><link rel="prefetch" href="/assets/js/679.db78199e.js"><link rel="prefetch" href="/assets/js/68.08607c89.js"><link rel="prefetch" href="/assets/js/680.8fded9d4.js"><link rel="prefetch" href="/assets/js/681.0b019dfd.js"><link rel="prefetch" href="/assets/js/682.746e9190.js"><link rel="prefetch" href="/assets/js/683.d5c00845.js"><link rel="prefetch" href="/assets/js/684.b3207cad.js"><link rel="prefetch" href="/assets/js/685.d78f18ba.js"><link rel="prefetch" href="/assets/js/686.5aaecd19.js"><link rel="prefetch" href="/assets/js/687.821a06f4.js"><link rel="prefetch" href="/assets/js/688.8bbc1890.js"><link rel="prefetch" href="/assets/js/689.79b49e8c.js"><link rel="prefetch" href="/assets/js/69.509245d6.js"><link rel="prefetch" href="/assets/js/690.fa62f9dd.js"><link rel="prefetch" href="/assets/js/691.d3eb1a60.js"><link rel="prefetch" href="/assets/js/692.738f14bb.js"><link rel="prefetch" href="/assets/js/693.e6a497a2.js"><link rel="prefetch" href="/assets/js/694.6eea1c54.js"><link rel="prefetch" href="/assets/js/695.88e6acee.js"><link rel="prefetch" href="/assets/js/696.de10297f.js"><link rel="prefetch" href="/assets/js/697.96d04062.js"><link rel="prefetch" href="/assets/js/698.200cc84f.js"><link rel="prefetch" href="/assets/js/699.f11fc627.js"><link rel="prefetch" href="/assets/js/7.c16198b8.js"><link rel="prefetch" href="/assets/js/70.5f6285b1.js"><link rel="prefetch" href="/assets/js/700.93d48f59.js"><link rel="prefetch" href="/assets/js/701.b861f29a.js"><link rel="prefetch" href="/assets/js/702.dc82e05c.js"><link rel="prefetch" href="/assets/js/703.625ce87c.js"><link rel="prefetch" href="/assets/js/704.005a0a7c.js"><link rel="prefetch" href="/assets/js/705.16ad9230.js"><link rel="prefetch" href="/assets/js/706.4eead30a.js"><link rel="prefetch" href="/assets/js/707.730306ce.js"><link rel="prefetch" href="/assets/js/708.e37e743a.js"><link rel="prefetch" href="/assets/js/709.f2144f52.js"><link rel="prefetch" href="/assets/js/71.d5d0dae5.js"><link rel="prefetch" href="/assets/js/710.ee9d9b17.js"><link rel="prefetch" href="/assets/js/711.2813c338.js"><link rel="prefetch" href="/assets/js/712.e801bce4.js"><link rel="prefetch" href="/assets/js/713.21fc267c.js"><link rel="prefetch" href="/assets/js/714.4ec35525.js"><link rel="prefetch" href="/assets/js/715.fdc3cc84.js"><link rel="prefetch" href="/assets/js/716.324932ad.js"><link rel="prefetch" href="/assets/js/717.a072a66f.js"><link rel="prefetch" href="/assets/js/718.575e0305.js"><link rel="prefetch" href="/assets/js/719.5fdd55de.js"><link rel="prefetch" href="/assets/js/72.25648231.js"><link rel="prefetch" href="/assets/js/720.61477f23.js"><link rel="prefetch" href="/assets/js/721.c8bdab00.js"><link rel="prefetch" href="/assets/js/722.9255f385.js"><link rel="prefetch" href="/assets/js/723.f27792a4.js"><link rel="prefetch" href="/assets/js/724.cd504f88.js"><link rel="prefetch" href="/assets/js/725.55c845fa.js"><link rel="prefetch" href="/assets/js/726.bb49a9db.js"><link rel="prefetch" href="/assets/js/727.53d587fe.js"><link rel="prefetch" href="/assets/js/728.86972387.js"><link rel="prefetch" href="/assets/js/729.02fa0263.js"><link rel="prefetch" href="/assets/js/73.29902c1f.js"><link rel="prefetch" href="/assets/js/730.817156d1.js"><link rel="prefetch" href="/assets/js/731.6f5d6735.js"><link rel="prefetch" href="/assets/js/732.9a5ff781.js"><link rel="prefetch" href="/assets/js/733.bcb13916.js"><link rel="prefetch" href="/assets/js/734.11482b19.js"><link rel="prefetch" href="/assets/js/735.8c0d62f3.js"><link rel="prefetch" href="/assets/js/736.06465705.js"><link rel="prefetch" href="/assets/js/737.79741d87.js"><link rel="prefetch" href="/assets/js/738.cad12ff9.js"><link rel="prefetch" href="/assets/js/739.cb09e552.js"><link rel="prefetch" href="/assets/js/74.bcf666a0.js"><link rel="prefetch" href="/assets/js/740.029b1950.js"><link rel="prefetch" href="/assets/js/741.b937216a.js"><link rel="prefetch" href="/assets/js/742.ec02c706.js"><link rel="prefetch" href="/assets/js/743.70a96283.js"><link rel="prefetch" href="/assets/js/744.909b870c.js"><link rel="prefetch" href="/assets/js/745.80defb2d.js"><link rel="prefetch" href="/assets/js/746.fb972248.js"><link rel="prefetch" href="/assets/js/747.1a7b52fd.js"><link rel="prefetch" href="/assets/js/748.036f5d16.js"><link rel="prefetch" href="/assets/js/749.bd9a413d.js"><link rel="prefetch" href="/assets/js/75.23c5a54d.js"><link rel="prefetch" href="/assets/js/750.3f1ae8f5.js"><link rel="prefetch" href="/assets/js/751.8897bc9f.js"><link rel="prefetch" href="/assets/js/752.9b387659.js"><link rel="prefetch" href="/assets/js/753.f411ce21.js"><link rel="prefetch" href="/assets/js/754.26def684.js"><link rel="prefetch" href="/assets/js/755.923aff62.js"><link rel="prefetch" href="/assets/js/756.9965743a.js"><link rel="prefetch" href="/assets/js/757.0c6bbbfd.js"><link rel="prefetch" href="/assets/js/758.a830f8b1.js"><link rel="prefetch" href="/assets/js/759.987cad77.js"><link rel="prefetch" href="/assets/js/76.f54f3d4f.js"><link rel="prefetch" href="/assets/js/760.9f2652a0.js"><link rel="prefetch" href="/assets/js/761.df01a0ee.js"><link rel="prefetch" href="/assets/js/762.e0c05a1a.js"><link rel="prefetch" href="/assets/js/763.da8a60bd.js"><link rel="prefetch" href="/assets/js/764.9f2a2830.js"><link rel="prefetch" href="/assets/js/765.44e61161.js"><link rel="prefetch" href="/assets/js/766.cd7da8c1.js"><link rel="prefetch" href="/assets/js/767.6ea1fea2.js"><link rel="prefetch" href="/assets/js/768.91529b8f.js"><link rel="prefetch" href="/assets/js/769.194d7a3e.js"><link rel="prefetch" href="/assets/js/77.3d43a163.js"><link rel="prefetch" href="/assets/js/770.227fd5b9.js"><link rel="prefetch" href="/assets/js/771.44d5e37e.js"><link rel="prefetch" href="/assets/js/772.234d9bf6.js"><link rel="prefetch" href="/assets/js/773.ff1dfb6a.js"><link rel="prefetch" href="/assets/js/774.d401364f.js"><link rel="prefetch" href="/assets/js/775.37a7cf41.js"><link rel="prefetch" href="/assets/js/776.0cd10853.js"><link rel="prefetch" href="/assets/js/777.599a3a48.js"><link rel="prefetch" href="/assets/js/778.eef27a95.js"><link rel="prefetch" href="/assets/js/779.29351199.js"><link rel="prefetch" href="/assets/js/78.fd0780ac.js"><link rel="prefetch" href="/assets/js/780.74caed94.js"><link rel="prefetch" href="/assets/js/781.ee0fa9b5.js"><link rel="prefetch" href="/assets/js/782.7cffed09.js"><link rel="prefetch" href="/assets/js/783.7f01f518.js"><link rel="prefetch" href="/assets/js/784.5f65e3d7.js"><link rel="prefetch" href="/assets/js/785.d7e13880.js"><link rel="prefetch" href="/assets/js/786.6110d12f.js"><link rel="prefetch" href="/assets/js/787.334a5cdd.js"><link rel="prefetch" href="/assets/js/788.f261bc71.js"><link rel="prefetch" href="/assets/js/789.b6d74f7d.js"><link rel="prefetch" href="/assets/js/79.7b5d6224.js"><link rel="prefetch" href="/assets/js/790.fa948ec4.js"><link rel="prefetch" href="/assets/js/791.22080013.js"><link rel="prefetch" href="/assets/js/792.31ce806c.js"><link rel="prefetch" href="/assets/js/793.9fd0c56f.js"><link rel="prefetch" href="/assets/js/794.44a8cd9c.js"><link rel="prefetch" href="/assets/js/795.9f8346e5.js"><link rel="prefetch" href="/assets/js/796.0de9c7a1.js"><link rel="prefetch" href="/assets/js/797.83ac32a6.js"><link rel="prefetch" href="/assets/js/798.393fc81d.js"><link rel="prefetch" href="/assets/js/799.c1fb3981.js"><link rel="prefetch" href="/assets/js/8.3275ed06.js"><link rel="prefetch" href="/assets/js/80.df3f0a1f.js"><link rel="prefetch" href="/assets/js/800.2832adeb.js"><link rel="prefetch" href="/assets/js/801.04c58fc4.js"><link rel="prefetch" href="/assets/js/81.3d90ef6b.js"><link rel="prefetch" href="/assets/js/82.2d42448d.js"><link rel="prefetch" href="/assets/js/83.900b4de2.js"><link rel="prefetch" href="/assets/js/84.ff570f67.js"><link rel="prefetch" href="/assets/js/85.e3b3af39.js"><link rel="prefetch" href="/assets/js/86.17b5aedc.js"><link rel="prefetch" href="/assets/js/87.f931d1d6.js"><link rel="prefetch" href="/assets/js/88.d55863cd.js"><link rel="prefetch" href="/assets/js/89.15a9a6d7.js"><link rel="prefetch" href="/assets/js/9.04948a9d.js"><link rel="prefetch" href="/assets/js/90.22696aa9.js"><link rel="prefetch" href="/assets/js/91.f1bd8a2e.js"><link rel="prefetch" href="/assets/js/92.85733094.js"><link rel="prefetch" href="/assets/js/93.59bacfd7.js"><link rel="prefetch" href="/assets/js/94.a5f9b7a0.js"><link rel="prefetch" href="/assets/js/95.be52d65a.js"><link rel="prefetch" href="/assets/js/96.0b76ba8e.js"><link rel="prefetch" href="/assets/js/97.28183cd4.js"><link rel="prefetch" href="/assets/js/98.2d22829c.js"><link rel="prefetch" href="/assets/js/99.ed602a20.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a3df589e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">AJ</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/op/" class="nav-link">Devops</a></div><div class="nav-item"><a href="/golang/" class="nav-link">Go</a></div><div class="nav-item"><a href="/go-block/" class="nav-link router-link-active">区块链</a></div><div class="nav-item"><a href="/k8s/" class="nav-link">k8s</a></div><div class="nav-item"><a href="/about.html" class="nav-link">关于我</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/go-learning/" class="nav-link">go-learning</a></li><li class="dropdown-item"><!----> <a href="/post/flutter-guide/" class="nav-link">flutter</a></li><li class="dropdown-item"><!----> <a href="/mysql/" class="nav-link">mysql</a></li><li class="dropdown-item"><!----> <a href="/python/" class="nav-link">python</a></li></ul></div></div> <a href="https://github.com/ChinaArJun" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/op/" class="nav-link">Devops</a></div><div class="nav-item"><a href="/golang/" class="nav-link">Go</a></div><div class="nav-item"><a href="/go-block/" class="nav-link router-link-active">区块链</a></div><div class="nav-item"><a href="/k8s/" class="nav-link">k8s</a></div><div class="nav-item"><a href="/about.html" class="nav-link">关于我</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/go-learning/" class="nav-link">go-learning</a></li><li class="dropdown-item"><!----> <a href="/post/flutter-guide/" class="nav-link">flutter</a></li><li class="dropdown-item"><!----> <a href="/mysql/" class="nav-link">mysql</a></li><li class="dropdown-item"><!----> <a href="/python/" class="nav-link">python</a></li></ul></div></div> <a href="https://github.com/ChinaArJun" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav> <div></div> <div style="padding-left:1.5rem;"><div></div></div> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>区块链基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/go-block/blockchain/encryption-expand.html" class="sidebar-link">常见的密码技术</a></li><li><a href="/go-block/blockchain/encryption.html" class="sidebar-link">密码学安全</a></li><li><a href="/go-block/blockchain/ethereum.html" class="sidebar-link">以太坊智能合约</a></li><li><a href="/go-block/blockchain/hyperledgerfabric.html" class="sidebar-link">hyperledger fabric</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Hyperledger Fabric 1.2</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/go-block/fabric/1搭建网络-纯手动.html" class="sidebar-link">1搭建网络-纯手动</a></li><li><a href="/go-block/fabric/1环境搭建.html" class="sidebar-link">1环境搭建</a></li><li><a href="/go-block/fabric/2Fabric介绍.html" class="sidebar-link">2Fabric介绍</a></li><li><a href="/go-block/fabric/3Fabric核心模块.html" class="sidebar-link">3Fabric核心模块</a></li><li><a href="/go-block/fabric/4网络搭建-脚本.html" class="sidebar-link">4网络搭建-脚本</a></li><li><a href="/go-block/fabric/5智能合约.html" class="sidebar-link">5智能合约</a></li><li><a href="/go-block/fabric/6Fabric账号.html" class="sidebar-link">6Fabric账号</a></li><li><a href="/go-block/fabric/7Solo多机多节点部署.html" class="sidebar-link">7Solo多机多节点部署</a></li><li><a href="/go-block/fabric/8Kafka多机多节点部署.html" class="active sidebar-link">8Kafka多机多节点部署</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/go-block/fabric/8Kafka多机多节点部署.html#_8-kafka集群部署" class="sidebar-link">8. kafka集群部署</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Hyperledger Fabric 2.X</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/go-block/fabric2.x/" class="sidebar-link">2.X目录</a></li></ul></section></li></ul> </aside> <!----> <!----> <main class="page"><div class="theme-default-content" style="margin-bottom:-5rem;"><div class="bar"><div class="bar-intro"><div class="text">
+      流逝的是岁月，不变的是情怀.
+        </div> <div class="text">
+      坚持学习，是为了成就更好的自己. <br></div> <div>公众号[中关村程序员]</div></div></div> <!----></div> <div class="theme-default-content content__default"><h2 id="_8-kafka集群部署"><a href="#_8-kafka集群部署" class="header-anchor">#</a> 8. kafka集群部署</h2> <h3 id="_8-1-准备工作"><a href="#_8-1-准备工作" class="header-anchor">#</a> 8.1 准备工作</h3> <table><thead><tr><th style="text-align:center;">名称</th> <th style="text-align:center;">IP地址</th> <th style="text-align:center;">Hostname</th> <th style="text-align:center;">组织结构</th></tr></thead> <tbody><tr><td style="text-align:center;">zk1</td> <td style="text-align:center;">192.168.247.101</td> <td style="text-align:center;">zookeeper1</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">zk2</td> <td style="text-align:center;">192.168.247.102</td> <td style="text-align:center;">zookeeper2</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">zk3</td> <td style="text-align:center;">192.168.247.103</td> <td style="text-align:center;">zookeeper3</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">kafka1</td> <td style="text-align:center;">192.168.247.201</td> <td style="text-align:center;">kafka1</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">kafka2</td> <td style="text-align:center;">192.168.247.202</td> <td style="text-align:center;">kafka2</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">kafka3</td> <td style="text-align:center;">192.168.247.203</td> <td style="text-align:center;">kafka3</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">kafka4</td> <td style="text-align:center;">192.168.247.204</td> <td style="text-align:center;">kafka4</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">orderer0</td> <td style="text-align:center;">192.168.247.91</td> <td style="text-align:center;">orderer0.test.com</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">orderer1</td> <td style="text-align:center;">192.168.247.92</td> <td style="text-align:center;">orderer1.test.com</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">orderer2</td> <td style="text-align:center;">192.168.247.93</td> <td style="text-align:center;">orderer2.test.com</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">peer0</td> <td style="text-align:center;">192.168.247.81</td> <td style="text-align:center;">peer0.orggo.test.com</td> <td style="text-align:center;">OrgGo</td></tr> <tr><td style="text-align:center;">peer0</td> <td style="text-align:center;">192.168.247.82</td> <td style="text-align:center;">peer0.orgcpp.test.com</td> <td style="text-align:center;">OrgCpp</td></tr></tbody></table> <p>为了保证整个集群的正常工作, 需要给集群中的各个节点设置工作目录, 我们要保证各个节点工作目录是相同的</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 在以上各个节点的家目录创建工作目录:</span>
+$ <span class="token function">mkdir</span> ~/kafka
+</code></pre></div><h3 id="_8-2-生成证书文件"><a href="#_8-2-生成证书文件" class="header-anchor">#</a> 8.2. 生成证书文件</h3> <h4 id="_8-2-1-编写配置文件"><a href="#_8-2-1-编写配置文件" class="header-anchor">#</a> 8.2.1 编写配置文件</h4> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># crypto-config.yaml</span>
+<span class="token key atrule">OrdererOrgs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Name</span><span class="token punctuation">:</span> Orderer
+    <span class="token key atrule">Domain</span><span class="token punctuation">:</span> test.com
+    <span class="token key atrule">Specs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">Hostname</span><span class="token punctuation">:</span> orderer0	<span class="token comment"># 第1个排序节点: orderer0.test.com</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">Hostname</span><span class="token punctuation">:</span> orderer1	<span class="token comment"># 第2个排序节点: orderer1.test.com</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">Hostname</span><span class="token punctuation">:</span> orderer2  <span class="token comment"># 第3个排序节点: orderer2.test.com</span>
+
+<span class="token key atrule">PeerOrgs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Name</span><span class="token punctuation">:</span> OrgGo
+    <span class="token key atrule">Domain</span><span class="token punctuation">:</span> orggo.test.com
+    <span class="token key atrule">Template</span><span class="token punctuation">:</span>
+      <span class="token key atrule">Count</span><span class="token punctuation">:</span> <span class="token number">2</span>  <span class="token comment"># 当前go组织两个peer节点</span>
+    <span class="token key atrule">Users</span><span class="token punctuation">:</span>
+      <span class="token key atrule">Count</span><span class="token punctuation">:</span> <span class="token number">1</span>
+
+  <span class="token punctuation">-</span> <span class="token key atrule">Name</span><span class="token punctuation">:</span> OrgCpp
+    <span class="token key atrule">Domain</span><span class="token punctuation">:</span> orgcpp.test.com
+    <span class="token key atrule">Template</span><span class="token punctuation">:</span>
+      <span class="token key atrule">Count</span><span class="token punctuation">:</span> <span class="token number">2</span>  <span class="token comment"># 当前cpp组织两个peer节点</span>
+    <span class="token key atrule">Users</span><span class="token punctuation">:</span>
+      <span class="token key atrule">Count</span><span class="token punctuation">:</span> <span class="token number">1</span>
+</code></pre></div><h4 id="_8-2-2-生成证书"><a href="#_8-2-2-生成证书" class="header-anchor">#</a> 8.2.2 生成证书</h4> <div class="language-shell extra-class"><pre class="language-shell"><code>$ cryptogen generate --config<span class="token operator">=</span>crypto-config.yaml
+$ tree ./ -L <span class="token number">1</span>
+./
+├── <span class="token variable"><span class="token variable">`</span>crypto-config<span class="token variable">`</span></span>   -<span class="token operator">&gt;</span> 证书文件目录
+└── crypto-config.yaml
+</code></pre></div><h3 id="_8-3-生成创始块和通道文件"><a href="#_8-3-生成创始块和通道文件" class="header-anchor">#</a> 8.3. 生成创始块和通道文件</h3> <h4 id="_8-3-1-编写配置文件"><a href="#_8-3-1-编写配置文件" class="header-anchor">#</a> 8.3.1 编写配置文件</h4> <blockquote><p>配置文件名<code>configtx.yaml</code>这个名字是固定的, 不可修改的</p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code>
+<span class="token punctuation">---</span>
+<span class="token comment">################################################################################</span>
+<span class="token comment">#</span>
+<span class="token comment">#   Section: Organizations</span>
+<span class="token comment">#</span>
+<span class="token comment">#   - This section defines the different organizational identities which will</span>
+<span class="token comment">#   be referenced later in the configuration.</span>
+<span class="token comment">#</span>
+<span class="token comment">################################################################################</span>
+<span class="token key atrule">Organizations</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token important">&amp;OrdererOrg</span>
+        <span class="token key atrule">Name</span><span class="token punctuation">:</span> OrdererOrg
+        <span class="token key atrule">ID</span><span class="token punctuation">:</span> OrdererMSP
+        <span class="token key atrule">MSPDir</span><span class="token punctuation">:</span> crypto<span class="token punctuation">-</span>config/ordererOrganizations/test.com/msp
+
+    <span class="token punctuation">-</span> <span class="token important">&amp;go_org</span>
+        <span class="token key atrule">Name</span><span class="token punctuation">:</span> OrgGoMSP
+        <span class="token key atrule">ID</span><span class="token punctuation">:</span> OrgGoMSP
+        <span class="token key atrule">MSPDir</span><span class="token punctuation">:</span> crypto<span class="token punctuation">-</span>config/peerOrganizations/orggo.test.com/msp
+        <span class="token key atrule">AnchorPeers</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">Host</span><span class="token punctuation">:</span> peer0.orggo.test.com
+              <span class="token key atrule">Port</span><span class="token punctuation">:</span> <span class="token number">7051</span>
+
+    <span class="token punctuation">-</span> <span class="token important">&amp;cpp_org</span>
+        <span class="token key atrule">Name</span><span class="token punctuation">:</span> OrgCppMSP
+        <span class="token key atrule">ID</span><span class="token punctuation">:</span> OrgCppMSP
+        <span class="token key atrule">MSPDir</span><span class="token punctuation">:</span> crypto<span class="token punctuation">-</span>config/peerOrganizations/orgcpp.test.com/msp
+        <span class="token key atrule">AnchorPeers</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">Host</span><span class="token punctuation">:</span> peer0.orgcpp.test.com
+              <span class="token key atrule">Port</span><span class="token punctuation">:</span> <span class="token number">7051</span>
+
+<span class="token comment">################################################################################</span>
+<span class="token comment">#</span>
+<span class="token comment">#   SECTION: Capabilities</span>
+<span class="token comment">#</span>
+<span class="token comment">################################################################################</span>
+<span class="token key atrule">Capabilities</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Global</span><span class="token punctuation">:</span> <span class="token important">&amp;ChannelCapabilities</span>
+        <span class="token key atrule">V1_1</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">Orderer</span><span class="token punctuation">:</span> <span class="token important">&amp;OrdererCapabilities</span>
+        <span class="token key atrule">V1_1</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">Application</span><span class="token punctuation">:</span> <span class="token important">&amp;ApplicationCapabilities</span>
+        <span class="token key atrule">V1_2</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+<span class="token comment">################################################################################</span>
+<span class="token comment">#</span>
+<span class="token comment">#   SECTION: Application</span>
+<span class="token comment">#</span>
+<span class="token comment">################################################################################</span>
+<span class="token key atrule">Application</span><span class="token punctuation">:</span> <span class="token important">&amp;ApplicationDefaults</span>
+    <span class="token key atrule">Organizations</span><span class="token punctuation">:</span>
+
+<span class="token comment">################################################################################</span>
+<span class="token comment">#</span>
+<span class="token comment">#   SECTION: Orderer</span>
+<span class="token comment">#</span>
+<span class="token comment">################################################################################</span>
+<span class="token key atrule">Orderer</span><span class="token punctuation">:</span> <span class="token important">&amp;OrdererDefaults</span>
+    <span class="token comment"># Available types are &quot;solo&quot; and &quot;kafka&quot;</span>
+    <span class="token key atrule">OrdererType</span><span class="token punctuation">:</span> kafka
+    <span class="token key atrule">Addresses</span><span class="token punctuation">:</span>
+        <span class="token comment"># 排序节点服务器地址</span>
+        <span class="token punctuation">-</span> orderer0.test.com<span class="token punctuation">:</span><span class="token number">7050</span>
+        <span class="token punctuation">-</span> orderer1.test.com<span class="token punctuation">:</span><span class="token number">7050</span>
+        <span class="token punctuation">-</span> orderer2.test.com<span class="token punctuation">:</span><span class="token number">7050</span>
+
+    <span class="token key atrule">BatchTimeout</span><span class="token punctuation">:</span> 2s
+    <span class="token key atrule">BatchSize</span><span class="token punctuation">:</span>
+        <span class="token key atrule">MaxMessageCount</span><span class="token punctuation">:</span> <span class="token number">10</span>
+        <span class="token key atrule">AbsoluteMaxBytes</span><span class="token punctuation">:</span> 99 MB
+        <span class="token key atrule">PreferredMaxBytes</span><span class="token punctuation">:</span> 512 KB
+    <span class="token key atrule">Kafka</span><span class="token punctuation">:</span>
+        <span class="token key atrule">Brokers</span><span class="token punctuation">:</span> 
+            <span class="token comment"># kafka服务器地址</span>
+            <span class="token punctuation">-</span> 192.168.247.201<span class="token punctuation">:</span><span class="token number">9092</span>
+            <span class="token punctuation">-</span> 192.168.247.202<span class="token punctuation">:</span><span class="token number">9092</span>
+            <span class="token punctuation">-</span> 192.168.247.203<span class="token punctuation">:</span><span class="token number">9092</span>
+            <span class="token punctuation">-</span> 192.168.247.204<span class="token punctuation">:</span><span class="token number">9092</span>
+    <span class="token key atrule">Organizations</span><span class="token punctuation">:</span>
+
+<span class="token comment">################################################################################</span>
+<span class="token comment">#</span>
+<span class="token comment">#   Profile</span>
+<span class="token comment">#</span>
+<span class="token comment">################################################################################</span>
+<span class="token key atrule">Profiles</span><span class="token punctuation">:</span>
+    <span class="token key atrule">OrgsOrdererGenesis</span><span class="token punctuation">:</span>
+        <span class="token key atrule">Capabilities</span><span class="token punctuation">:</span>
+            <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*ChannelCapabilities</span>
+        <span class="token key atrule">Orderer</span><span class="token punctuation">:</span>
+            <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*OrdererDefaults</span>
+            <span class="token key atrule">Organizations</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> <span class="token important">*OrdererOrg</span>
+            <span class="token key atrule">Capabilities</span><span class="token punctuation">:</span>
+                <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*OrdererCapabilities</span>
+        <span class="token key atrule">Consortiums</span><span class="token punctuation">:</span>
+            <span class="token key atrule">SampleConsortium</span><span class="token punctuation">:</span>
+                <span class="token key atrule">Organizations</span><span class="token punctuation">:</span>
+                    <span class="token punctuation">-</span> <span class="token important">*go_org</span>
+                    <span class="token punctuation">-</span> <span class="token important">*cpp_org</span>
+    <span class="token key atrule">OrgsChannel</span><span class="token punctuation">:</span>
+        <span class="token key atrule">Consortium</span><span class="token punctuation">:</span> SampleConsortium
+        <span class="token key atrule">Application</span><span class="token punctuation">:</span>
+            <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*ApplicationDefaults</span>
+            <span class="token key atrule">Organizations</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> <span class="token important">*go_org</span>
+                <span class="token punctuation">-</span> <span class="token important">*cpp_org</span>
+            <span class="token key atrule">Capabilities</span><span class="token punctuation">:</span>
+                <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*ApplicationCapabilities</span>
+</code></pre></div><h4 id="_8-3-2-生成通道和创始块文件"><a href="#_8-3-2-生成通道和创始块文件" class="header-anchor">#</a> 8.3.2 生成通道和创始块文件</h4> <ul><li><p>生成创始块文件</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 我们先创建一个目录 channel-artifacts 存储生成的文件, 目的是为了和后边的配置文件模板的配置项保持一致</span>
+$ <span class="token function">mkdir</span> channel-artifacts
+<span class="token comment"># 生成通道文件</span>
+$ configtxgen -profile OrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
+</code></pre></div></li> <li><p>生成通道文件</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 生成创始块文件</span>
+$ configtxgen -profile OrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID testchannel
+</code></pre></div></li></ul> <h3 id="_8-4-zookeeper设置"><a href="#_8-4-zookeeper设置" class="header-anchor">#</a> 8.4. Zookeeper设置</h3> <h4 id="_8-4-1-基本概念"><a href="#_8-4-1-基本概念" class="header-anchor">#</a> 8.4.1 基本概念</h4> <blockquote><p>Zookeeper一种在分布式系统中被广泛用来作为分布式状态管理、分布式协调管理、分布式配置管理和分布式锁服务的集群。</p></blockquote> <ul><li><p>zookeeper 的运作流程</p> <blockquote><p>在配置之前, 让我们先了解一下 <code>Zookeeper</code> 的基本运转流程:</p> <ul><li><font color="red">选举Leader</font> <ul><li>选举Leader过程中算法有很多，但要达到的选举标准是一致的</li> <li>Leader要具有最高的执行ID，类似root权限。</li> <li>集群中大多数的机器得到响应并跟随选出的Leader。</li></ul></li> <li><font color="red">数据同步</font></li></ul></blockquote></li> <li><p>Zookeeper的集群数量</p> <blockquote><p>Zookeeper 集群的数量可以是 <code>3, 5, 7,</code> 它值需要是一个奇数以避免脑裂问题（split-brain）的情况。同时选择大于1的值是为了避免单点故障，如果集群的数量超过7个Zookeeper服务将会无法承受。</p></blockquote></li></ul> <h4 id="_8-4-2-zookeeper配置文件模板"><a href="#_8-4-2-zookeeper配置文件模板" class="header-anchor">#</a> 8.4.2 zookeeper配置文件模板</h4> <ul><li><p>配置文件模板</p> <blockquote><p>下面我们来看一个示例配置文件, 研究下zookeeper如何配置:</p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">zookeeper1</span><span class="token punctuation">:</span> <span class="token comment"># 服务器名, 自己起</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> zookeeper1 <span class="token comment"># 容器名, 自己起</span>
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> zookeeper1	<span class="token comment"># 访问的主机名, 自己起, 需要和IP有对应关系</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>zookeeper<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always	<span class="token comment"># 指定为always</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># ID在集合中必须是唯一的并且应该有一个值，在1和255之间。</span>
+      <span class="token punctuation">-</span> ZOO_MY_ID=1
+      <span class="token comment"># server.x=hostname:prot1:port2</span>
+      <span class="token punctuation">-</span> ZOO_SERVERS=server.1=zookeeper1<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888 server.2=zookeeper2<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888 server.3=zookeeper3<span class="token punctuation">:</span>2888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 2181<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token punctuation">-</span> 2888<span class="token punctuation">:</span><span class="token number">2888</span>
+      <span class="token punctuation">-</span> 3888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper1<span class="token punctuation">:</span>192.168.24.201
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.24.202
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.24.203
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.24.204
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.24.205
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.24.206
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.24.207
+</code></pre></div></li> <li><p>相关配置项解释:</p> <blockquote><ol><li><p>docker 的<code>restart</code>策略</p> <ul><li>no – 容器退出时不要自动重启，这个是默认值。</li> <li>on-failure[:max-retries] – 只在容器以非0状态码退出时重启， 例如：<code>on-failure:10</code></li> <li><strong>always</strong> – 不管退出状态码是什么始终重启容器</li> <li>unless-<a href="https://www.centos.bz/tag/stopped/" target="_blank" rel="noopener noreferrer">stopped<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> – 不管退出状态码是什么始终重启容器，不过当daemon启动时，如果容器之前已经为停止状态，不要尝试启动它。</li></ul></li> <li><p>环境变量</p> <ul><li><p>ZOO_MY_ID</p> <p>zookeeper集群中的当前zookeeper服务器节点的ID, <font color="red">在集群中这个只是唯一的, 范围: 1-255</font></p></li> <li><p>ZOO_SERVERS</p> <ul><li>组成zookeeper集群的服务器列表</li> <li>列表中每个服务器的值都附带两个端口号
+<ul><li><font color="red">第一个: 追随者用来连接 Leader 使用的</font></li> <li><font color="red">第二个: 用户选举 Leader</font></li></ul></li></ul></li></ul></li> <li><p>zookeeper服务器中三个重要端口:</p> <ul><li>访问zookeeper的端口: 2181</li> <li>zookeeper集群中追随者连接 Leader 的端口: 2888</li> <li>zookeeper集群中选举 Leader 的端口: 3888</li></ul></li> <li><p>extra_hosts</p> <ul><li>设置服务器名和其指向的IP地址的对应关系</li> <li><code>zookeeper1:192.168.24.201</code> <ul><li>看到名字<code>zookeeper1</code>就会将其解析为IP地址: <code>192.168.24.201</code></li></ul></li></ul></li></ol></blockquote></li></ul> <h4 id="_8-4-3-各个zookeeper节点的配置"><a href="#_8-4-3-各个zookeeper节点的配置" class="header-anchor">#</a> 8.4.3 各个zookeeper节点的配置</h4> <h5 id="zookeeper1-配置"><a href="#zookeeper1-配置" class="header-anchor">#</a> <strong>zookeeper1 配置</strong></h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># zookeeper1.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">zookeeper1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> zookeeper1
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> zookeeper1
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>zookeeper<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># ID在集合中必须是唯一的并且应该有一个值，在1和255之间。</span>
+      <span class="token punctuation">-</span> ZOO_MY_ID=1
+      <span class="token comment"># server.x=[hostname]:nnnnn[:nnnnn]</span>
+      <span class="token punctuation">-</span> ZOO_SERVERS=server.1=zookeeper1<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888 server.2=zookeeper2<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888 server.3=zookeeper3<span class="token punctuation">:</span>2888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 2181<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token punctuation">-</span> 2888<span class="token punctuation">:</span><span class="token number">2888</span>
+      <span class="token punctuation">-</span> 3888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper1<span class="token punctuation">:</span>192.168.247.101
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.247.102
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.247.103
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h5 id="zookeeper2-配置"><a href="#zookeeper2-配置" class="header-anchor">#</a> <strong>zookeeper2 配置</strong></h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># zookeeper2.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">zookeeper2</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> zookeeper2
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> zookeeper2
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>zookeeper<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># ID在集合中必须是唯一的并且应该有一个值，在1和255之间。</span>
+      <span class="token punctuation">-</span> ZOO_MY_ID=2
+      <span class="token comment"># server.x=[hostname]:nnnnn[:nnnnn]</span>
+      <span class="token punctuation">-</span> ZOO_SERVERS=server.1=zookeeper1<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888 server.2=zookeeper2<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888 server.3=zookeeper3<span class="token punctuation">:</span>2888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 2181<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token punctuation">-</span> 2888<span class="token punctuation">:</span><span class="token number">2888</span>
+      <span class="token punctuation">-</span> 3888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper1<span class="token punctuation">:</span>192.168.247.101
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.247.102
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.247.103
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h5 id="zookeeper3-配置"><a href="#zookeeper3-配置" class="header-anchor">#</a> <strong>zookeeper3 配置</strong></h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># zookeeper3.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">zookeeper3</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> zookeeper3
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> zookeeper3
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>zookeeper<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># ID在集合中必须是唯一的并且应该有一个值，在1和255之间。</span>
+      <span class="token punctuation">-</span> ZOO_MY_ID=3
+      <span class="token comment"># server.x=[hostname]:nnnnn[:nnnnn]</span>
+      <span class="token punctuation">-</span> ZOO_SERVERS=server.1=zookeeper1<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888 server.2=zookeeper2<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888 server.3=zookeeper3<span class="token punctuation">:</span>2888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 2181<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token punctuation">-</span> 2888<span class="token punctuation">:</span><span class="token number">2888</span>
+      <span class="token punctuation">-</span> 3888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper1<span class="token punctuation">:</span>192.168.247.101
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.247.102
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.247.103
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h3 id="_8-5-kafka设置"><a href="#_8-5-kafka设置" class="header-anchor">#</a> 8.5. Kafka设置</h3> <h4 id="_8-5-1-基本概念"><a href="#_8-5-1-基本概念" class="header-anchor">#</a> 8.5.1 基本概念</h4> <blockquote><p>Katka是一个分布式消息系统，由LinkedIn使用scala编写，用作LinkedIn的活动流（Activitystream)和运营数据处理管道（Pipeline）的基础。具有高水平扩展和高吞吐量。</p> <p>在Fabric网络中，数据是由Peer节点提交到Orderer排序服务，而Orderer相对于Kafka来说相当于上游模块，且Orderer还兼具提供了对数据进行排序及生成符合配置规范及要求的区块。而使用上游模块的数据计算、统计、分析，这个时候就可以使用类似于Kafka这样的分布式消息系统来协助业务流程。</p> <p>有人说Kafka是一种共识模式，也就是说平等信任，所有的HyperLedger Fabric网络加盟方都是可信方，因为消息总是均匀地分布在各处。但具体生产使用的时候是依赖于背书来做到确权，相对而言，Kafka应该只能是一种启动Fabric网络的模式或类型。</p> <p>Zookeeper一种在分布式系统中被广泛用来作为分布式状态管理、分布式协调管理、分布式配置管理和分布式锁服务的集群。Kafka增加和减少服务器都会在Zookeeper节点上触发相应的事件，Kafka系统会捕获这些事件，进行新一轮的负载均衡，客户端也会捕获这些事件来进行新一轮的处理。</p> <p>Orderer排序服务是Fablic网络事务流中的最重要的环节，也是所有请求的点，它并不会立刻对请求给予回馈，一是因为生成区块的条件所限，二是因为依托下游集群的消息处理需要等待结果。</p></blockquote> <h4 id="_8-5-2-kafka配置文件模板"><a href="#_8-5-2-kafka配置文件模板" class="header-anchor">#</a> 8.5.2 kafka配置文件模板</h4> <ul><li><p>kafka配置文件模板</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">kafka1</span><span class="token punctuation">:</span> 
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kafka1
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> kafka1
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>kafka<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># broker.id</span>
+      <span class="token punctuation">-</span> KAFKA_BROKER_ID=1
+      <span class="token punctuation">-</span> KAFKA_MIN_INSYNC_REPLICAS=2
+      <span class="token punctuation">-</span> KAFKA_DEFAULT_REPLICATION_FACTOR=3
+      <span class="token punctuation">-</span> KAFKA_ZOOKEEPER_CONNECT=zookeeper1<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper2<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper3<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token comment"># 99 * 1024 * 1024 B</span>
+      <span class="token punctuation">-</span> KAFKA_MESSAGE_MAX_BYTES=103809024 
+      <span class="token punctuation">-</span> KAFKA_REPLICA_FETCH_MAX_BYTES=103809024 <span class="token comment"># 99 * 1024 * 1024 B</span>
+      <span class="token punctuation">-</span> KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
+      <span class="token punctuation">-</span> KAFKA_LOG_RETENTION_MS=<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token punctuation">-</span> KAFKA_HEAP_OPTS=<span class="token punctuation">-</span>Xmx256M <span class="token punctuation">-</span>Xms128M
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 9092<span class="token punctuation">:</span><span class="token number">9092</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;zookeeper1:192.168.24.201&quot;</span>
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.24.202
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.24.203
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.24.204
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.24.205
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.24.206
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.24.207
+</code></pre></div></li> <li><p>配置项解释</p> <blockquote><ol><li>Kafka 默认端口为: 9092</li> <li>环境变量:</li></ol> <ul><li>KAFKA_BROKER_ID
+<ul><li>是一个唯一的非负整数, 可以作为代理<code>Broker</code>的名字</li></ul></li> <li>KAFKA_MIN_INSYNC_REPLICAS
+<ul><li>最小同步备份</li> <li><font color="red">该值要小于环境变量 <code>KAFKA_DEFAULT_REPLICATION_FACTOR</code>的值</font></li></ul></li> <li>KAFKA_DEFAULT_REPLICATION_FACTOR
+<ul><li>默认同步备份, <font color="red">该值要小于kafka集群数量</font></li></ul></li> <li>KAFKA_ZOOKEEPER_CONNECT
+<ul><li>指向zookeeper节点的集合</li></ul></li> <li>KAFKA_MESSAGE_MAX_BYTES
+<ul><li>消息的最大字节数</li> <li>和配置文件<code>configtx.yaml</code>中的<code>Orderer.BatchSize.AbsoluteMaxBytes</code>对应</li> <li>由于消息都有头信息, 所以这个值要比计算出的值稍大, <code>多加1M就足够了</code></li></ul></li> <li>KAFKA_REPLICA_FETCH_MAX_BYTES=103809024
+<ul><li>副本最大字节数, 试图为每个channel获取的消息的字节数</li> <li><code>AbsoluteMaxBytes</code>&lt;<code>KAFKA_REPLICA_FETCH_MAX_BYTES</code> &lt;= <code>KAFKA_MESSAGE_MAX_BYTES</code></li></ul></li> <li>KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
+<ul><li>非一致性的 Leader 选举
+<ul><li>开启: true</li> <li>关闭: false</li></ul></li></ul></li> <li>KAFKA_LOG_RETENTION_MS=-1
+<ul><li>对压缩日志保留的最长时间</li> <li>这个选项在Kafka中已经默认关闭</li></ul></li> <li>KAFKA_HEAP_OPTS
+<ul><li>设置堆内存大小, <font color="red">kafka默认为 1G</font> <ul><li>-Xmx256M  -&gt; 允许分配的堆内存</li> <li>-Xms128M  -&gt;  初始分配的堆内存</li></ul></li></ul></li></ul></blockquote></li></ul> <h4 id="_8-5-3-各个kafka节点的配置"><a href="#_8-5-3-各个kafka节点的配置" class="header-anchor">#</a> 8.5.3 各个kafka节点的配置</h4> <h5 id="kafka1-配置"><a href="#kafka1-配置" class="header-anchor">#</a> kafka1 配置</h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># kafka1.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">kafka1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kafka1
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> kafka1
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>kafka<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># broker.id</span>
+      <span class="token punctuation">-</span> KAFKA_BROKER_ID=1
+      <span class="token punctuation">-</span> KAFKA_MIN_INSYNC_REPLICAS=2
+      <span class="token punctuation">-</span> KAFKA_DEFAULT_REPLICATION_FACTOR=3
+      <span class="token punctuation">-</span> KAFKA_ZOOKEEPER_CONNECT=zookeeper1<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper2<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper3<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token comment"># 100 * 1024 * 1024 B</span>
+      <span class="token punctuation">-</span> KAFKA_MESSAGE_MAX_BYTES=104857600 
+      <span class="token punctuation">-</span> KAFKA_REPLICA_FETCH_MAX_BYTES=104857600
+      <span class="token punctuation">-</span> KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
+      <span class="token punctuation">-</span> KAFKA_LOG_RETENTION_MS=<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token punctuation">-</span> KAFKA_HEAP_OPTS=<span class="token punctuation">-</span>Xmx512M <span class="token punctuation">-</span>Xms256M
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 9092<span class="token punctuation">:</span><span class="token number">9092</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper1<span class="token punctuation">:</span>192.168.247.101
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.247.102
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.247.103
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h5 id="kafka2-配置"><a href="#kafka2-配置" class="header-anchor">#</a> kafka2 配置</h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># kafka2.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">kafka2</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kafka2
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> kafka2
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>kafka<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># broker.id</span>
+      <span class="token punctuation">-</span> KAFKA_BROKER_ID=2
+      <span class="token punctuation">-</span> KAFKA_MIN_INSYNC_REPLICAS=2
+      <span class="token punctuation">-</span> KAFKA_DEFAULT_REPLICATION_FACTOR=3
+      <span class="token punctuation">-</span> KAFKA_ZOOKEEPER_CONNECT=zookeeper1<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper2<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper3<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token comment"># 100 * 1024 * 1024 B</span>
+      <span class="token punctuation">-</span> KAFKA_MESSAGE_MAX_BYTES=104857600 
+      <span class="token punctuation">-</span> KAFKA_REPLICA_FETCH_MAX_BYTES=104857600
+      <span class="token punctuation">-</span> KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
+      <span class="token punctuation">-</span> KAFKA_LOG_RETENTION_MS=<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token punctuation">-</span> KAFKA_HEAP_OPTS=<span class="token punctuation">-</span>Xmx512M <span class="token punctuation">-</span>Xms256M
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 9092<span class="token punctuation">:</span><span class="token number">9092</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper1<span class="token punctuation">:</span>192.168.247.101
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.247.102
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.247.103
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h5 id="kafka3-配置"><a href="#kafka3-配置" class="header-anchor">#</a> kafka3 配置</h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># kafka3.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">kafka3</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kafka3
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> kafka3
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>kafka<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># broker.id</span>
+      <span class="token punctuation">-</span> KAFKA_BROKER_ID=3
+      <span class="token punctuation">-</span> KAFKA_MIN_INSYNC_REPLICAS=2
+      <span class="token punctuation">-</span> KAFKA_DEFAULT_REPLICATION_FACTOR=3
+      <span class="token punctuation">-</span> KAFKA_ZOOKEEPER_CONNECT=zookeeper1<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper2<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper3<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token comment"># 100 * 1024 * 1024 B</span>
+      <span class="token punctuation">-</span> KAFKA_MESSAGE_MAX_BYTES=104857600 
+      <span class="token punctuation">-</span> KAFKA_REPLICA_FETCH_MAX_BYTES=104857600
+      <span class="token punctuation">-</span> KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
+      <span class="token punctuation">-</span> KAFKA_LOG_RETENTION_MS=<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token punctuation">-</span> KAFKA_HEAP_OPTS=<span class="token punctuation">-</span>Xmx512M <span class="token punctuation">-</span>Xms256M
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 9092<span class="token punctuation">:</span><span class="token number">9092</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper1<span class="token punctuation">:</span>192.168.247.101
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.247.102
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.247.103
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h5 id="kafka4-配置"><a href="#kafka4-配置" class="header-anchor">#</a> kafka4 配置</h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># kafka4.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">kafka4</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kafka4
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> kafka4
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>kafka<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># broker.id</span>
+      <span class="token punctuation">-</span> KAFKA_BROKER_ID=4
+      <span class="token punctuation">-</span> KAFKA_MIN_INSYNC_REPLICAS=2
+      <span class="token punctuation">-</span> KAFKA_DEFAULT_REPLICATION_FACTOR=3
+      <span class="token punctuation">-</span> KAFKA_ZOOKEEPER_CONNECT=zookeeper1<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper2<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper3<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token comment"># 100 * 1024 * 1024 B</span>
+      <span class="token punctuation">-</span> KAFKA_MESSAGE_MAX_BYTES=104857600 
+      <span class="token punctuation">-</span> KAFKA_REPLICA_FETCH_MAX_BYTES=104857600
+      <span class="token punctuation">-</span> KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
+      <span class="token punctuation">-</span> KAFKA_LOG_RETENTION_MS=<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token punctuation">-</span> KAFKA_HEAP_OPTS=<span class="token punctuation">-</span>Xmx512M <span class="token punctuation">-</span>Xms256M
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 9092<span class="token punctuation">:</span><span class="token number">9092</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper1<span class="token punctuation">:</span>192.168.247.101
+      <span class="token punctuation">-</span> zookeeper2<span class="token punctuation">:</span>192.168.247.102
+      <span class="token punctuation">-</span> zookeeper3<span class="token punctuation">:</span>192.168.247.103
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h3 id="_8-6-orderer节点设置"><a href="#_8-6-orderer节点设置" class="header-anchor">#</a> 8.6. orderer节点设置</h3> <h4 id="_8-6-1-orderer节点配置文件模板"><a href="#_8-6-1-orderer节点配置文件模板" class="header-anchor">#</a> 8.6.1 orderer节点配置文件模板</h4> <ul><li><p>orderer节点配置文件模板</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">orderer0.example.com</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> orderer0.example.com
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>orderer<span class="token punctuation">:</span>latest
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=aberic_default
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOGLEVEL=debug
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LISTENPORT=7050
+      <span class="token punctuation">-</span> ORDERER_GENERAL_GENESISMETHOD=file
+      <span class="token punctuation">-</span> ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      <span class="token comment"># enabled TLS</span>
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_ENABLED=false
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_ROOTCAS=<span class="token punctuation">[</span>/var/hyperledger/orderer/tls/ca.crt<span class="token punctuation">]</span>
+      
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_LONGINTERVAL=10s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_LONGTOTAL=100s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_SHORTINTERVAL=1s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_SHORTTOTAL=30s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_VERBOSE=true
+      <span class="token punctuation">-</span> ORDERER_KAFKA_BROKERS=<span class="token punctuation">[</span>192.168.24.204<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.24.205<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.24.206<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.24.207<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">]</span>
+    <span class="token key atrule">working_dir</span><span class="token punctuation">:</span> /opt/gopath/src/github.com/hyperledger/fabric
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> orderer
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./channel<span class="token punctuation">-</span>artifacts/genesis.block<span class="token punctuation">:</span>/var/hyperledger/orderer/orderer.genesis.block
+      <span class="token punctuation">-</span> ./crypto<span class="token punctuation">-</span>config/ordererOrganizations/example.com/orderers/orderer0.example.com/msp<span class="token punctuation">:</span>/var/hyperledger/orderer/msp
+      <span class="token punctuation">-</span> ./crypto<span class="token punctuation">-</span>config/ordererOrganizations/example.com/orderers/orderer0.example.com/tls/<span class="token punctuation">:</span>/var/hyperledger/orderer/tls
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token key atrule">default</span><span class="token punctuation">:</span>
+        <span class="token key atrule">aliases</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> aberic
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 7050<span class="token punctuation">:</span><span class="token number">7050</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.24.204
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.24.205
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.24.206
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.24.207
+</code></pre></div></li> <li><p>细节解释</p> <blockquote><ol><li>环境变量
+<ul><li>ORDERER_KAFKA_RETRY_LONGINTERVAL
+<ul><li>每隔多长时间进行一次重试, 单位:秒</li></ul></li> <li>ORDERER_KAFKA_RETRY_LONGTOTAL
+<ul><li>总共重试的时长, 单位: 秒</li></ul></li> <li>ORDERER_KAFKA_RETRY_SHORTINTERVAL
+<ul><li>每隔多长时间进行一次重试, 单位:秒</li></ul></li> <li>ORDERER_KAFKA_RETRY_SHORTTOTAL
+<ul><li>总共重试的时长, 单位: 秒</li></ul></li> <li>ORDERER_KAFKA_VERBOSE
+<ul><li>启用日志与kafka进行交互, 启用: true, 不启用: false</li></ul></li> <li>ORDERER_KAFKA_BROKERS
+<ul><li>指向kafka节点的集合</li></ul></li></ul></li> <li>关于重试的时长
+<ul><li>先使用<code>ORDERER_KAFKA_RETRY_SHORTINTERVAL</code>进行重连, 重连的总时长为<code>ORDERER_KAFKA_RETRY_SHORTTOTAL</code></li> <li>如果上述步骤没有重连成功, 使用<code>ORDERER_KAFKA_RETRY_LONGINTERVAL</code>进行重连, 重连的总时长为<code>ORDERER_KAFKA_RETRY_LONGTOTAL</code></li></ul></li></ol></blockquote></li></ul> <h4 id="_8-6-3-orderer各节点的配置"><a href="#_8-6-3-orderer各节点的配置" class="header-anchor">#</a> 8.6.3 orderer各节点的配置</h4> <h5 id="orderer0配置"><a href="#orderer0配置" class="header-anchor">#</a> orderer0配置</h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># orderer0.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">orderer0.test.com</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> orderer0.test.com
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>orderer<span class="token punctuation">:</span>latest
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=kafka_default
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOGLEVEL=debug
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LISTENPORT=7050
+      <span class="token punctuation">-</span> ORDERER_GENERAL_GENESISMETHOD=file
+      <span class="token punctuation">-</span> ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      <span class="token comment"># enabled TLS</span>
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_ENABLED=false
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_ROOTCAS=<span class="token punctuation">[</span>/var/hyperledger/orderer/tls/ca.crt<span class="token punctuation">]</span>
+      
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_LONGINTERVAL=10s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_LONGTOTAL=100s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_SHORTINTERVAL=1s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_SHORTTOTAL=30s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_VERBOSE=true
+      <span class="token punctuation">-</span> ORDERER_KAFKA_BROKERS=<span class="token punctuation">[</span>192.168.247.201<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.202<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.203<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.204<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">]</span>
+    <span class="token key atrule">working_dir</span><span class="token punctuation">:</span> /opt/gopath/src/github.com/hyperledger/fabric
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> orderer
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./channel<span class="token punctuation">-</span>artifacts/genesis.block<span class="token punctuation">:</span>/var/hyperledger/orderer/orderer.genesis.block
+      <span class="token punctuation">-</span> ./crypto<span class="token punctuation">-</span>config/ordererOrganizations/test.com/orderers/orderer0.test.com/msp<span class="token punctuation">:</span>/var/hyperledger/orderer/msp
+      <span class="token punctuation">-</span> ./crypto<span class="token punctuation">-</span>config/ordererOrganizations/test.com/orderers/orderer0.test.com/tls/<span class="token punctuation">:</span>/var/hyperledger/orderer/tls
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+    <span class="token key atrule">default</span><span class="token punctuation">:</span>
+      <span class="token key atrule">aliases</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> kafka
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 7050<span class="token punctuation">:</span><span class="token number">7050</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h5 id="orderer1配置"><a href="#orderer1配置" class="header-anchor">#</a> orderer1配置</h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># orderer1.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">orderer1.test.com</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> orderer1.test.com
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>orderer<span class="token punctuation">:</span>latest
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=kafka_default
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOGLEVEL=debug
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LISTENPORT=7050
+      <span class="token punctuation">-</span> ORDERER_GENERAL_GENESISMETHOD=file
+      <span class="token punctuation">-</span> ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      <span class="token comment"># enabled TLS</span>
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_ENABLED=false
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_ROOTCAS=<span class="token punctuation">[</span>/var/hyperledger/orderer/tls/ca.crt<span class="token punctuation">]</span>
+      
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_LONGINTERVAL=10s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_LONGTOTAL=100s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_SHORTINTERVAL=1s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_SHORTTOTAL=30s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_VERBOSE=true
+      <span class="token punctuation">-</span> ORDERER_KAFKA_BROKERS=<span class="token punctuation">[</span>192.168.247.201<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.202<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.203<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.204<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">]</span>
+    <span class="token key atrule">working_dir</span><span class="token punctuation">:</span> /opt/gopath/src/github.com/hyperledger/fabric
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> orderer
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./channel<span class="token punctuation">-</span>artifacts/genesis.block<span class="token punctuation">:</span>/var/hyperledger/orderer/orderer.genesis.block
+      <span class="token punctuation">-</span> ./crypto<span class="token punctuation">-</span>config/ordererOrganizations/test.com/orderers/orderer1.test.com/msp<span class="token punctuation">:</span>/var/hyperledger/orderer/msp
+      <span class="token punctuation">-</span> ./crypto<span class="token punctuation">-</span>config/ordererOrganizations/test.com/orderers/orderer1.test.com/tls/<span class="token punctuation">:</span>/var/hyperledger/orderer/tls
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+    <span class="token key atrule">default</span><span class="token punctuation">:</span>
+      <span class="token key atrule">aliases</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> kafka
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 7050<span class="token punctuation">:</span><span class="token number">7050</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h5 id="orderer2配置"><a href="#orderer2配置" class="header-anchor">#</a> orderer2配置</h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># orderer2.yaml</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">orderer2.test.com</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> orderer2.test.com
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> hyperledger/fabric<span class="token punctuation">-</span>orderer<span class="token punctuation">:</span>latest
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=kafka_default
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOGLEVEL=debug
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LISTENPORT=7050
+      <span class="token punctuation">-</span> ORDERER_GENERAL_GENESISMETHOD=file
+      <span class="token punctuation">-</span> ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      <span class="token punctuation">-</span> ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      <span class="token comment"># enabled TLS</span>
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_ENABLED=false
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      <span class="token punctuation">-</span> ORDERER_GENERAL_TLS_ROOTCAS=<span class="token punctuation">[</span>/var/hyperledger/orderer/tls/ca.crt<span class="token punctuation">]</span>
+      
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_LONGINTERVAL=10s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_LONGTOTAL=100s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_SHORTINTERVAL=1s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_RETRY_SHORTTOTAL=30s
+      <span class="token punctuation">-</span> ORDERER_KAFKA_VERBOSE=true
+      <span class="token punctuation">-</span> ORDERER_KAFKA_BROKERS=<span class="token punctuation">[</span>192.168.247.201<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.202<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.203<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">,</span>192.168.247.204<span class="token punctuation">:</span><span class="token number">9092</span><span class="token punctuation">]</span>
+    <span class="token key atrule">working_dir</span><span class="token punctuation">:</span> /opt/gopath/src/github.com/hyperledger/fabric
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> orderer
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./channel<span class="token punctuation">-</span>artifacts/genesis.block<span class="token punctuation">:</span>/var/hyperledger/orderer/orderer.genesis.block
+      <span class="token punctuation">-</span> ./crypto<span class="token punctuation">-</span>config/ordererOrganizations/test.com/orderers/orderer2.test.com/msp<span class="token punctuation">:</span>/var/hyperledger/orderer/msp
+      <span class="token punctuation">-</span> ./crypto<span class="token punctuation">-</span>config/ordererOrganizations/test.com/orderers/orderer2.test.com/tls/<span class="token punctuation">:</span>/var/hyperledger/orderer/tls
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+    <span class="token key atrule">default</span><span class="token punctuation">:</span>
+      <span class="token key atrule">aliases</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> kafka
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 7050<span class="token punctuation">:</span><span class="token number">7050</span>
+    <span class="token key atrule">extra_hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka1<span class="token punctuation">:</span>192.168.247.201
+      <span class="token punctuation">-</span> kafka2<span class="token punctuation">:</span>192.168.247.202
+      <span class="token punctuation">-</span> kafka3<span class="token punctuation">:</span>192.168.247.203
+      <span class="token punctuation">-</span> kafka4<span class="token punctuation">:</span>192.168.247.204
+</code></pre></div><h3 id="_8-7-启动集群"><a href="#_8-7-启动集群" class="header-anchor">#</a> 8.7. 启动集群</h3> <blockquote><p>Kafka集群的启动顺序是这样的: 先启动<code>Zookeeper</code>集群, 随后启动<code>Kafka</code>集群, 最后启动<code>Orderer</code>排序服务器集群。由于peer节点只能和集群中<code>orderer</code>节点进行通信, 所以不管是使用solo集群还是kafka集群对peer都是没有影响的, 所以当我们的<code>kafka</code>集群顺利启动之后, 就可以启动对应的<code>Peer</code>节点了。</p></blockquote> <h4 id="_8-7-1-启动zookeeper集群"><a href="#_8-7-1-启动zookeeper集群" class="header-anchor">#</a> 8.7.1 启动Zookeeper集群</h4> <ul><li><p>zookeeper1:192.168.247.101</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 将写好的 zookeeper1.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+<span class="token comment"># 该命令可以不加 -d 参数, 这样就能看到当前 zookeeper 服务器启动的情况了</span>
+$ docker-compose -f zookeeper1.yaml up
+</code></pre></div></li> <li><p>zookeeper2:192.168.247.102</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 将写好的 zookeeper2.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+<span class="token comment"># 该命令可以不加 -d 参数, 这样就能看到当前 zookeeper 服务器启动的情况了</span>
+$ docker-compose -f zookeeper2.yaml up
+</code></pre></div></li> <li><p>zookeeper3:192.168.247.103</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 将写好的 zookeeper3.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+<span class="token comment"># 该命令可以不加 -d 参数, 这样就能看到当前 zookeeper 服务器启动的情况了</span>
+$ docker-compose -f zookeeper3.yaml up
+</code></pre></div></li></ul> <h4 id="_8-7-2-启动kafka集群"><a href="#_8-7-2-启动kafka集群" class="header-anchor">#</a> 8.7.2 启动Kafka集群</h4> <ul><li><p>kafka1:192.168.247.201</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 将写好的 kafka1.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+<span class="token comment"># 该命令可以不加 -d 参数, 这样就能看到当前 kafka 服务器启动的情况了</span>
+$ docker-compose -f kafka1.yaml up
+</code></pre></div></li> <li><p>kafka2:192.168.247.202</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 将写好的 kafka2.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+$ docker-compose -f kafka2.yaml up -d
+</code></pre></div></li> <li><p>kafka3:192.168.247.203</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 将写好的 kafka3.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+$ docker-compose -f kafka3.yaml up -d
+</code></pre></div></li> <li><p>kafka4:192.168.247.204</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 将写好的 kafka4.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+$ docker-compose -f kafka4.yaml up
+</code></pre></div></li></ul> <h4 id="_8-7-3-启动orderer集群"><a href="#_8-7-3-启动orderer集群" class="header-anchor">#</a> 8.7.3 启动Orderer集群</h4> <ul><li><p>orderer0:192.168.247.91</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 假设生成证书和通道创始块文件操作是在当前 orderer0 上完成的, 那么应该在当前 kafka 工作目录下</span>
+$ tree ./ -L <span class="token number">1</span>
+./
+├── channel-artifacts
+├── configtx.yaml
+├── crypto-config
+└── crypto-config.yaml
+<span class="token comment"># 将写好的 orderer0.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+$ docker-compose -f orderer0.yaml up -d
+</code></pre></div></li> <li><p>orderer1:192.168.247.92</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 将生成的 证书文件目录 和 通道创始块 文件目录拷贝到当前主机的 ~/kafka目录中</span>
+$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 创建子目录 crypto-config</span>
+$ <span class="token function">mkdir</span> crypto-config
+<span class="token comment"># 远程拷贝</span>
+$ <span class="token function">scp</span> -f itcast@192.168.247.91:/home/itcast/kafka/crypto-config/ordererOrganizations ./crypto-config
+<span class="token comment"># # 将写好的 orderer1.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+$ docker-compose -f orderer1.yaml up -d
+</code></pre></div></li> <li><p>orderer2:192.168.247.93</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 将生成的 证书文件目录 和 通道创始块 文件目录拷贝到当前主机的 ~/kafka目录中</span>
+$ <span class="token builtin class-name">cd</span> ~/kafka
+<span class="token comment"># 创建子目录 crypto-config</span>
+$ <span class="token function">mkdir</span> crypto-config
+<span class="token comment"># 远程拷贝</span>
+$ <span class="token function">scp</span> -f itcast@192.168.247.91:/home/itcast/kafka/crypto-config/ordererOrganizations ./crypto-config
+<span class="token comment"># # 将写好的 orderer3.yaml 配置文件放到该目录下, 通过 docker-compose 启动容器</span>
+$ docker-compose -f orderer3.yaml up -d
+</code></pre></div></li></ul> <h4 id="_8-7-4-启动peer集群"><a href="#_8-7-4-启动peer集群" class="header-anchor">#</a> 8.7.4 启动Peer集群</h4> <blockquote><p>关于 Peer 节点的部署和操作和 Solo 多机多节点部署的方式是完全一样的, 在此不再阐述, 请查阅第七章。</p></blockquote></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">7/20/2020, 2:09:44 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/go-block/fabric/7Solo多机多节点部署.html" class="prev">7Solo多机多节点部署</a></span> <span class="next"><a href="/go-block/fabric2.x/">2.X目录</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cb35c8f6.js" defer></script><script src="/assets/js/2.063846a6.js" defer></script><script src="/assets/js/4.1ffb4609.js" defer></script><script src="/assets/js/58.85ac2740.js" defer></script>
+  </body>
+</html>

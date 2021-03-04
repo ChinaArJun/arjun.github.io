@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AJ</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <script>
+            var _hmt = _hmt || [];
+            (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?51b8c2e72d1adf96524638ce85bb7d72";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+
+            // 引入谷歌,不需要可删除这段
+            var hm1 = document.createElement("script");
+            hm1.src = "https://www.googletagmanager.com/gtag/js?id=G-B7351EYS04";
+            var s1 = document.getElementsByTagName("script")[0]; 
+            s1.parentNode.insertBefore(hm1, s1);
+            })();
+
+            // 谷歌加载,不需要可删除
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-B7351EYS04');
+        </script>
+    <meta name="description" content="阿俊博客|记录一个程序员的成长历程 阿俊博客(blog.zhequtao.com)记录一个后端程序员的成长历程,分享他的学习笔记和心得,还有些开发必备技巧哦! java golang web html dev开发">
+    <link rel="preload" href="/assets/css/0.styles.a3df589e.css" as="style"><link rel="preload" href="/assets/js/app.cb35c8f6.js" as="script"><link rel="preload" href="/assets/js/2.063846a6.js" as="script"><link rel="preload" href="/assets/js/4.1ffb4609.js" as="script"><link rel="preload" href="/assets/js/334.77e02010.js" as="script"><link rel="prefetch" href="/assets/js/10.5629fe4d.js"><link rel="prefetch" href="/assets/js/100.8417ccea.js"><link rel="prefetch" href="/assets/js/101.37fdb377.js"><link rel="prefetch" href="/assets/js/102.848b686d.js"><link rel="prefetch" href="/assets/js/103.6a2489a0.js"><link rel="prefetch" href="/assets/js/104.99e8899f.js"><link rel="prefetch" href="/assets/js/105.8b741763.js"><link rel="prefetch" href="/assets/js/106.08163715.js"><link rel="prefetch" href="/assets/js/107.21801349.js"><link rel="prefetch" href="/assets/js/108.e3a2892b.js"><link rel="prefetch" href="/assets/js/109.dab5618c.js"><link rel="prefetch" href="/assets/js/11.cddc1623.js"><link rel="prefetch" href="/assets/js/110.f5249b39.js"><link rel="prefetch" href="/assets/js/111.9abf8bce.js"><link rel="prefetch" href="/assets/js/112.8eb86924.js"><link rel="prefetch" href="/assets/js/113.c180ed46.js"><link rel="prefetch" href="/assets/js/114.2370f5b5.js"><link rel="prefetch" href="/assets/js/115.88dc3fd8.js"><link rel="prefetch" href="/assets/js/116.63403600.js"><link rel="prefetch" href="/assets/js/117.83674aa0.js"><link rel="prefetch" href="/assets/js/118.9c58c685.js"><link rel="prefetch" href="/assets/js/119.621f9a70.js"><link rel="prefetch" href="/assets/js/12.ff3d03f5.js"><link rel="prefetch" href="/assets/js/120.a6d2b7f7.js"><link rel="prefetch" href="/assets/js/121.ae0ce9d1.js"><link rel="prefetch" href="/assets/js/122.de240e6d.js"><link rel="prefetch" href="/assets/js/123.b043e3e4.js"><link rel="prefetch" href="/assets/js/124.550af937.js"><link rel="prefetch" href="/assets/js/125.6f06b34c.js"><link rel="prefetch" href="/assets/js/126.38d64604.js"><link rel="prefetch" href="/assets/js/127.a948db56.js"><link rel="prefetch" href="/assets/js/128.4ca789e0.js"><link rel="prefetch" href="/assets/js/129.59be4505.js"><link rel="prefetch" href="/assets/js/13.e9f75cc3.js"><link rel="prefetch" href="/assets/js/130.ddae76a9.js"><link rel="prefetch" href="/assets/js/131.d969c265.js"><link rel="prefetch" href="/assets/js/132.5f43ce5c.js"><link rel="prefetch" href="/assets/js/133.b651af22.js"><link rel="prefetch" href="/assets/js/134.2499236a.js"><link rel="prefetch" href="/assets/js/135.4180596c.js"><link rel="prefetch" href="/assets/js/136.2c309233.js"><link rel="prefetch" href="/assets/js/137.72ca42dd.js"><link rel="prefetch" href="/assets/js/138.3772cd38.js"><link rel="prefetch" href="/assets/js/139.1d0a53da.js"><link rel="prefetch" href="/assets/js/14.be4b89ed.js"><link rel="prefetch" href="/assets/js/140.22368353.js"><link rel="prefetch" href="/assets/js/141.a14aef3c.js"><link rel="prefetch" href="/assets/js/142.2041ce3a.js"><link rel="prefetch" href="/assets/js/143.377262ec.js"><link rel="prefetch" href="/assets/js/144.8fcbc368.js"><link rel="prefetch" href="/assets/js/145.46da36bf.js"><link rel="prefetch" href="/assets/js/146.eceae0d9.js"><link rel="prefetch" href="/assets/js/147.e1bd6531.js"><link rel="prefetch" href="/assets/js/148.76f193ce.js"><link rel="prefetch" href="/assets/js/149.587bd581.js"><link rel="prefetch" href="/assets/js/15.e3219ac0.js"><link rel="prefetch" href="/assets/js/150.169c71e0.js"><link rel="prefetch" href="/assets/js/151.384021ea.js"><link rel="prefetch" href="/assets/js/152.0f20cf03.js"><link rel="prefetch" href="/assets/js/153.fd94af1e.js"><link rel="prefetch" href="/assets/js/154.a550f5dc.js"><link rel="prefetch" href="/assets/js/155.ba1ae86e.js"><link rel="prefetch" href="/assets/js/156.3b98ded0.js"><link rel="prefetch" href="/assets/js/157.cd378596.js"><link rel="prefetch" href="/assets/js/158.c138d0df.js"><link rel="prefetch" href="/assets/js/159.2635f7f4.js"><link rel="prefetch" href="/assets/js/16.c9c35d42.js"><link rel="prefetch" href="/assets/js/160.d51b4126.js"><link rel="prefetch" href="/assets/js/161.5dc29e7b.js"><link rel="prefetch" href="/assets/js/162.f257a92b.js"><link rel="prefetch" href="/assets/js/163.9eb75e40.js"><link rel="prefetch" href="/assets/js/164.8fb1e22b.js"><link rel="prefetch" href="/assets/js/165.49255503.js"><link rel="prefetch" href="/assets/js/166.e54539e6.js"><link rel="prefetch" href="/assets/js/167.a06acdb0.js"><link rel="prefetch" href="/assets/js/168.948ab620.js"><link rel="prefetch" href="/assets/js/169.7d756812.js"><link rel="prefetch" href="/assets/js/17.81067bc8.js"><link rel="prefetch" href="/assets/js/170.ffe63330.js"><link rel="prefetch" href="/assets/js/171.835398b9.js"><link rel="prefetch" href="/assets/js/172.3987be39.js"><link rel="prefetch" href="/assets/js/173.e3cedb8a.js"><link rel="prefetch" href="/assets/js/174.11a32588.js"><link rel="prefetch" href="/assets/js/175.da6f9782.js"><link rel="prefetch" href="/assets/js/176.50e55edc.js"><link rel="prefetch" href="/assets/js/177.a89a1d17.js"><link rel="prefetch" href="/assets/js/178.7ad3ce84.js"><link rel="prefetch" href="/assets/js/179.98a1343b.js"><link rel="prefetch" href="/assets/js/18.b67caf4c.js"><link rel="prefetch" href="/assets/js/180.4e98599b.js"><link rel="prefetch" href="/assets/js/181.dd885afd.js"><link rel="prefetch" href="/assets/js/182.789990c8.js"><link rel="prefetch" href="/assets/js/183.f11ca2fd.js"><link rel="prefetch" href="/assets/js/184.fcf128ec.js"><link rel="prefetch" href="/assets/js/185.54e1e9b6.js"><link rel="prefetch" href="/assets/js/186.db91021a.js"><link rel="prefetch" href="/assets/js/187.5309dd42.js"><link rel="prefetch" href="/assets/js/188.615821ea.js"><link rel="prefetch" href="/assets/js/189.f23f1d42.js"><link rel="prefetch" href="/assets/js/19.294a011c.js"><link rel="prefetch" href="/assets/js/190.efe894bc.js"><link rel="prefetch" href="/assets/js/191.0d14904a.js"><link rel="prefetch" href="/assets/js/192.efd25a9e.js"><link rel="prefetch" href="/assets/js/193.88151f34.js"><link rel="prefetch" href="/assets/js/194.efedce14.js"><link rel="prefetch" href="/assets/js/195.03ac15bb.js"><link rel="prefetch" href="/assets/js/196.fbc18389.js"><link rel="prefetch" href="/assets/js/197.0257ab5e.js"><link rel="prefetch" href="/assets/js/198.f1de2817.js"><link rel="prefetch" href="/assets/js/199.8f1c166b.js"><link rel="prefetch" href="/assets/js/20.1a41edb1.js"><link rel="prefetch" href="/assets/js/200.4af99727.js"><link rel="prefetch" href="/assets/js/201.9f8caef1.js"><link rel="prefetch" href="/assets/js/202.6f07d705.js"><link rel="prefetch" href="/assets/js/203.5012fe50.js"><link rel="prefetch" href="/assets/js/204.3a0dfd8e.js"><link rel="prefetch" href="/assets/js/205.0ba9b606.js"><link rel="prefetch" href="/assets/js/206.663a49ec.js"><link rel="prefetch" href="/assets/js/207.b2406149.js"><link rel="prefetch" href="/assets/js/208.b0b2dfd8.js"><link rel="prefetch" href="/assets/js/209.41a0ec9f.js"><link rel="prefetch" href="/assets/js/21.b6ea6f9a.js"><link rel="prefetch" href="/assets/js/210.6f36beb8.js"><link rel="prefetch" href="/assets/js/211.90ef6e5c.js"><link rel="prefetch" href="/assets/js/212.42339063.js"><link rel="prefetch" href="/assets/js/213.a2bfeda9.js"><link rel="prefetch" href="/assets/js/214.5c7eb42a.js"><link rel="prefetch" href="/assets/js/215.18260ae5.js"><link rel="prefetch" href="/assets/js/216.7678fd29.js"><link rel="prefetch" href="/assets/js/217.9d936f88.js"><link rel="prefetch" href="/assets/js/218.bac403c4.js"><link rel="prefetch" href="/assets/js/219.9d8cb16b.js"><link rel="prefetch" href="/assets/js/22.367cc253.js"><link rel="prefetch" href="/assets/js/220.375b7707.js"><link rel="prefetch" href="/assets/js/221.3e400da4.js"><link rel="prefetch" href="/assets/js/222.8fbd2857.js"><link rel="prefetch" href="/assets/js/223.76a10075.js"><link rel="prefetch" href="/assets/js/224.ff94cc4e.js"><link rel="prefetch" href="/assets/js/225.d4688ca6.js"><link rel="prefetch" href="/assets/js/226.b13b18af.js"><link rel="prefetch" href="/assets/js/227.288d0f96.js"><link rel="prefetch" href="/assets/js/228.60430ac0.js"><link rel="prefetch" href="/assets/js/229.da728342.js"><link rel="prefetch" href="/assets/js/23.bc3de730.js"><link rel="prefetch" href="/assets/js/230.d8417d20.js"><link rel="prefetch" href="/assets/js/231.6a9ce0b4.js"><link rel="prefetch" href="/assets/js/232.7611b413.js"><link rel="prefetch" href="/assets/js/233.94712cf9.js"><link rel="prefetch" href="/assets/js/234.93888298.js"><link rel="prefetch" href="/assets/js/235.62506981.js"><link rel="prefetch" href="/assets/js/236.5a055c7c.js"><link rel="prefetch" href="/assets/js/237.0a6c4902.js"><link rel="prefetch" href="/assets/js/238.e5f37663.js"><link rel="prefetch" href="/assets/js/239.331bba86.js"><link rel="prefetch" href="/assets/js/24.82f0901c.js"><link rel="prefetch" href="/assets/js/240.59591cfc.js"><link rel="prefetch" href="/assets/js/241.ce671f47.js"><link rel="prefetch" href="/assets/js/242.fb2542fa.js"><link rel="prefetch" href="/assets/js/243.74abc73d.js"><link rel="prefetch" href="/assets/js/244.ecd707b2.js"><link rel="prefetch" href="/assets/js/245.d728367b.js"><link rel="prefetch" href="/assets/js/246.9270e7fe.js"><link rel="prefetch" href="/assets/js/247.a421ba15.js"><link rel="prefetch" href="/assets/js/248.e759132e.js"><link rel="prefetch" href="/assets/js/249.3077fb46.js"><link rel="prefetch" href="/assets/js/25.95c551dc.js"><link rel="prefetch" href="/assets/js/250.5fe4dd03.js"><link rel="prefetch" href="/assets/js/251.4b8fe76c.js"><link rel="prefetch" href="/assets/js/252.0d1cf7ea.js"><link rel="prefetch" href="/assets/js/253.89d16ba0.js"><link rel="prefetch" href="/assets/js/254.8d1afc68.js"><link rel="prefetch" href="/assets/js/255.64e680cb.js"><link rel="prefetch" href="/assets/js/256.9defbd0e.js"><link rel="prefetch" href="/assets/js/257.1fef24fd.js"><link rel="prefetch" href="/assets/js/258.4e205286.js"><link rel="prefetch" href="/assets/js/259.f3d56efc.js"><link rel="prefetch" href="/assets/js/26.7fe56bac.js"><link rel="prefetch" href="/assets/js/260.378299e6.js"><link rel="prefetch" href="/assets/js/261.8e4fb397.js"><link rel="prefetch" href="/assets/js/262.54595d98.js"><link rel="prefetch" href="/assets/js/263.fb333dc1.js"><link rel="prefetch" href="/assets/js/264.13d13301.js"><link rel="prefetch" href="/assets/js/265.c85104bc.js"><link rel="prefetch" href="/assets/js/266.9f3d1f1c.js"><link rel="prefetch" href="/assets/js/267.fb392815.js"><link rel="prefetch" href="/assets/js/268.add7eacb.js"><link rel="prefetch" href="/assets/js/269.7e49fcc7.js"><link rel="prefetch" href="/assets/js/27.5547e5f0.js"><link rel="prefetch" href="/assets/js/270.22342070.js"><link rel="prefetch" href="/assets/js/271.59917b1a.js"><link rel="prefetch" href="/assets/js/272.4a4751d5.js"><link rel="prefetch" href="/assets/js/273.f4c2fa5c.js"><link rel="prefetch" href="/assets/js/274.1208bc94.js"><link rel="prefetch" href="/assets/js/275.f6528753.js"><link rel="prefetch" href="/assets/js/276.a68772cd.js"><link rel="prefetch" href="/assets/js/277.f154ab32.js"><link rel="prefetch" href="/assets/js/278.bb616a63.js"><link rel="prefetch" href="/assets/js/279.6a356cff.js"><link rel="prefetch" href="/assets/js/28.b08b2847.js"><link rel="prefetch" href="/assets/js/280.5afc20fc.js"><link rel="prefetch" href="/assets/js/281.3cd86225.js"><link rel="prefetch" href="/assets/js/282.3ecb92aa.js"><link rel="prefetch" href="/assets/js/283.85159ea7.js"><link rel="prefetch" href="/assets/js/284.b6545c68.js"><link rel="prefetch" href="/assets/js/285.5e83ee29.js"><link rel="prefetch" href="/assets/js/286.2aad298d.js"><link rel="prefetch" href="/assets/js/287.3ca76244.js"><link rel="prefetch" href="/assets/js/288.5b17963d.js"><link rel="prefetch" href="/assets/js/289.f47a759b.js"><link rel="prefetch" href="/assets/js/29.562dbf7d.js"><link rel="prefetch" href="/assets/js/290.36b603c7.js"><link rel="prefetch" href="/assets/js/291.a9bd8951.js"><link rel="prefetch" href="/assets/js/292.dfc54f28.js"><link rel="prefetch" href="/assets/js/293.2d061212.js"><link rel="prefetch" href="/assets/js/294.6d564a9e.js"><link rel="prefetch" href="/assets/js/295.a31dd593.js"><link rel="prefetch" href="/assets/js/296.3101e5e8.js"><link rel="prefetch" href="/assets/js/297.7efde936.js"><link rel="prefetch" href="/assets/js/298.8bb3aa68.js"><link rel="prefetch" href="/assets/js/299.8b51e6bd.js"><link rel="prefetch" href="/assets/js/3.76257eb7.js"><link rel="prefetch" href="/assets/js/30.221adea2.js"><link rel="prefetch" href="/assets/js/300.62effe45.js"><link rel="prefetch" href="/assets/js/301.98c863c5.js"><link rel="prefetch" href="/assets/js/302.e3493ab2.js"><link rel="prefetch" href="/assets/js/303.800c8028.js"><link rel="prefetch" href="/assets/js/304.b6f08986.js"><link rel="prefetch" href="/assets/js/305.09af356b.js"><link rel="prefetch" href="/assets/js/306.d0d3589d.js"><link rel="prefetch" href="/assets/js/307.ee2fd249.js"><link rel="prefetch" href="/assets/js/308.f3f76368.js"><link rel="prefetch" href="/assets/js/309.d2b5ce40.js"><link rel="prefetch" href="/assets/js/31.334fc8bb.js"><link rel="prefetch" href="/assets/js/310.b4fa2feb.js"><link rel="prefetch" href="/assets/js/311.7d747ef3.js"><link rel="prefetch" href="/assets/js/312.89bdff40.js"><link rel="prefetch" href="/assets/js/313.875b82fe.js"><link rel="prefetch" href="/assets/js/314.0bbe51c4.js"><link rel="prefetch" href="/assets/js/315.cc07dbcf.js"><link rel="prefetch" href="/assets/js/316.bc72b152.js"><link rel="prefetch" href="/assets/js/317.55462812.js"><link rel="prefetch" href="/assets/js/318.a158fda0.js"><link rel="prefetch" href="/assets/js/319.b03a5bd2.js"><link rel="prefetch" href="/assets/js/32.d6826b16.js"><link rel="prefetch" href="/assets/js/320.a5bd19b0.js"><link rel="prefetch" href="/assets/js/321.4f9faaa7.js"><link rel="prefetch" href="/assets/js/322.dbd3b4fa.js"><link rel="prefetch" href="/assets/js/323.a04e2062.js"><link rel="prefetch" href="/assets/js/324.c45b46cf.js"><link rel="prefetch" href="/assets/js/325.cd1460c4.js"><link rel="prefetch" href="/assets/js/326.bd90ef85.js"><link rel="prefetch" href="/assets/js/327.8bf38ef7.js"><link rel="prefetch" href="/assets/js/328.99e9aed3.js"><link rel="prefetch" href="/assets/js/329.de0012cb.js"><link rel="prefetch" href="/assets/js/33.b1059062.js"><link rel="prefetch" href="/assets/js/330.59f11391.js"><link rel="prefetch" href="/assets/js/331.6d16a13c.js"><link rel="prefetch" href="/assets/js/332.922ca235.js"><link rel="prefetch" href="/assets/js/333.c94c3602.js"><link rel="prefetch" href="/assets/js/335.1e0c4f7b.js"><link rel="prefetch" href="/assets/js/336.5675dc4f.js"><link rel="prefetch" href="/assets/js/337.bb6e11dc.js"><link rel="prefetch" href="/assets/js/338.294981e9.js"><link rel="prefetch" href="/assets/js/339.d0376372.js"><link rel="prefetch" href="/assets/js/34.0c7d5782.js"><link rel="prefetch" href="/assets/js/340.64596428.js"><link rel="prefetch" href="/assets/js/341.ec0f9409.js"><link rel="prefetch" href="/assets/js/342.7abc47c4.js"><link rel="prefetch" href="/assets/js/343.4262d486.js"><link rel="prefetch" href="/assets/js/344.8729ad8c.js"><link rel="prefetch" href="/assets/js/345.c210d888.js"><link rel="prefetch" href="/assets/js/346.6f42f7cb.js"><link rel="prefetch" href="/assets/js/347.81b41ae5.js"><link rel="prefetch" href="/assets/js/348.07eca37c.js"><link rel="prefetch" href="/assets/js/349.8019d6f3.js"><link rel="prefetch" href="/assets/js/35.ae14e37f.js"><link rel="prefetch" href="/assets/js/350.57da2e7b.js"><link rel="prefetch" href="/assets/js/351.2e99afdf.js"><link rel="prefetch" href="/assets/js/352.67dd88b7.js"><link rel="prefetch" href="/assets/js/353.15b9f624.js"><link rel="prefetch" href="/assets/js/354.a63e8432.js"><link rel="prefetch" href="/assets/js/355.bbc16ee9.js"><link rel="prefetch" href="/assets/js/356.ff63d3bb.js"><link rel="prefetch" href="/assets/js/357.4fb2d941.js"><link rel="prefetch" href="/assets/js/358.55182977.js"><link rel="prefetch" href="/assets/js/359.265c3d26.js"><link rel="prefetch" href="/assets/js/36.b9ed4cf1.js"><link rel="prefetch" href="/assets/js/360.ced80eb3.js"><link rel="prefetch" href="/assets/js/361.afe6ba84.js"><link rel="prefetch" href="/assets/js/362.c2b62518.js"><link rel="prefetch" href="/assets/js/363.0c4a4800.js"><link rel="prefetch" href="/assets/js/364.ce60291b.js"><link rel="prefetch" href="/assets/js/365.0e3a61f9.js"><link rel="prefetch" href="/assets/js/366.d53ccb03.js"><link rel="prefetch" href="/assets/js/367.689e464d.js"><link rel="prefetch" href="/assets/js/368.418c571f.js"><link rel="prefetch" href="/assets/js/369.c2fff3c8.js"><link rel="prefetch" href="/assets/js/37.a021ac57.js"><link rel="prefetch" href="/assets/js/370.a932b958.js"><link rel="prefetch" href="/assets/js/371.7d153241.js"><link rel="prefetch" href="/assets/js/372.fb9878fa.js"><link rel="prefetch" href="/assets/js/373.85772e03.js"><link rel="prefetch" href="/assets/js/374.b4a8b1b6.js"><link rel="prefetch" href="/assets/js/375.32f70596.js"><link rel="prefetch" href="/assets/js/376.a16d79a8.js"><link rel="prefetch" href="/assets/js/377.c996b7e1.js"><link rel="prefetch" href="/assets/js/378.d37d15c7.js"><link rel="prefetch" href="/assets/js/379.b81ba7dd.js"><link rel="prefetch" href="/assets/js/38.89138658.js"><link rel="prefetch" href="/assets/js/380.524c9b31.js"><link rel="prefetch" href="/assets/js/381.7ebfd6db.js"><link rel="prefetch" href="/assets/js/382.29edda0f.js"><link rel="prefetch" href="/assets/js/383.9642a212.js"><link rel="prefetch" href="/assets/js/384.086e3b42.js"><link rel="prefetch" href="/assets/js/385.a9bb46a8.js"><link rel="prefetch" href="/assets/js/386.f2561a39.js"><link rel="prefetch" href="/assets/js/387.ba9b6aaa.js"><link rel="prefetch" href="/assets/js/388.e0ace495.js"><link rel="prefetch" href="/assets/js/389.ba8c09dd.js"><link rel="prefetch" href="/assets/js/39.04f331e3.js"><link rel="prefetch" href="/assets/js/390.de1bb48b.js"><link rel="prefetch" href="/assets/js/391.7cc6edeb.js"><link rel="prefetch" href="/assets/js/392.0493a6f7.js"><link rel="prefetch" href="/assets/js/393.ba2d3e62.js"><link rel="prefetch" href="/assets/js/394.b3aa9224.js"><link rel="prefetch" href="/assets/js/395.f4df3a60.js"><link rel="prefetch" href="/assets/js/396.09644790.js"><link rel="prefetch" href="/assets/js/397.76163964.js"><link rel="prefetch" href="/assets/js/398.377fd8fc.js"><link rel="prefetch" href="/assets/js/399.39059be5.js"><link rel="prefetch" href="/assets/js/40.a21abf05.js"><link rel="prefetch" href="/assets/js/400.559a547f.js"><link rel="prefetch" href="/assets/js/401.bc6d738c.js"><link rel="prefetch" href="/assets/js/402.c504ed7b.js"><link rel="prefetch" href="/assets/js/403.77a0af9c.js"><link rel="prefetch" href="/assets/js/404.0f408cc6.js"><link rel="prefetch" href="/assets/js/405.90b0bab6.js"><link rel="prefetch" href="/assets/js/406.01b11432.js"><link rel="prefetch" href="/assets/js/407.58991ce5.js"><link rel="prefetch" href="/assets/js/408.9806278e.js"><link rel="prefetch" href="/assets/js/409.8d9b4bb3.js"><link rel="prefetch" href="/assets/js/41.6bcfc592.js"><link rel="prefetch" href="/assets/js/410.02dee620.js"><link rel="prefetch" href="/assets/js/411.3d12d3a6.js"><link rel="prefetch" href="/assets/js/412.37a62624.js"><link rel="prefetch" href="/assets/js/413.bda7ca34.js"><link rel="prefetch" href="/assets/js/414.2abb6547.js"><link rel="prefetch" href="/assets/js/415.1d271923.js"><link rel="prefetch" href="/assets/js/416.d1b11dfe.js"><link rel="prefetch" href="/assets/js/417.fcbf07ff.js"><link rel="prefetch" href="/assets/js/418.524d40ba.js"><link rel="prefetch" href="/assets/js/419.f264e463.js"><link rel="prefetch" href="/assets/js/42.ec85a270.js"><link rel="prefetch" href="/assets/js/420.8b99e60d.js"><link rel="prefetch" href="/assets/js/421.c697d876.js"><link rel="prefetch" href="/assets/js/422.4af54ae0.js"><link rel="prefetch" href="/assets/js/423.b75f24ff.js"><link rel="prefetch" href="/assets/js/424.ea80054f.js"><link rel="prefetch" href="/assets/js/425.804b48b0.js"><link rel="prefetch" href="/assets/js/426.ffed8383.js"><link rel="prefetch" href="/assets/js/427.2040bd22.js"><link rel="prefetch" href="/assets/js/428.b878fb56.js"><link rel="prefetch" href="/assets/js/429.f81fd922.js"><link rel="prefetch" href="/assets/js/43.c174449d.js"><link rel="prefetch" href="/assets/js/430.16f328ab.js"><link rel="prefetch" href="/assets/js/431.56f11924.js"><link rel="prefetch" href="/assets/js/432.e4c77710.js"><link rel="prefetch" href="/assets/js/433.29acf14b.js"><link rel="prefetch" href="/assets/js/434.33ee22fc.js"><link rel="prefetch" href="/assets/js/435.516f7600.js"><link rel="prefetch" href="/assets/js/436.28ae526a.js"><link rel="prefetch" href="/assets/js/437.b9bac473.js"><link rel="prefetch" href="/assets/js/438.711bd934.js"><link rel="prefetch" href="/assets/js/439.fe5f28bd.js"><link rel="prefetch" href="/assets/js/44.8704338b.js"><link rel="prefetch" href="/assets/js/440.b2f48747.js"><link rel="prefetch" href="/assets/js/441.4862a724.js"><link rel="prefetch" href="/assets/js/442.751f8ae7.js"><link rel="prefetch" href="/assets/js/443.9998dbe9.js"><link rel="prefetch" href="/assets/js/444.23d3f688.js"><link rel="prefetch" href="/assets/js/445.72419f35.js"><link rel="prefetch" href="/assets/js/446.21e02b7b.js"><link rel="prefetch" href="/assets/js/447.6bd039e5.js"><link rel="prefetch" href="/assets/js/448.af29ff31.js"><link rel="prefetch" href="/assets/js/449.bbdca196.js"><link rel="prefetch" href="/assets/js/45.f8a2a3b3.js"><link rel="prefetch" href="/assets/js/450.32e470b8.js"><link rel="prefetch" href="/assets/js/451.f4c8ff6a.js"><link rel="prefetch" href="/assets/js/452.c0ec8943.js"><link rel="prefetch" href="/assets/js/453.5af475c6.js"><link rel="prefetch" href="/assets/js/454.567aa6c1.js"><link rel="prefetch" href="/assets/js/455.326072d1.js"><link rel="prefetch" href="/assets/js/456.64b88847.js"><link rel="prefetch" href="/assets/js/457.61c91559.js"><link rel="prefetch" href="/assets/js/458.4f4d43d6.js"><link rel="prefetch" href="/assets/js/459.a88891cb.js"><link rel="prefetch" href="/assets/js/46.90855a0f.js"><link rel="prefetch" href="/assets/js/460.fb9e15f6.js"><link rel="prefetch" href="/assets/js/461.998a4991.js"><link rel="prefetch" href="/assets/js/462.56ecfb03.js"><link rel="prefetch" href="/assets/js/463.582cd053.js"><link rel="prefetch" href="/assets/js/464.f12a0050.js"><link rel="prefetch" href="/assets/js/465.cc3b08a8.js"><link rel="prefetch" href="/assets/js/466.ea7e4ce2.js"><link rel="prefetch" href="/assets/js/467.58700d93.js"><link rel="prefetch" href="/assets/js/468.bb9998cd.js"><link rel="prefetch" href="/assets/js/469.232d261d.js"><link rel="prefetch" href="/assets/js/47.02516d33.js"><link rel="prefetch" href="/assets/js/470.90ab2be8.js"><link rel="prefetch" href="/assets/js/471.3652fec6.js"><link rel="prefetch" href="/assets/js/472.bc7517c9.js"><link rel="prefetch" href="/assets/js/473.27b7892f.js"><link rel="prefetch" href="/assets/js/474.0d488768.js"><link rel="prefetch" href="/assets/js/475.bc33cf17.js"><link rel="prefetch" href="/assets/js/476.76ce67eb.js"><link rel="prefetch" href="/assets/js/477.a20657f6.js"><link rel="prefetch" href="/assets/js/478.8905ef26.js"><link rel="prefetch" href="/assets/js/479.23ec3dc9.js"><link rel="prefetch" href="/assets/js/48.8d38983c.js"><link rel="prefetch" href="/assets/js/480.105bf58e.js"><link rel="prefetch" href="/assets/js/481.d62a3699.js"><link rel="prefetch" href="/assets/js/482.6cb10cdb.js"><link rel="prefetch" href="/assets/js/483.15b9ef53.js"><link rel="prefetch" href="/assets/js/484.794aff9c.js"><link rel="prefetch" href="/assets/js/485.3e6ef3cb.js"><link rel="prefetch" href="/assets/js/486.fc20eb22.js"><link rel="prefetch" href="/assets/js/487.2a4f7d47.js"><link rel="prefetch" href="/assets/js/488.24ba9af5.js"><link rel="prefetch" href="/assets/js/489.d451928e.js"><link rel="prefetch" href="/assets/js/49.bd70c59c.js"><link rel="prefetch" href="/assets/js/490.d83e4fc7.js"><link rel="prefetch" href="/assets/js/491.0210a738.js"><link rel="prefetch" href="/assets/js/492.3a69cd85.js"><link rel="prefetch" href="/assets/js/493.89d2920f.js"><link rel="prefetch" href="/assets/js/494.b7d1c15e.js"><link rel="prefetch" href="/assets/js/495.7ccfe17f.js"><link rel="prefetch" href="/assets/js/496.0d6c912a.js"><link rel="prefetch" href="/assets/js/497.087ca2c6.js"><link rel="prefetch" href="/assets/js/498.f2b3c894.js"><link rel="prefetch" href="/assets/js/499.e741f312.js"><link rel="prefetch" href="/assets/js/5.405f2620.js"><link rel="prefetch" href="/assets/js/50.9df07553.js"><link rel="prefetch" href="/assets/js/500.cb9babb9.js"><link rel="prefetch" href="/assets/js/501.63a859b6.js"><link rel="prefetch" href="/assets/js/502.f346b273.js"><link rel="prefetch" href="/assets/js/503.cdcd3de3.js"><link rel="prefetch" href="/assets/js/504.e83ec450.js"><link rel="prefetch" href="/assets/js/505.95f18293.js"><link rel="prefetch" href="/assets/js/506.02060a3c.js"><link rel="prefetch" href="/assets/js/507.859d6ae4.js"><link rel="prefetch" href="/assets/js/508.9724d886.js"><link rel="prefetch" href="/assets/js/509.e17dd53e.js"><link rel="prefetch" href="/assets/js/51.3dfc6350.js"><link rel="prefetch" href="/assets/js/510.ea0c942f.js"><link rel="prefetch" href="/assets/js/511.64a7f9a8.js"><link rel="prefetch" href="/assets/js/512.6cce418a.js"><link rel="prefetch" href="/assets/js/513.ea813fe8.js"><link rel="prefetch" href="/assets/js/514.10242470.js"><link rel="prefetch" href="/assets/js/515.5308bdf6.js"><link rel="prefetch" href="/assets/js/516.dfb113bc.js"><link rel="prefetch" href="/assets/js/517.96c71069.js"><link rel="prefetch" href="/assets/js/518.5594480e.js"><link rel="prefetch" href="/assets/js/519.91e848ae.js"><link rel="prefetch" href="/assets/js/52.dd230cd7.js"><link rel="prefetch" href="/assets/js/520.ebe69ce9.js"><link rel="prefetch" href="/assets/js/521.92b80342.js"><link rel="prefetch" href="/assets/js/522.6ce581ea.js"><link rel="prefetch" href="/assets/js/523.40b7f2f9.js"><link rel="prefetch" href="/assets/js/524.4ef256d3.js"><link rel="prefetch" href="/assets/js/525.19741e4a.js"><link rel="prefetch" href="/assets/js/526.e5de1675.js"><link rel="prefetch" href="/assets/js/527.9a79cd42.js"><link rel="prefetch" href="/assets/js/528.72732eb8.js"><link rel="prefetch" href="/assets/js/529.2ea03e45.js"><link rel="prefetch" href="/assets/js/53.a349c565.js"><link rel="prefetch" href="/assets/js/530.5d1103e7.js"><link rel="prefetch" href="/assets/js/531.82b032d6.js"><link rel="prefetch" href="/assets/js/532.12ee4beb.js"><link rel="prefetch" href="/assets/js/533.db9a90f7.js"><link rel="prefetch" href="/assets/js/534.fe139db4.js"><link rel="prefetch" href="/assets/js/535.056a6fbb.js"><link rel="prefetch" href="/assets/js/536.6bf85c15.js"><link rel="prefetch" href="/assets/js/537.6e2e1ccf.js"><link rel="prefetch" href="/assets/js/538.54eddb3b.js"><link rel="prefetch" href="/assets/js/539.6f00a207.js"><link rel="prefetch" href="/assets/js/54.e292b52f.js"><link rel="prefetch" href="/assets/js/540.9c956205.js"><link rel="prefetch" href="/assets/js/541.50f41228.js"><link rel="prefetch" href="/assets/js/542.a2b1879e.js"><link rel="prefetch" href="/assets/js/543.4e5e17c9.js"><link rel="prefetch" href="/assets/js/544.63d85227.js"><link rel="prefetch" href="/assets/js/545.c3923644.js"><link rel="prefetch" href="/assets/js/546.e64ad073.js"><link rel="prefetch" href="/assets/js/547.35a8752d.js"><link rel="prefetch" href="/assets/js/548.b62a1348.js"><link rel="prefetch" href="/assets/js/549.369e2ea0.js"><link rel="prefetch" href="/assets/js/55.21bb2983.js"><link rel="prefetch" href="/assets/js/550.b4632248.js"><link rel="prefetch" href="/assets/js/551.18f1879c.js"><link rel="prefetch" href="/assets/js/552.162e63cd.js"><link rel="prefetch" href="/assets/js/553.6998130e.js"><link rel="prefetch" href="/assets/js/554.89126c3d.js"><link rel="prefetch" href="/assets/js/555.a5f63b8a.js"><link rel="prefetch" href="/assets/js/556.35381cef.js"><link rel="prefetch" href="/assets/js/557.ceeecf52.js"><link rel="prefetch" href="/assets/js/558.253e6e4f.js"><link rel="prefetch" href="/assets/js/559.5cfbb773.js"><link rel="prefetch" href="/assets/js/56.5382d6b4.js"><link rel="prefetch" href="/assets/js/560.cca52f22.js"><link rel="prefetch" href="/assets/js/561.ea8d1141.js"><link rel="prefetch" href="/assets/js/562.c32e7b96.js"><link rel="prefetch" href="/assets/js/563.9bdd42e7.js"><link rel="prefetch" href="/assets/js/564.b3b87ec0.js"><link rel="prefetch" href="/assets/js/565.4be0d0f7.js"><link rel="prefetch" href="/assets/js/566.9f379d12.js"><link rel="prefetch" href="/assets/js/567.261e3181.js"><link rel="prefetch" href="/assets/js/568.4229e365.js"><link rel="prefetch" href="/assets/js/569.e662c167.js"><link rel="prefetch" href="/assets/js/57.8129f7e0.js"><link rel="prefetch" href="/assets/js/570.97ff6423.js"><link rel="prefetch" href="/assets/js/571.de1377cd.js"><link rel="prefetch" href="/assets/js/572.48b8400b.js"><link rel="prefetch" href="/assets/js/573.8251ebaf.js"><link rel="prefetch" href="/assets/js/574.ec3d6c1e.js"><link rel="prefetch" href="/assets/js/575.b0d429a1.js"><link rel="prefetch" href="/assets/js/576.98ce9170.js"><link rel="prefetch" href="/assets/js/577.85fc2017.js"><link rel="prefetch" href="/assets/js/578.1393ac7f.js"><link rel="prefetch" href="/assets/js/579.1340e178.js"><link rel="prefetch" href="/assets/js/58.85ac2740.js"><link rel="prefetch" href="/assets/js/580.a5979445.js"><link rel="prefetch" href="/assets/js/581.effdc269.js"><link rel="prefetch" href="/assets/js/582.13276063.js"><link rel="prefetch" href="/assets/js/583.357a2443.js"><link rel="prefetch" href="/assets/js/584.338ef731.js"><link rel="prefetch" href="/assets/js/585.87932741.js"><link rel="prefetch" href="/assets/js/586.b1d6e000.js"><link rel="prefetch" href="/assets/js/587.ed5b8377.js"><link rel="prefetch" href="/assets/js/588.16d2c418.js"><link rel="prefetch" href="/assets/js/589.c96fd7fa.js"><link rel="prefetch" href="/assets/js/59.0b225757.js"><link rel="prefetch" href="/assets/js/590.1a06b2a0.js"><link rel="prefetch" href="/assets/js/591.0efd886c.js"><link rel="prefetch" href="/assets/js/592.b22d0ef5.js"><link rel="prefetch" href="/assets/js/593.84ed6ebe.js"><link rel="prefetch" href="/assets/js/594.cd721b88.js"><link rel="prefetch" href="/assets/js/595.2400817a.js"><link rel="prefetch" href="/assets/js/596.f2c512d1.js"><link rel="prefetch" href="/assets/js/597.df10ec57.js"><link rel="prefetch" href="/assets/js/598.61ef6a7d.js"><link rel="prefetch" href="/assets/js/599.0bebb562.js"><link rel="prefetch" href="/assets/js/6.29d112b1.js"><link rel="prefetch" href="/assets/js/60.3bbab51d.js"><link rel="prefetch" href="/assets/js/600.1ea7596f.js"><link rel="prefetch" href="/assets/js/601.f2642bb3.js"><link rel="prefetch" href="/assets/js/602.400cc987.js"><link rel="prefetch" href="/assets/js/603.db77d173.js"><link rel="prefetch" href="/assets/js/604.0ffa30ae.js"><link rel="prefetch" href="/assets/js/605.32ca9607.js"><link rel="prefetch" href="/assets/js/606.8c1e5683.js"><link rel="prefetch" href="/assets/js/607.9c9463ef.js"><link rel="prefetch" href="/assets/js/608.d5efa77e.js"><link rel="prefetch" href="/assets/js/609.5bbffb7d.js"><link rel="prefetch" href="/assets/js/61.f7301486.js"><link rel="prefetch" href="/assets/js/610.5b0fc9da.js"><link rel="prefetch" href="/assets/js/611.bb8058c9.js"><link rel="prefetch" href="/assets/js/612.b0788f43.js"><link rel="prefetch" href="/assets/js/613.49511e65.js"><link rel="prefetch" href="/assets/js/614.fae3eacf.js"><link rel="prefetch" href="/assets/js/615.359e5899.js"><link rel="prefetch" href="/assets/js/616.905132f4.js"><link rel="prefetch" href="/assets/js/617.6c8c594e.js"><link rel="prefetch" href="/assets/js/618.6ac4f3ff.js"><link rel="prefetch" href="/assets/js/619.411a0c14.js"><link rel="prefetch" href="/assets/js/62.9aeede84.js"><link rel="prefetch" href="/assets/js/620.56155724.js"><link rel="prefetch" href="/assets/js/621.149d7933.js"><link rel="prefetch" href="/assets/js/622.f0c9bc08.js"><link rel="prefetch" href="/assets/js/623.e0989fbe.js"><link rel="prefetch" href="/assets/js/624.80b1f6a9.js"><link rel="prefetch" href="/assets/js/625.a0a392c4.js"><link rel="prefetch" href="/assets/js/626.56fd4e8a.js"><link rel="prefetch" href="/assets/js/627.264e7313.js"><link rel="prefetch" href="/assets/js/628.7a868b19.js"><link rel="prefetch" href="/assets/js/629.e7e15da1.js"><link rel="prefetch" href="/assets/js/63.4df55c8b.js"><link rel="prefetch" href="/assets/js/630.998c9b61.js"><link rel="prefetch" href="/assets/js/631.69aa049c.js"><link rel="prefetch" href="/assets/js/632.da3882c1.js"><link rel="prefetch" href="/assets/js/633.0d49adf0.js"><link rel="prefetch" href="/assets/js/634.f9984ede.js"><link rel="prefetch" href="/assets/js/635.f0439f65.js"><link rel="prefetch" href="/assets/js/636.54de4194.js"><link rel="prefetch" href="/assets/js/637.55d1c226.js"><link rel="prefetch" href="/assets/js/638.2a9a510f.js"><link rel="prefetch" href="/assets/js/639.8bec360e.js"><link rel="prefetch" href="/assets/js/64.7f3e5e81.js"><link rel="prefetch" href="/assets/js/640.30d7f96e.js"><link rel="prefetch" href="/assets/js/641.68100098.js"><link rel="prefetch" href="/assets/js/642.4b793817.js"><link rel="prefetch" href="/assets/js/643.d86a81ea.js"><link rel="prefetch" href="/assets/js/644.76327ea2.js"><link rel="prefetch" href="/assets/js/645.0ac6a923.js"><link rel="prefetch" href="/assets/js/646.cd92f728.js"><link rel="prefetch" href="/assets/js/647.f2c624e1.js"><link rel="prefetch" href="/assets/js/648.c8f3b955.js"><link rel="prefetch" href="/assets/js/649.6370753b.js"><link rel="prefetch" href="/assets/js/65.2beeae9b.js"><link rel="prefetch" href="/assets/js/650.afe31909.js"><link rel="prefetch" href="/assets/js/651.87971ec0.js"><link rel="prefetch" href="/assets/js/652.0adf10a6.js"><link rel="prefetch" href="/assets/js/653.1f655726.js"><link rel="prefetch" href="/assets/js/654.53e24c7c.js"><link rel="prefetch" href="/assets/js/655.c95a66ea.js"><link rel="prefetch" href="/assets/js/656.38b5a5ea.js"><link rel="prefetch" href="/assets/js/657.3167aa94.js"><link rel="prefetch" href="/assets/js/658.7c40ff62.js"><link rel="prefetch" href="/assets/js/659.5d2b9b54.js"><link rel="prefetch" href="/assets/js/66.44b214db.js"><link rel="prefetch" href="/assets/js/660.96a8da9e.js"><link rel="prefetch" href="/assets/js/661.4de3b6c1.js"><link rel="prefetch" href="/assets/js/662.7d9bf181.js"><link rel="prefetch" href="/assets/js/663.4ccaf40a.js"><link rel="prefetch" href="/assets/js/664.7ab4fa53.js"><link rel="prefetch" href="/assets/js/665.32245d26.js"><link rel="prefetch" href="/assets/js/666.e6617151.js"><link rel="prefetch" href="/assets/js/667.fb3b0547.js"><link rel="prefetch" href="/assets/js/668.3d1b2e36.js"><link rel="prefetch" href="/assets/js/669.b769905f.js"><link rel="prefetch" href="/assets/js/67.c31aaacf.js"><link rel="prefetch" href="/assets/js/670.88ed3af3.js"><link rel="prefetch" href="/assets/js/671.1aff6bfe.js"><link rel="prefetch" href="/assets/js/672.c90888f7.js"><link rel="prefetch" href="/assets/js/673.81241fdc.js"><link rel="prefetch" href="/assets/js/674.838a424d.js"><link rel="prefetch" href="/assets/js/675.603ac896.js"><link rel="prefetch" href="/assets/js/676.ff44b5dc.js"><link rel="prefetch" href="/assets/js/677.41a8087a.js"><link rel="prefetch" href="/assets/js/678.f0eb8d04.js"><link rel="prefetch" href="/assets/js/679.db78199e.js"><link rel="prefetch" href="/assets/js/68.08607c89.js"><link rel="prefetch" href="/assets/js/680.8fded9d4.js"><link rel="prefetch" href="/assets/js/681.0b019dfd.js"><link rel="prefetch" href="/assets/js/682.746e9190.js"><link rel="prefetch" href="/assets/js/683.d5c00845.js"><link rel="prefetch" href="/assets/js/684.b3207cad.js"><link rel="prefetch" href="/assets/js/685.d78f18ba.js"><link rel="prefetch" href="/assets/js/686.5aaecd19.js"><link rel="prefetch" href="/assets/js/687.821a06f4.js"><link rel="prefetch" href="/assets/js/688.8bbc1890.js"><link rel="prefetch" href="/assets/js/689.79b49e8c.js"><link rel="prefetch" href="/assets/js/69.509245d6.js"><link rel="prefetch" href="/assets/js/690.fa62f9dd.js"><link rel="prefetch" href="/assets/js/691.d3eb1a60.js"><link rel="prefetch" href="/assets/js/692.738f14bb.js"><link rel="prefetch" href="/assets/js/693.e6a497a2.js"><link rel="prefetch" href="/assets/js/694.6eea1c54.js"><link rel="prefetch" href="/assets/js/695.88e6acee.js"><link rel="prefetch" href="/assets/js/696.de10297f.js"><link rel="prefetch" href="/assets/js/697.96d04062.js"><link rel="prefetch" href="/assets/js/698.200cc84f.js"><link rel="prefetch" href="/assets/js/699.f11fc627.js"><link rel="prefetch" href="/assets/js/7.c16198b8.js"><link rel="prefetch" href="/assets/js/70.5f6285b1.js"><link rel="prefetch" href="/assets/js/700.93d48f59.js"><link rel="prefetch" href="/assets/js/701.b861f29a.js"><link rel="prefetch" href="/assets/js/702.dc82e05c.js"><link rel="prefetch" href="/assets/js/703.625ce87c.js"><link rel="prefetch" href="/assets/js/704.005a0a7c.js"><link rel="prefetch" href="/assets/js/705.16ad9230.js"><link rel="prefetch" href="/assets/js/706.4eead30a.js"><link rel="prefetch" href="/assets/js/707.730306ce.js"><link rel="prefetch" href="/assets/js/708.e37e743a.js"><link rel="prefetch" href="/assets/js/709.f2144f52.js"><link rel="prefetch" href="/assets/js/71.d5d0dae5.js"><link rel="prefetch" href="/assets/js/710.ee9d9b17.js"><link rel="prefetch" href="/assets/js/711.2813c338.js"><link rel="prefetch" href="/assets/js/712.e801bce4.js"><link rel="prefetch" href="/assets/js/713.21fc267c.js"><link rel="prefetch" href="/assets/js/714.4ec35525.js"><link rel="prefetch" href="/assets/js/715.fdc3cc84.js"><link rel="prefetch" href="/assets/js/716.324932ad.js"><link rel="prefetch" href="/assets/js/717.a072a66f.js"><link rel="prefetch" href="/assets/js/718.575e0305.js"><link rel="prefetch" href="/assets/js/719.5fdd55de.js"><link rel="prefetch" href="/assets/js/72.25648231.js"><link rel="prefetch" href="/assets/js/720.61477f23.js"><link rel="prefetch" href="/assets/js/721.c8bdab00.js"><link rel="prefetch" href="/assets/js/722.9255f385.js"><link rel="prefetch" href="/assets/js/723.f27792a4.js"><link rel="prefetch" href="/assets/js/724.cd504f88.js"><link rel="prefetch" href="/assets/js/725.55c845fa.js"><link rel="prefetch" href="/assets/js/726.bb49a9db.js"><link rel="prefetch" href="/assets/js/727.53d587fe.js"><link rel="prefetch" href="/assets/js/728.86972387.js"><link rel="prefetch" href="/assets/js/729.02fa0263.js"><link rel="prefetch" href="/assets/js/73.29902c1f.js"><link rel="prefetch" href="/assets/js/730.817156d1.js"><link rel="prefetch" href="/assets/js/731.6f5d6735.js"><link rel="prefetch" href="/assets/js/732.9a5ff781.js"><link rel="prefetch" href="/assets/js/733.bcb13916.js"><link rel="prefetch" href="/assets/js/734.11482b19.js"><link rel="prefetch" href="/assets/js/735.8c0d62f3.js"><link rel="prefetch" href="/assets/js/736.06465705.js"><link rel="prefetch" href="/assets/js/737.79741d87.js"><link rel="prefetch" href="/assets/js/738.cad12ff9.js"><link rel="prefetch" href="/assets/js/739.cb09e552.js"><link rel="prefetch" href="/assets/js/74.bcf666a0.js"><link rel="prefetch" href="/assets/js/740.029b1950.js"><link rel="prefetch" href="/assets/js/741.b937216a.js"><link rel="prefetch" href="/assets/js/742.ec02c706.js"><link rel="prefetch" href="/assets/js/743.70a96283.js"><link rel="prefetch" href="/assets/js/744.909b870c.js"><link rel="prefetch" href="/assets/js/745.80defb2d.js"><link rel="prefetch" href="/assets/js/746.fb972248.js"><link rel="prefetch" href="/assets/js/747.1a7b52fd.js"><link rel="prefetch" href="/assets/js/748.036f5d16.js"><link rel="prefetch" href="/assets/js/749.bd9a413d.js"><link rel="prefetch" href="/assets/js/75.23c5a54d.js"><link rel="prefetch" href="/assets/js/750.3f1ae8f5.js"><link rel="prefetch" href="/assets/js/751.8897bc9f.js"><link rel="prefetch" href="/assets/js/752.9b387659.js"><link rel="prefetch" href="/assets/js/753.f411ce21.js"><link rel="prefetch" href="/assets/js/754.26def684.js"><link rel="prefetch" href="/assets/js/755.923aff62.js"><link rel="prefetch" href="/assets/js/756.9965743a.js"><link rel="prefetch" href="/assets/js/757.0c6bbbfd.js"><link rel="prefetch" href="/assets/js/758.a830f8b1.js"><link rel="prefetch" href="/assets/js/759.987cad77.js"><link rel="prefetch" href="/assets/js/76.f54f3d4f.js"><link rel="prefetch" href="/assets/js/760.9f2652a0.js"><link rel="prefetch" href="/assets/js/761.df01a0ee.js"><link rel="prefetch" href="/assets/js/762.e0c05a1a.js"><link rel="prefetch" href="/assets/js/763.da8a60bd.js"><link rel="prefetch" href="/assets/js/764.9f2a2830.js"><link rel="prefetch" href="/assets/js/765.44e61161.js"><link rel="prefetch" href="/assets/js/766.cd7da8c1.js"><link rel="prefetch" href="/assets/js/767.6ea1fea2.js"><link rel="prefetch" href="/assets/js/768.91529b8f.js"><link rel="prefetch" href="/assets/js/769.194d7a3e.js"><link rel="prefetch" href="/assets/js/77.3d43a163.js"><link rel="prefetch" href="/assets/js/770.227fd5b9.js"><link rel="prefetch" href="/assets/js/771.44d5e37e.js"><link rel="prefetch" href="/assets/js/772.234d9bf6.js"><link rel="prefetch" href="/assets/js/773.ff1dfb6a.js"><link rel="prefetch" href="/assets/js/774.d401364f.js"><link rel="prefetch" href="/assets/js/775.37a7cf41.js"><link rel="prefetch" href="/assets/js/776.0cd10853.js"><link rel="prefetch" href="/assets/js/777.599a3a48.js"><link rel="prefetch" href="/assets/js/778.eef27a95.js"><link rel="prefetch" href="/assets/js/779.29351199.js"><link rel="prefetch" href="/assets/js/78.fd0780ac.js"><link rel="prefetch" href="/assets/js/780.74caed94.js"><link rel="prefetch" href="/assets/js/781.ee0fa9b5.js"><link rel="prefetch" href="/assets/js/782.7cffed09.js"><link rel="prefetch" href="/assets/js/783.7f01f518.js"><link rel="prefetch" href="/assets/js/784.5f65e3d7.js"><link rel="prefetch" href="/assets/js/785.d7e13880.js"><link rel="prefetch" href="/assets/js/786.6110d12f.js"><link rel="prefetch" href="/assets/js/787.334a5cdd.js"><link rel="prefetch" href="/assets/js/788.f261bc71.js"><link rel="prefetch" href="/assets/js/789.b6d74f7d.js"><link rel="prefetch" href="/assets/js/79.7b5d6224.js"><link rel="prefetch" href="/assets/js/790.fa948ec4.js"><link rel="prefetch" href="/assets/js/791.22080013.js"><link rel="prefetch" href="/assets/js/792.31ce806c.js"><link rel="prefetch" href="/assets/js/793.9fd0c56f.js"><link rel="prefetch" href="/assets/js/794.44a8cd9c.js"><link rel="prefetch" href="/assets/js/795.9f8346e5.js"><link rel="prefetch" href="/assets/js/796.0de9c7a1.js"><link rel="prefetch" href="/assets/js/797.83ac32a6.js"><link rel="prefetch" href="/assets/js/798.393fc81d.js"><link rel="prefetch" href="/assets/js/799.c1fb3981.js"><link rel="prefetch" href="/assets/js/8.3275ed06.js"><link rel="prefetch" href="/assets/js/80.df3f0a1f.js"><link rel="prefetch" href="/assets/js/800.2832adeb.js"><link rel="prefetch" href="/assets/js/801.04c58fc4.js"><link rel="prefetch" href="/assets/js/81.3d90ef6b.js"><link rel="prefetch" href="/assets/js/82.2d42448d.js"><link rel="prefetch" href="/assets/js/83.900b4de2.js"><link rel="prefetch" href="/assets/js/84.ff570f67.js"><link rel="prefetch" href="/assets/js/85.e3b3af39.js"><link rel="prefetch" href="/assets/js/86.17b5aedc.js"><link rel="prefetch" href="/assets/js/87.f931d1d6.js"><link rel="prefetch" href="/assets/js/88.d55863cd.js"><link rel="prefetch" href="/assets/js/89.15a9a6d7.js"><link rel="prefetch" href="/assets/js/9.04948a9d.js"><link rel="prefetch" href="/assets/js/90.22696aa9.js"><link rel="prefetch" href="/assets/js/91.f1bd8a2e.js"><link rel="prefetch" href="/assets/js/92.85733094.js"><link rel="prefetch" href="/assets/js/93.59bacfd7.js"><link rel="prefetch" href="/assets/js/94.a5f9b7a0.js"><link rel="prefetch" href="/assets/js/95.be52d65a.js"><link rel="prefetch" href="/assets/js/96.0b76ba8e.js"><link rel="prefetch" href="/assets/js/97.28183cd4.js"><link rel="prefetch" href="/assets/js/98.2d22829c.js"><link rel="prefetch" href="/assets/js/99.ed602a20.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a3df589e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">AJ</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/op/" class="nav-link">Devops</a></div><div class="nav-item"><a href="/golang/" class="nav-link">Go</a></div><div class="nav-item"><a href="/go-block/" class="nav-link">区块链</a></div><div class="nav-item"><a href="/k8s/" class="nav-link">k8s</a></div><div class="nav-item"><a href="/about.html" class="nav-link">关于我</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/go-learning/" class="nav-link">go-learning</a></li><li class="dropdown-item"><!----> <a href="/post/flutter-guide/" class="nav-link">flutter</a></li><li class="dropdown-item"><!----> <a href="/mysql/" class="nav-link">mysql</a></li><li class="dropdown-item"><!----> <a href="/python/" class="nav-link">python</a></li></ul></div></div> <a href="https://github.com/ChinaArJun" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/op/" class="nav-link">Devops</a></div><div class="nav-item"><a href="/golang/" class="nav-link">Go</a></div><div class="nav-item"><a href="/go-block/" class="nav-link">区块链</a></div><div class="nav-item"><a href="/k8s/" class="nav-link">k8s</a></div><div class="nav-item"><a href="/about.html" class="nav-link">关于我</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/go-learning/" class="nav-link">go-learning</a></li><li class="dropdown-item"><!----> <a href="/post/flutter-guide/" class="nav-link">flutter</a></li><li class="dropdown-item"><!----> <a href="/mysql/" class="nav-link">mysql</a></li><li class="dropdown-item"><!----> <a href="/python/" class="nav-link">python</a></li></ul></div></div> <a href="https://github.com/ChinaArJun" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav> <div></div> <div style="padding-left:1.5rem;"><div></div></div> <!----> </aside> <!----> <!----> <main class="page"><div class="theme-default-content" style="margin-bottom:-5rem;"><div class="bar"><div class="bar-intro"><div class="text">
+      流逝的是岁月，不变的是情怀.
+        </div> <div class="text">
+      坚持学习，是为了成就更好的自己. <br></div> <div>公众号[中关村程序员]</div></div></div> <!----></div> <div class="theme-default-content content__default"><p>上一节我们说完了 GPM 结构体，这一讲，我们来研究 Go sheduler 结构体，以及整个调度器的初始化过程。</p> <p>Go scheduler 在源码中的结构体为 <code>schedt</code>，保存调度器的状态信息、全局的可运行 G 队列等。源码如下：</p> <div class="language-golang extra-class"><pre class="language-text"><code>// 保存调度器的信息
+type schedt struct {
+	// accessed atomically. keep at top to ensure alignment on 32-bit systems.
+	// 需以原子访问访问。
+	// 保持在 struct 顶部，以使其在 32 位系统上可以对齐
+	goidgen  uint64
+	lastpoll uint64
+
+	lock mutex
+
+	// 由空闲的工作线程组成的链表
+	midle        muintptr // idle m's waiting for work
+	// 空闲的工作线程数量
+	nmidle       int32    // number of idle m's waiting for work
+	// 空闲的且被 lock 的 m 计数
+	nmidlelocked int32    // number of locked m's waiting for work
+	// 已经创建的工作线程数量
+	mcount       int32    // number of m's that have been created
+	// 表示最多所能创建的工作线程数量
+	maxmcount    int32    // maximum number of m's allowed (or die)
+
+	// goroutine 的数量，自动更新
+	ngsys uint32 // number of system goroutines; updated atomically
+
+	// 由空闲的 p 结构体对象组成的链表
+	pidle      puintptr // idle p's
+	// 空闲的 p 结构体对象的数量
+	npidle     uint32
+	nmspinning uint32 // See &quot;Worker thread parking/unparking&quot; comment in proc.go.
+
+	// Global runnable queue.
+	// 全局可运行的 G队列
+	runqhead guintptr // 队列头
+	runqtail guintptr // 队列尾
+	runqsize int32 // 元素数量
+
+	// Global cache of dead G's.
+	// dead G 的全局缓存
+	// 已退出的 goroutine 对象，缓存下来
+	// 避免每次创建 goroutine 时都重新分配内存
+	gflock       mutex
+	gfreeStack   *g
+	gfreeNoStack *g
+	// 空闲 g 的数量
+	ngfree       int32
+
+	// Central cache of sudog structs.
+	// sudog 结构的集中缓存
+	sudoglock  mutex
+	sudogcache *sudog
+
+	// Central pool of available defer structs of different sizes.
+	// 不同大小的可用的 defer struct 的集中缓存池
+	deferlock mutex
+	deferpool [5]*_defer
+
+	gcwaiting  uint32 // gc is waiting to run
+	stopwait   int32
+	stopnote   note
+	sysmonwait uint32
+	sysmonnote note
+
+	// safepointFn should be called on each P at the next GC
+	// safepoint if p.runSafePointFn is set.
+	safePointFn   func(*p)
+	safePointWait int32
+	safePointNote note
+
+	profilehz int32 // cpu profiling rate
+
+	// 上次修改 gomaxprocs 的纳秒时间
+	procresizetime int64 // nanotime() of last change to gomaxprocs
+	totaltime      int64 // ∫gomaxprocs dt up to procresizetime
+}
+</code></pre></div><p>在程序运行过程中，<code>schedt</code> 对象只有一份实体，它维护了调度器的所有信息。</p> <p>在 proc.go 和 runtime2.go 文件中，有一些很重要全局的变量，我们先列出来：</p> <div class="language-golang extra-class"><pre class="language-text"><code>// 所有 g 的长度
+allglen     uintptr
+
+// 保存所有的 g
+allgs    []*g
+
+// 保存所有的 m
+allm        *m
+
+// 保存所有的 p，_MaxGomaxprocs = 1024
+allp        [_MaxGomaxprocs + 1]*p
+
+// p 的最大值，默认等于 ncpu
+gomaxprocs  int32
+
+// 程序启动时，会调用 osinit 函数获得此值
+ncpu        int32
+
+// 调度器结构体对象，记录了调度器的工作状态
+sched       schedt
+
+// 代表进程的主线程
+m0           m
+
+// m0 的 g0，即 m0.g0 = &amp;g0
+g0           g
+</code></pre></div><blockquote><p>在程序初始化时，这些全局变量都会被初始化为零值：指针被初始化为 nil 指针，切片被初始化为 nil 切片，int 被初始化为 0，结构体的所有成员变量按其类型被初始化为对应的零值。</p></blockquote> <blockquote><p>因此程序刚启动时 allgs，allm 和allp 都不包含任何 g，m 和 p。</p></blockquote> <p>不仅是 Go 程序，系统加载可执行文件大概都会经过这几个阶段：</p> <blockquote><ol><li>从磁盘上读取可执行文件，加载到内存</li></ol></blockquote> <ol start="2"><li>创建进程和主线程</li> <li>为主线程分配栈空间</li> <li>把由用户在命令行输入的参数拷贝到主线程的栈</li> <li>把主线程放入操作系统的运行队列等待被调度</li></ol> <p>上面这段描述，来自公众号“ go语言核心编程技术”的调度系列教程。</p> <p>我们从一个 <code>Hello World</code> 的例子来回顾一下 Go 程序初始化的过程：</p> <div class="language-golang extra-class"><pre class="language-text"><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+	fmt.Println(&quot;hello world&quot;)
+}
+</code></pre></div><p>在项目根目录下执行：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>go build -gcflags <span class="token string">&quot;-N -l&quot;</span> -o hello src/main.go
+</code></pre></div><p><code>-gcflags &quot;-N -l&quot;</code> 是为了关闭编译器优化和函数内联，防止后面在设置断点的时候找不到相对应的代码位置。</p> <p>得到了可执行文件 <code>hello</code>，执行：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>qcrao@qcrao hello-world<span class="token punctuation">]</span>$ gdb hello
+</code></pre></div><p>进入 gdb 调试模式，执行 <code>info files</code>，得到可执行文件的文件头，列出了各种段：</p> <p><img src="https://user-images.githubusercontent.com/7698088/60392813-db88d980-9b3d-11e9-8b0f-7c1d845a8191.png" alt="gdb info"></p> <p>同时，我们也得到了入口地址：0x450e20。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> b *0x450e20
+Breakpoint <span class="token number">1</span> at 0x450e20: <span class="token function">file</span> /usr/local/go/src/runtime/rt0_linux_amd64.s, line <span class="token number">8</span>.
+</code></pre></div><p>这就是 Go 程序的入口地址，我是在 linux 上运行的，所以入口文件为 <code>src/runtime/rt0_linux_amd64.s</code>，runtime 目录下有各种不同名称的程序入口文件，支持各种操作系统和架构，代码为：</p> <div class="language-asm extra-class"><pre class="language-text"><code>TEXT _rt0_amd64_linux(SB),NOSPLIT,$-8
+	LEAQ	8(SP), SI // argv
+	MOVQ	0(SP), DI // argc
+	MOVQ	$main(SB), AX
+	JMP	AX
+</code></pre></div><p>主要是把 argc，argv 从内存拉到了寄存器。这里 LEAQ 是计算内存地址，然后把内存地址本身放进寄存器里，也就是把 argv 的地址放到了 SI 寄存器中。最后跳转到：</p> <div class="language-asm extra-class"><pre class="language-text"><code>TEXT main(SB),NOSPLIT,$-8
+    MOVQ	$runtime·rt0_go(SB), AX
+	JMP	AX
+</code></pre></div><p>继续跳转到 <code>runtime·rt0_go(SB)</code>，完成 go 启动时所有的初始化工作。位于 <code>/usr/local/go/src/runtime/asm_amd64.s</code>，代码：</p> <div class="language-asm extra-class"><pre class="language-text"><code>TEXT runtime·rt0_go(SB),NOSPLIT,$0
+    // copy arguments forward on an even stack
+    MOVQ    DI, AX      // argc
+    MOVQ    SI, BX      // argv
+    SUBQ    $(4*8+7), SP        // 2args 2auto
+    // 调整栈顶寄存器使其按 16 字节对齐
+    ANDQ    $~15, SP
+    // argc 放在 SP+16 字节处
+    MOVQ    AX, 16(SP)
+    // argv 放在 SP+24 字节处
+    MOVQ    BX, 24(SP)
+    
+    // create istack out of the given (operating system) stack.
+    // _cgo_init may update stackguard.
+    // 给 g0 分配栈空间
+
+    // 把 g0 的地址存入 DI
+    MOVQ    $runtime·g0(SB), DI
+    // BX = SP - 64*1024 + 104
+    LEAQ    (-64*1024+104)(SP), BX
+    // g0.stackguard0 = SP - 64*1024 + 104
+    MOVQ    BX, g_stackguard0(DI)
+    // g0.stackguard1 = SP - 64*1024 + 104
+    MOVQ    BX, g_stackguard1(DI)
+    // g0.stack.lo = SP - 64*1024 + 104
+    MOVQ    BX, (g_stack+stack_lo)(DI)
+    // g0.stack.hi = SP
+    MOVQ    SP, (g_stack+stack_hi)(DI)
+
+    // ……………………
+    // 省略了很多检测 CPU 信息的代码
+    // ……………………
+
+    
+    // 初始化 m 的 tls
+    // DI = &amp;m0.tls，取 m0 的 tls 成员的地址到 DI 寄存器
+    LEAQ    runtime·m0+m_tls(SB), DI
+    // 调用 settls 设置线程本地存储，settls 函数的参数在 DI 寄存器中
+    // 之后，可通过 fs 段寄存器找到 m.tls
+    CALL    runtime·settls(SB)
+
+    // store through it, to make sure it works
+    // 获取 fs 段基址并放入 BX 寄存器，其实就是 m0.tls[1] 的地址，get_tls 的代码由编译器生成
+    get_tls(BX)
+    MOVQ    $0x123, g(BX)
+    MOVQ    runtime·m0+m_tls(SB), AX
+    CMPQ    AX, $0x123
+    JEQ 2(PC)
+    MOVL    AX, 0   // abort
+ok:
+    // set the per-goroutine and per-mach &quot;registers&quot;
+    // 获取 fs 段基址到 BX 寄存器
+    get_tls(BX)
+    // 将 g0 的地址存储到 CX，CX = &amp;g0
+    LEAQ    runtime·g0(SB), CX
+    // 把 g0 的地址保存在线程本地存储里面，也就是 m0.tls[0]=&amp;g0
+    MOVQ    CX, g(BX)
+    // 将 m0 的地址存储到 AX，AX = &amp;m0
+    LEAQ    runtime·m0(SB), AX
+
+    // save m-&gt;g0 = g0
+    // m0.g0 = &amp;g0
+    MOVQ    CX, m_g0(AX)
+    // save m0 to g0-&gt;m
+    // g0.m = &amp;m0
+    MOVQ    AX, g_m(CX)
+
+    CLD             // convention is D is always left cleared
+    CALL    runtime·check(SB)
+
+    MOVL    16(SP), AX      // copy argc
+    MOVL    AX, 0(SP)
+    MOVQ    24(SP), AX      // copy argv
+    MOVQ    AX, 8(SP)
+    CALL    runtime·args(SB)
+    
+    // 初始化系统核心数
+    CALL    runtime·osinit(SB)
+    // 调度器初始化
+    CALL    runtime·schedinit(SB)
+
+    // create a new goroutine to start program
+    MOVQ    $runtime·mainPC(SB), AX     // entry
+    // newproc 的第二个参数入栈，也就是新的 goroutine 需要执行的函数
+    // AX = &amp;funcval{runtime·main},
+    PUSHQ   AX
+    // newproc 的第一个参数入栈，该参数表示 runtime.main 函数需要的参数大小，
+    // 因为 runtime.main 没有参数，所以这里是 0
+    PUSHQ   $0          // arg size
+    // 创建 main goroutine
+    CALL    runtime·newproc(SB)
+    POPQ    AX
+    POPQ    AX
+
+    // start this M
+    // 主线程进入调度循环，运行刚刚创建的 goroutine
+    CALL    runtime·mstart(SB)
+
+    // 永远不会返回，万一返回了，crash 掉
+    MOVL    $0xf1, 0xf1  // crash
+    RET
+</code></pre></div><p>这段代码完成之后，整个 Go 程序就可以跑起来了，是非常核心的代码。这一讲其实只讲到了第 80 行，也就是调度器初始化函数：</p> <div class="language-asm extra-class"><pre class="language-text"><code>CALL    runtime·schedinit(SB)
+</code></pre></div><p><code>schedinit</code> 函数返回后，调度器的相关参数都已经初始化好了，犹如盘古开天辟地，万事万物各就其位。接下来详细解释上面的汇编代码。</p> <h1 id="调整-sp"><a href="#调整-sp" class="header-anchor">#</a> 调整 SP</h1> <p>第一段代码，将 SP 调整到了一个地址是 16 的倍数的位置：</p> <div class="language-asm extra-class"><pre class="language-text"><code>SUBQ	$(4*8+7), SP		// 2args 2auto
+// 调整栈顶寄存器使其按 16 个字节对齐
+ANDQ	$~15, SP
+</code></pre></div><p>先是将 SP 减掉 39，也就是向下移动了 39 个 Byte，再进行与运算。</p> <p><code>15</code> 的二进制低四位是全 1：<code>1111</code>，其他位都是 0；取反后，变成了 <code>0000</code>，高位则是全 1。这样，与 SP 进行了与运算后，低 4 位变成了全 0，高位则不变。因此 SP 继续向下移动，并且这回是在一个地址值为 16 的倍数的地方，16 字节对齐的地方。</p> <p>为什么要这么做？画一张图就明白了。不过先得说明一点，前面 <code>_rt0_amd64_linux</code> 函数里讲过，DI 里存的是 argc 的值，8 个字节，而 SI 里则存的是 argv 的地址，8 个字节。</p> <p>![SP 内存对齐]](https://user-images.githubusercontent.com/7698088/64070957-8eda8f80-cca1-11e9-91c7-0b276d7769ea.png)</p> <p><img src="https://user-images.githubusercontent.com/7698088/64070959-a0239c00-cca1-11e9-8ad9-c3aefc5093f8.png" alt="SP 内存对齐"></p> <p>上面两张图中，左侧用箭头标注了 16 字节对齐的位置。第一步表示向下移动 39 B，第二步表示与 <code>~15</code> 相与。</p> <p>存在两种情况，这也是第一步将 SP 下移的时候，多移了 7 个 Byte 的原因。第一张图里，与 <code>~15</code> 相与的时候，SP 值减少了 1，第二张图则减少了 9。最后都是移位到了 16 字节对齐的位置。</p> <p>两张图的共同点是 SP 与 argc 中间多出了 16 个字节的空位。这个后面应该会用到，我们接着探索。</p> <p>至于为什么进行 16 个字节对齐，就比较好理解了：因为 CPU 有一组 SSE 指令，这些指令中出现的内存地址必须是 16 的倍数。</p> <h1 id="初始化-g0-栈"><a href="#初始化-g0-栈" class="header-anchor">#</a> 初始化 g0 栈</h1> <p>接着往后看，开始初始化 g0 的栈了。g0 栈的作用就是为运行 runtime 代码提供一个“环境”。</p> <div class="language-asm extra-class"><pre class="language-text"><code>// 把 g0 的地址存入 DI
+MOVQ	$runtime·g0(SB), DI
+// BX = SP - 64*1024 + 104
+LEAQ	(-64*1024+104)(SP), BX
+// g0.stackguard0 = SP - 64*1024 + 104
+MOVQ	BX, g_stackguard0(DI)
+// g0.stackguard1 = SP - 64*1024 + 104
+MOVQ	BX, g_stackguard1(DI)
+// g0.stack.lo = SP - 64*1024 + 104
+MOVQ	BX, (g_stack+stack_lo)(DI)
+// g0.stack.hi = SP
+MOVQ	SP, (g_stack+stack_hi)(DI)
+</code></pre></div><p>代码 L2 把 g0 的地址存入 DI 寄存器；L4 将 SP 下移 (64K-104)B，并将地址存入 BX 寄存器；L6 将 BX 里存储的地址赋给 g0.stackguard0；L8，L10，L12 分别 将 BX 里存储的地址赋给 g0.stackguard1， g0.stack.lo， g0.stack.hi。</p> <p>这部分完成之后，g0 栈空间如下图：</p> <p><img src="https://user-images.githubusercontent.com/7698088/64071133-d400c080-cca5-11e9-8563-d5f882e34e0a.png" alt="g0 栈空间"></p> <h1 id="主线程绑定-m0"><a href="#主线程绑定-m0" class="header-anchor">#</a> 主线程绑定 m0</h1> <p>接着往下看，中间我们省略了很多检查 CPU 相关的代码，直接看主线程绑定 m0 的部分：</p> <div class="language-asm extra-class"><pre class="language-text"><code>// 初始化 m 的 tls
+// DI = &amp;m0.tls，取 m0 的 tls 成员的地址到 DI 寄存器
+LEAQ	runtime·m0+m_tls(SB), DI
+// 调用 settls 设置线程本地存储，settls 函数的参数在 DI 寄存器中
+// 之后，可通过 fs 段寄存器找到 m.tls
+CALL	runtime·settls(SB)
+
+// store through it, to make sure it works
+// 获取 fs 段基地址并放入 BX 寄存器，其实就是 m0.tls[1] 的地址，get_tls 的代码由编译器生成
+get_tls(BX)
+MOVQ	$0x123, g(BX)
+MOVQ	runtime·m0+m_tls(SB), AX
+CMPQ	AX, $0x123
+JEQ 2(PC)
+MOVL	AX, 0	// abort
+</code></pre></div><p>因为 m0 是全局变量，而 m0 又要绑定到工作线程才能执行。我们又知道，runtime 会启动多个工作线程，每个线程都会绑定一个 m0。而且，代码里还得保持一致，都是用 m0 来表示。这就要用到线程本地存储的知识了，也就是常说的 TLS（Thread Local Storage）。简单来说，TLS 就是线程本地的私有的全局变量。</p> <p>一般而言，全局变量对进程中的多个线程同时可见。进程中的全局变量与函数内定义的静态（static）变量，是各个线程都可以访问的共享变量。一个线程修改了，其他线程就会“看见”。要想搞出一个线程私有的变量，就需要用到 TLS 技术。</p> <p>如果需要在一个线程内部的各个函数调用都能访问、但其它线程不能访问的变量（被称为 static memory local to a thread，线程局部静态变量），就需要新的机制来实现。这就是 TLS。</p> <p>继续来看源码，L3 将 m0.tls 地址存储到 DI 寄存器，再调用 settls 完成 tls 的设置，tls 是 m 结构体中的一个数组。</p> <div class="language-golang extra-class"><pre class="language-text"><code>// thread-local storage (for x86 extern register)
+tls [6]uintptr
+</code></pre></div><p>设置 tls 的函数 runtime·settls(SB) 位于源码 <code>src/runtime/sys_linux_amd64.s</code> 处，主要内容就是通过一个系统调用将 fs 段基址设置成 m.tls[1] 的地址，而 fs 段基址又可以通过 CPU 里的寄存器 fs 来获取。</p> <blockquote><p>而每个线程都有自己的一组 CPU 寄存器值，操作系统在把线程调离 CPU 时会帮我们把所有寄存器中的值保存在内存中，调度线程来运行时又会从内存中把这些寄存器的值恢复到 CPU。</p></blockquote> <p>这样，工作线程代码就可以通过 fs 寄存器来找到 m.tls。</p> <p>关于 settls 这个函数的解析可以去看阿波张的教程第 12 篇，写得很详细。</p> <p>设置完 tls 之后，又来了一段验证上面 settls 是否能正常工作。如果不能，会直接 crash。</p> <div class="language-golang extra-class"><pre class="language-text"><code>get_tls(BX)
+MOVQ	$0x123, g(BX)
+MOVQ	runtime·m0+m_tls(SB), AX
+CMPQ	AX, $0x123
+JEQ 2(PC)
+MOVL	AX, 0	// abort
+</code></pre></div><p>第一行代码，获取 tls，<code>get_tls(BX)</code> 的代码由编译器生成，源码中并没有看到，可以理解为将 <code>m.tls</code> 的地址存入 BX 寄存器。</p> <p>L2 将一个数 <code>0x123</code> 放入 <code>m.tls[0]</code> 处，L3 则将 <code>m.tls[0]</code> 处的数据取出来放到 AX 寄存器，L4 则比较两者是否相等。如果相等，则跳过 L6 行的代码，否则执行 L6，程序 crash。</p> <p>继续看代码：</p> <div class="language-golang extra-class"><pre class="language-text"><code>// set the per-goroutine and per-mach &quot;registers&quot;
+// 获取 fs 段基址到 BX 寄存器
+get_tls(BX)
+// 将 g0 的地址存储到 CX，CX = &amp;g0
+LEAQ	runtime·g0(SB), CX
+// 把 g0 的地址保存在线程本地存储里面，也就是 m0.tls[0]=&amp;g0
+MOVQ	CX, g(BX)
+// 将 m0 的地址存储到 AX，AX = &amp;m0
+LEAQ	runtime·m0(SB), AX
+
+// save m-&gt;g0 = g0
+// m0.g0 = &amp;g0
+MOVQ	CX, m_g0(AX)
+// save m0 to g0-&gt;m
+// g0.m = &amp;m0
+MOVQ	AX, g_m(CX)
+</code></pre></div><p>L3 将 m.tls 地址存入 BX；L5 将 g0 的地址存入 CX；L7 将 CX，也就是 g0 的地址存入 m.tls[0]；L9 将 m0 的地址存入 AX；L13 将 g0 的地址存入 m0.g0；L16 将 m0 存入 g0.m。也就是：</p> <div class="language-golang extra-class"><pre class="language-text"><code>tls[0] = g0
+m0.g0 = &amp;g0
+g0.m = &amp;m0
+</code></pre></div><p>代码中寄存器前面的符号看着比较奇怪，其实它们最后会被链接器转化为偏移量。</p> <p>看曹大 golang_notes 用 gobuf_sp(BX) 这个例子讲的：</p> <blockquote><p>这种写法在标准 plan9 汇编中只是个 symbol，没有任何偏移量的意思，但这里却用名字来代替了其偏移量，这是怎么回事呢？</p></blockquote> <blockquote><p>实际上这是 runtime 的特权，是需要链接器配合完成的，再来看看 gobuf 在 runtime 中的 struct 定义开头部分的注释:</p></blockquote> <blockquote><p>// The offsets of sp, pc, and g are known to (hard-coded in) libmach.</p></blockquote> <p>对于我们而言，这种写法读起来比较容易。</p> <p>这一段执行完之后，就把 m0，g0，m.tls[0] 串联起来了。通过 m.tls[0] 可以找到 g0，通过 g0 可以找到 m0（通过 g 结构体的 m 字段）。并且，通过 m 的字段 g0，m0 也可以找到 g0。于是，主线程和 m0，g0 就关联起来了。</p> <blockquote><p>从这里还可以看到，保存在主线程本地存储中的值是 g0 的地址，也就是说工作线程的私有全局变量其实是一个指向 g 的指针而不是指向 m 的指针。</p></blockquote> <blockquote><p>目前这个指针指向g0，表示代码正运行在 g0 栈。</p></blockquote> <p>于是，前面的图又增加了新的玩伴 m0：</p> <p><img src="https://user-images.githubusercontent.com/7698088/64071132-bcc1d300-cca5-11e9-9d63-037cef865090.png" alt="工作线程绑定 m0，g0"></p> <h1 id="初始化-m0"><a href="#初始化-m0" class="header-anchor">#</a> 初始化 m0</h1> <div class="language-golang extra-class"><pre class="language-text"><code>MOVL	16(SP), AX		// copy argc
+MOVL	AX, 0(SP)
+MOVQ	24(SP), AX		// copy argv
+MOVQ	AX, 8(SP)
+CALL	runtime·args(SB)
+// 初始化系统核心数
+CALL	runtime·osinit(SB)
+// 调度器初始化
+CALL	runtime·schedinit(SB)
+</code></pre></div><p>L1-L2 将 16(SP) 处的内容移动到 0(SP)，也就是栈顶，通过前面的图，16(SP) 处的内容为 argc；L3-L4 将 argv 存入 8(SP)，接下来调用 <code>runtime·args</code> 函数，处理命令行参数。</p> <p>接着，连续调用了两个 runtime 函数。osinit 函数初始化系统核心数，将全局变量 ncpu 初始化的核心数，schedinit 则是本文的核心：调度器的初始化。</p> <p>下面，我们来重点看 schedinit 函数：</p> <div class="language-golang extra-class"><pre class="language-text"><code>// src/runtime/proc.go
+
+// The bootstrap sequence is:
+//
+//	call osinit
+//	call schedinit
+//	make &amp; queue new G
+//	call runtime·mstart
+//
+// The new G calls runtime·main.
+func schedinit() {
+	// getg 由编译器实现
+	// get_tls(CX)
+	// MOVQ g(CX), BX; BX存器里面现在放的是当前g结构体对象的地址
+	_g_ := getg()
+	if raceenabled {
+		_g_.racectx, raceprocctx0 = raceinit()
+	}
+
+	// 最多启动 10000 个工作线程
+	sched.maxmcount = 10000
+
+	tracebackinit()
+	moduledataverify()
+
+	// 初始化栈空间复用管理链表
+	stackinit()
+	mallocinit()
+
+	// 初始化 m0
+	mcommoninit(_g_.m)
+	alginit()       // maps must not be used before this call
+	modulesinit()   // provides activeModules
+	typelinksinit() // uses maps, activeModules
+	itabsinit()     // uses activeModules
+
+	msigsave(_g_.m)
+	initSigmask = _g_.m.sigmask
+
+	goargs()
+	goenvs()
+	parsedebugvars()
+	gcinit()
+
+	sched.lastpoll = uint64(nanotime())
+
+	// 初始化 P 的个数
+	// 系统中有多少核，就创建和初始化多少个 p 结构体对象
+	procs := ncpu
+	if n, ok := atoi32(gogetenv(&quot;GOMAXPROCS&quot;)); ok &amp;&amp; n &gt; 0 {
+		procs = n
+	}
+	if procs &gt; _MaxGomaxprocs {
+		procs = _MaxGomaxprocs
+	}
+
+	// 初始化所有的 P，正常情况下不会返回有本地任务的 P
+	if procresize(procs) != nil {
+		throw(&quot;unknown runnable goroutine during bootstrap&quot;)
+	}
+
+	// ……………………
+}
+</code></pre></div><p>这个函数开头的注释很贴心地把 Go 程序初始化的过程又说了一遍：</p> <ol><li>call osinit。初始化系统核心数。</li> <li>call schedinit。初始化调度器。</li> <li>make &amp; queue new G。创建新的 goroutine。</li> <li>call runtime·mstart。调用 mstart，启动调度。</li> <li>The new G calls runtime·main。在新的 goroutine 上运行 runtime.main 函数。</li></ol> <p>函数首先调用 <code>getg()</code> 函数获取当前正在运行的 <code>g</code>，<code>getg()</code> 在 <code>src/runtime/stubs.go</code> 中声明，真正的代码由编译器生成。</p> <div class="language-golang extra-class"><pre class="language-text"><code>// getg returns the pointer to the current g.
+// The compiler rewrites calls to this function into instructions
+// that fetch the g directly (from TLS or from the dedicated register).
+func getg() *g
+</code></pre></div><p>注释里也说了，getg 返回当前正在运行的 goroutine 的指针，它会从 tls 里取出 tls[0]，也就是当前运行的 goroutine 的地址。编译器插入类似下面的代码：</p> <div class="language-golang extra-class"><pre class="language-text"><code>get_tls(CX) 
+MOVQ g(CX), BX; // BX存器里面现在放的是当前g结构体对象的地址
+</code></pre></div><p>继续往下看：</p> <div class="language-golang extra-class"><pre class="language-text"><code>sched.maxmcount = 10000
+</code></pre></div><p>设置最多只能创建 10000 个工作线程。</p> <p>然后，调用了一堆 init 函数，初始化各种配置，现在不去深究。只关心本小节的重点，m0 的初始化：</p> <div class="language-golang extra-class"><pre class="language-text"><code>// 初始化 m
+func mcommoninit(mp *m) {
+	// 初始化过程中_g_ = g0
+	_g_ := getg()
+
+	// g0 stack won't make sense for user (and is not necessary unwindable).
+	if _g_ != _g_.m.g0 {
+		callers(1, mp.createstack[:])
+	}
+
+	// random 初始化
+	mp.fastrand = 0x49f6428a + uint32(mp.id) + uint32(cputicks())
+	if mp.fastrand == 0 {
+		mp.fastrand = 0x49f6428a
+	}
+
+	lock(&amp;sched.lock)
+	// 设置 m 的 id
+	mp.id = sched.mcount
+	sched.mcount++
+	// 检查已创建系统线程是否超过了数量限制（10000）
+	checkmcount()
+	
+	// ………………省略了初始化 gsignal
+
+	// Add to allm so garbage collector doesn't free g-&gt;m
+	// when it is just in a register or thread-local storage.
+	mp.alllink = allm
+
+	atomicstorep(unsafe.Pointer(&amp;allm), unsafe.Pointer(mp))
+	unlock(&amp;sched.lock)
+
+	// ………………
+}
+</code></pre></div><p>因为 sched 是一个全局变量，多个线程同时操作 sched 会有并发问题，因此先要加锁，操作结束之后再解锁。</p> <div class="language-golang extra-class"><pre class="language-text"><code>mp.id = sched.mcount
+sched.mcount++
+checkmcount()
+</code></pre></div><p>可以看到，m0 的 id 是 0，并且之后创建的 m 的 id 是递增的。<code>checkmcount()</code> 函数检查已创建系统线程是否超过了数量限制（10000）。</p> <div class="language-golang extra-class"><pre class="language-text"><code>mp.alllink = allm
+</code></pre></div><p>将 m 挂到全局变量 allm 上，allm 是一个指向 m 的的指针。</p> <div class="language-golang extra-class"><pre class="language-text"><code>atomicstorep(unsafe.Pointer(&amp;allm), unsafe.Pointer(mp))
+</code></pre></div><p>这一行将 allm 变成 m 的地址，这样变成了一个循环链表。之后再新建 m 的时候，新 m 的 alllink 就会指向本次的 m，最后 allm 又会指向新创建的 m。</p> <p><img src="https://user-images.githubusercontent.com/7698088/63501720-bcd00f00-c4fe-11e9-9642-1757de67aaa1.png" alt="m.alllink 形成链表"></p> <p>上图中，1 将 m0 挂在 allm 上。之后，若新创建 m，则 m1 会和 m0 相连。</p> <p>完成这些操作后，大功告成！解锁。</p> <h1 id="初始化-allp"><a href="#初始化-allp" class="header-anchor">#</a> 初始化 allp</h1> <p>跳过一些其他的初始化代码，继续往后看：</p> <div class="language-golang extra-class"><pre class="language-text"><code>procs := ncpu
+if n, ok := atoi32(gogetenv(&quot;GOMAXPROCS&quot;)); ok &amp;&amp; n &gt; 0 {
+	procs = n
+}
+if procs &gt; _MaxGomaxprocs {
+	procs = _MaxGomaxprocs
+}
+</code></pre></div><p>这里就是设置 procs，它决定创建 P 的数量。ncpu 这里已经被赋上了系统的核心数，因此代码里不设置 GOMAXPROCS 也是没问题的。这里还限制了 procs 的最大值，为 1024。</p> <p>来看最后一个核心的函数：</p> <div class="language-golang extra-class"><pre class="language-text"><code>// src/runtime/proc.go
+
+func procresize(nprocs int32) *p {
+	old := gomaxprocs
+	if old &lt; 0 || old &gt; _MaxGomaxprocs || nprocs &lt;= 0 || nprocs &gt; _MaxGomaxprocs {
+		throw(&quot;procresize: invalid arg&quot;)
+	}
+	
+	// ……………………
+
+	// update statistics
+	// 更新数据
+	now := nanotime()
+	if sched.procresizetime != 0 {
+		sched.totaltime += int64(old) * (now - sched.procresizetime)
+	}
+	sched.procresizetime = now
+
+	// 初始化所有的 P
+	for i := int32(0); i &lt; nprocs; i++ {
+		pp := allp[i]
+		if pp == nil {
+			// 申请新对象
+			pp = new(p)
+			pp.id = i
+			// pp 的初始状态为 stop
+			pp.status = _Pgcstop
+			pp.sudogcache = pp.sudogbuf[:0]
+			for i := range pp.deferpool {
+				pp.deferpool[i] = pp.deferpoolbuf[i][:0]
+			}
+			// 将 pp 存放到 allp 处
+			atomicstorep(unsafe.Pointer(&amp;allp[i]), unsafe.Pointer(pp))
+		}
+
+		// ……………………
+
+	}
+
+	// 释放多余的 P。由于减少了旧的 procs 的数量，因此需要释放
+	// ……………………
+
+	// 获取当前正在运行的 g 指针，初始化时 _g_ = g0
+	_g_ := getg()
+	if _g_.m.p != 0 &amp;&amp; _g_.m.p.ptr().id &lt; nprocs {
+		// continue to use the current P
+		// 继续使用当前 P
+		_g_.m.p.ptr().status = _Prunning
+	} else {
+		// 初始化时执行这个分支
+
+		// ……………………
+
+		_g_.m.p = 0
+		_g_.m.mcache = nil
+		// 取出第 0 号 p
+		p := allp[0]
+		p.m = 0
+		p.status = _Pidle
+		// 将 p0 和 m0 关联起来
+		acquirep(p)
+		if trace.enabled {
+			traceGoStart()
+		}
+	}
+	var runnablePs *p
+	// 下面这个 for 循环把所有空闲的 p 放入空闲链表
+	for i := nprocs - 1; i &gt;= 0; i-- {
+		p := allp[i]
+		// allp[0] 跟 m0 关联了，不会进行之后的“放入空闲链表”
+		if _g_.m.p.ptr() == p {
+			continue
+		}
+
+		// 状态转为 idle
+		p.status = _Pidle
+		// p 的 LRQ 里没有 G
+		if runqempty(p) {
+			// 放入全局空闲链表
+			pidleput(p)
+		} else {
+			p.m.set(mget())
+			p.link.set(runnablePs)
+			runnablePs = p
+		}
+	}
+	stealOrder.reset(uint32(nprocs))
+	var int32p *int32 = &amp;gomaxprocs // make compiler check that gomaxprocs is an int32
+	atomic.Store((*uint32)(unsafe.Pointer(int32p)), uint32(nprocs))
+	// 返回有本地任务的 P 链表
+	return runnablePs
+}
+
+</code></pre></div><p>代码比较长，这个函数不仅是初始化的时候会执行到，在中途改变 procs 的值的时候，仍然会调用它。所有存在很多一般不用关心的代码，因为一般不会在中途重新设置 procs 的值。我把初始化无关的代码删掉了，这样会更清晰一些。</p> <p>函数先是从堆上创建了 nproc 个 P，并且把 P 的状态设置为 <code>_Pgcstop</code>，现在全局变量 allp 里就维护了所有的 P。</p> <p>接着，调用函数 <code>acquirep</code> 将 p0 和 m0 关联起来。我们来详细看一下：</p> <div class="language-golang extra-class"><pre class="language-text"><code>func acquirep(_p_ *p) {
+	// Do the part that isn't allowed to have write barriers.
+	acquirep1(_p_)
+
+	// have p; write barriers now allowed
+	_g_ := getg()
+	_g_.m.mcache = _p_.mcache
+
+	// ……………………
+}
+</code></pre></div><p>先调用 <code>acquirep1</code> 函数真正地进行关联，之后，将 p0 的 mcache 资源赋给 m0。再来看 <code>acquirep1</code>：</p> <div class="language-golang extra-class"><pre class="language-text"><code>func acquirep1(_p_ *p) {
+	_g_ := getg()
+
+	// ……………………
+
+	_g_.m.p.set(_p_)
+	_p_.m.set(_g_.m)
+	_p_.status = _Prunning
+}
+</code></pre></div><p>可以看到就是一些字段相互设置，执行完成后：</p> <div class="language-golang extra-class"><pre class="language-text"><code>g0.m.p = p0
+p0.m = m0
+</code></pre></div><p>并且，p0 的状态变成了 <code>_Prunning</code>。</p> <p>接下来是一个循环，它将除了 p0 的所有非空闲的 P，放入 P 链表 runnablePs，并返回给 procresize 函数的调用者，并由调用者来“调度”这些 P。</p> <p>函数 <code>runqempty</code> 用来判断一个 P 是否是空闲，依据是 P 的本地 run queue 队列里有没有 runnable 的 G，如果没有，那 P 就是空闲的。</p> <div class="language-golang extra-class"><pre class="language-text"><code>// src/runtime/proc.go
+
+// 如果 _p_ 的本地队列里没有待运行的 G，则返回 true
+func runqempty(_p_ *p) bool {
+	// 这里涉及到一些数据竞争，并不是简单地判断 runqhead == runqtail 并且 runqnext == nil 就可以
+	//
+	for {
+		head := atomic.Load(&amp;_p_.runqhead)
+		tail := atomic.Load(&amp;_p_.runqtail)
+		runnext := atomic.Loaduintptr((*uintptr)(unsafe.Pointer(&amp;_p_.runnext)))
+		if tail == atomic.Load(&amp;_p_.runqtail) {
+			return head == tail &amp;&amp; runnext == 0
+		}
+	}
+}
+</code></pre></div><p>并不是简单地判断 head == tail 并且 runnext == nil 为真，就可以说明 runq 是空的。因为涉及到一些数据竞争，例如在比较 head == tail 时为真，但此时 runnext 上其实有一个 G，之后再去比较 runnext == nil 的时候，这个 G 又通过 runqput跑到了 runq 里去了或者通过 runqget 拿走了，runnext 也为真，于是函数就判断这个 P 是空闲的，这就会形成误判。</p> <p>因此 runqempty 函数先是通过原子操作取出了 head，tail，runnext，然后再次确认 tail 没有发生变化，最后再比较 head == tail 以及 runnext == nil，保证了在观察三者都是在“同时”观察到的，因此，返回的结果就是正确的。</p> <p>说明一下，runnext 上有时会绑定一个 G，这个 G 是被当前 G 唤醒的，相比其他 G 有更高的执行优先级，因此把它单独拿出来。</p> <p>函数的最后，初始化了一个“随机分配器”：</p> <div class="language-golang extra-class"><pre class="language-text"><code>stealOrder.reset(uint32(nprocs))
+</code></pre></div><p>将来有些 m 去偷工作的时候，会遍历所有的 P，这时为了偷地随机一些，就会用到 stealOrder 来返回一个随机选择的 P，后面的文章会再讲。</p> <p>这样，整个 procresize 函数就讲完了，这也意味着，调度器的初始化工作已经完成了。</p> <p>还是引用阿波张公号文章里的总结，写得太好了，很简洁，很难再优化了：</p> <blockquote><ol><li>使用 make([]*p, nprocs) 初始化全局变量 allp，即 allp = make([]*p, nprocs)</li></ol></blockquote> <blockquote><ol start="2"><li>循环创建并初始化 nprocs 个 p 结构体对象并依次保存在 allp 切片之中</li></ol></blockquote> <blockquote><ol start="3"><li>把 m0 和 allp[0] 绑定在一起，即 m0.p = allp[0]，allp[0].m = m0</li></ol></blockquote> <blockquote><ol start="4"><li>把除了 allp[0] 之外的所有 p 放入到全局变量 sched 的 pidle 空闲队列之中</li></ol></blockquote> <p>说明一下，最后一步，代码里是将所有空闲的 P 放入到调度器的全局空闲队列；对于非空闲的 P（本地队列里有 G 待执行），则是生成一个 P 链表，返回给 procresize 函数的调用者。</p> <p>最后我们将 allp 和 allm 都添加到图上：</p> <p><img src="https://user-images.githubusercontent.com/7698088/64071128-97cd6000-cca5-11e9-95a9-344f2a0a6474.png" alt="g0-p0-m0"></p> <h1 id="参考资料"><a href="#参考资料" class="header-anchor">#</a> 参考资料</h1> <p>【阿波张 goroutine 调度器初始化】https://mp.weixin.qq.com/s/W9D4Sl-6jYfcpczzdPfByQ</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">7/20/2020, 2:09:44 AM</span></div></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cb35c8f6.js" defer></script><script src="/assets/js/2.063846a6.js" defer></script><script src="/assets/js/4.1ffb4609.js" defer></script><script src="/assets/js/334.77e02010.js" defer></script>
+  </body>
+</html>
